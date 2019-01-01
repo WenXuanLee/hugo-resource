@@ -13,4 +13,4 @@ Github Page for personal self-intro
 4. Theme from leavit
 5. first layer of dir will seen as a list page
 6. taxonomies will auto generate tags and catories dir, set config.toml to customize them but remember including the default
-7.  
+7. _default/baseof.html will be the entry poitn for the entire hugo site
