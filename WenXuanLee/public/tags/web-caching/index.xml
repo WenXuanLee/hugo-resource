@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Caching on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/web-caching/</link>
+    <description>Recent content in Web Caching on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 05 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/web-caching/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Web Caching</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/webcaching/</link>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/webcaching/</guid>
+      <description>Web Caching Web Cache，aka proxy server，network用於代替Origin Web server滿足HTTP request的機制，web cache擁有自己的storage空間，並會把最近收到請求的objects存在storage，user browser可以透過config讓所有的request都先被轉到web cache裡。
+假使今天client端發送出一個request，一樣會建立一條TCP connection至web cache，接著web cache檢查是否有一份備分的object在儲存空間裡，若有的話，web cache直接代替server送回response，若無的話則送出request建立TCP connection至 origin server，取得response後在自己的storage 備份object，接著再送回clicent side。
+web cache 同時是client &amp;amp; server，web cache主要應用有兩個原因，一者為減少response time for client request尤其當client to server 的頻寬小於 client to web cache時候，二者為減少traffic，若request並無真的發至origin server 可以減輕server的負擔並減少access to internet的traffic，因此可以對此設計提升效能。
+The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，假使 origin server的檔案在web cache儲存後有所更動的話，該怎麼處理，HTTP提供一個機制讓web cache可以去確認 object是否為up to date，這機制稱為Condition GET，符合conditional GET的條件為
+ request message 用的method 為GET request message header line 夾帶 IF-modified-since  記得在response message有著一筆Last-Modified的紀錄，而當web cache再次收到request時，web cache會觸發up-to-date check 發出一筆condition GET夾帶If-modified-since，若web server判斷無modified的話，則會回傳response without requested object，並在status line帶著status code 304 not modified</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ＷenXuan Lee">
+  <meta name="description" content="asdasd">
+  
+  
+  <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day15_hoisting/" />
+  <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day18_asynchronous/" />
+  <link rel="canonical" href="https://WenXuanLee.github.io/posts/ironman30/day16-scope/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Scope | Ben the front-end dust
+       
+  </title>
+  <meta name="title" content="Scope | Ben the front-end dust">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://WenXuanLee.github.io"
+    },
+    "articleSection" : "Posts",
+    "name" : "Scope",
+    "headline" : "Scope",
+    "description" : "Scope Scope是Javascript很重要的一個也非常需要花時間去消化的觀念，在一開始我們有講到，Javascript是一個很注重Lexical Environment的，而Scope正是其重要的原因，礙於Scope的觀念有點龐大，我們會用兩天的篇幅來介紹，而今天主要注重在以下。
+ Variable Environment解釋 Sample推演 Scope chain  Variable Environment 這是我們第一次見到這個名詞，其中代表的意義為，變數在哪裡存活以及變數與變數在記憶體中的關聯性，看起來有點繞舌，我們可以簡化一下。
+當今天提到Variable Environment，你就想著，變數到底在哪裡。
+Sample推演 今天我們有function a、function b、變數 myVar，在往下滾動前，大家可以試著自己推導一下這段Code的流程。
+ Step1 - 建立Global Execution Context，建立好變數及函式的記憶體空間，之後開始執行Code，讀取到myVar = 1，讀取到函式b的呼叫，進入Step2。  Step2 - 當讀取到b()，創立b( ) Execution Context，讀取到myVar = 2;再來讀取到函式a()的呼叫，進Step3
+   Step3 - myVar = undefined.   以上就為整個流程，而其中我們注意到，每個Execution Context的橘色框框，代表著myVar變數，也就是vaiable environment，並與我們的主題Scope有關係，也就是我們何時能看見這些變數。
+上圖我們看到每個變數都是被定義在各別的Execution Context，因為這些變數被包含在函式裡，每次函式被呼叫便有自己的Execution Context。
+所以即便myVar，被宣告了三次，事實上它們三個是不一樣的個體，是各自單一的存在，並不會接觸到其他與自己相同名稱的變數。如以下。
+每個myMvar，存在於各自的Execution Context中。
+第二個Sample 接下來我們稍微將剛剛的範例修改一下如下圖，乍看之下是差不多的程式碼，真的是差不多，只有函式a的內容有變換，猜猜結果是什麼?
+答案是1，你猜對了嗎? 50%的機率錯了也不用灰心，那猜2的人一定會問為什麼，猜中1的人也未必理解，沒關係，跟著我一起走一遍。
+這次我們快轉三個步驟，可以得到下面的流程。
+在函式a()我們這次為空的，並沒有宣告自己的myVar，當今天我們要取變數做行為時，Javascript不只看了此變數的execution context 的 variable environment，而同時也會看到它的外層 execution context。
+而在範例中便是指到，global execution environment，函式b()亦同。",
+    "inLanguage" : "zh-tw",
+    "author" : "ＷenXuan Lee",
+    "creator" : "ＷenXuan Lee",
+    "publisher": "ＷenXuan Lee",
+    "accountablePerson" : "ＷenXuan Lee",
+    "copyrightHolder" : "ＷenXuan Lee",
+    "copyrightYear" : "2018",
+    "datePublished": "2018-01-01 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2018-01-01 00:00:00 &#43;0000 UTC",
+    "url" : "https://WenXuanLee.github.io/posts/ironman30/day16-scope/",
+    "wordCount" : "155",
+    "keywords" : [ "Javascript", "Ben the front-end dust"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Scope</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                <span class="post-time">
+                on <time datetime=2018-01-01 itemprop="datePublished">January 1, 2018</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://WenXuanLee.github.io/categories/javascript/"> Javascript </a>
+                        <a href="https://WenXuanLee.github.io/categories/tech-note/"> Tech Note </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="scope">Scope</h2>
+
+<p>Scope是Javascript很重要的一個也非常需要花時間去消化的觀念，在一開始我們有講到，Javascript是一個很注重Lexical Environment的，而Scope正是其重要的原因，礙於Scope的觀念有點龐大，我們會用兩天的篇幅來介紹，而今天主要注重在以下。</p>
+
+<ul>
+<li>Variable Environment解釋</li>
+<li>Sample推演</li>
+<li>Scope chain</li>
+</ul>
+
+<h2 id="variable-environment">Variable Environment</h2>
+
+<p>這是我們第一次見到這個名詞，其中代表的意義為，變數在哪裡存活以及變數與變數在記憶體中的關聯性，看起來有點繞舌，我們可以簡化一下。</p>
+
+<p>當今天提到Variable Environment，你就想著，變數到底在哪裡。</p>
+
+<h3 id="sample推演">Sample推演</h3>
+
+<p>今天我們有function a、function b、變數 myVar，在往下滾動前，大家可以試著自己推導一下這段Code的流程。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope.png" /></p>
+
+<ul>
+<li><p>Step1 - 建立Global Execution Context，建立好變數及函式的記憶體空間，之後開始執行Code，讀取到myVar = 1，讀取到函式b的呼叫，進入Step2。
+<img style="width:100%;height:auto;padding:10px" src="../images/scope1.png" /></p></li>
+
+<li><p>Step2 - 當讀取到b()，創立b( ) Execution Context，讀取到myVar = 2;再來讀取到函式a()的呼叫，進Step3</p></li>
+</ul>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope2.png" /></p>
+
+<ul>
+<li>Step3 - myVar = undefined.
+<img style="width:100%;height:auto;padding:10px" src="../images/scope3.png" /></li>
+</ul>
+
+<p>以上就為整個流程，而其中我們注意到，每個Execution Context的橘色框框，代表著myVar變數，也就是vaiable environment，並與我們的主題Scope有關係，也就是我們何時能看見這些變數。</p>
+
+<p>上圖我們看到每個變數都是被定義在各別的Execution Context，因為這些變數被包含在函式裡，每次函式被呼叫便有自己的Execution Context。</p>
+
+<p>所以即便myVar，被宣告了三次，事實上它們三個是不一樣的個體，是各自單一的存在，並不會接觸到其他與自己相同名稱的變數。如以下。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope4.png" /></p>
+
+<p>每個myMvar，存在於各自的Execution Context中。</p>
+
+<h3 id="第二個sample">第二個Sample</h3>
+
+<p>接下來我們稍微將剛剛的範例修改一下如下圖，乍看之下是差不多的程式碼，真的是差不多，只有函式a的內容有變換，猜猜結果是什麼?</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope5.png" /></p>
+
+<p>答案是<code>1</code>，你猜對了嗎? 50%的機率錯了也不用灰心，那猜2的人一定會問為什麼，猜中1的人也未必理解，沒關係，跟著我一起走一遍。</p>
+
+<p>這次我們快轉三個步驟，可以得到下面的流程。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope6.png" /></p>
+
+<p>在函式a()我們這次為空的，並沒有宣告自己的myVar，當今天我們要取變數做行為時，Javascript不只看了此變數的execution context 的 variable environment，而同時也會看到它的外層 execution context。</p>
+
+<p>而在範例中便是指到，global execution environment，函式b()亦同。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope7.png" /></p>
+
+<p>這是我們又要回來討論到Lexical Environment了，函式a()就圖面來看，是位於global environment之上的，也就是說，它並不是包含在函式b()當中。</p>
+
+<p>所以函式a()位於跟 var myVar = 1;同一層的，所以今天Javascript在Execution Context中找不到變數的時候，它會繼續尋找Outer reference是否有此變數。</p>
+
+<p>這個Outer Reference便是取決於此這個函式坐落於哪裡，所以函式a()實際上位於global的層級，也就是程式碼的最外層，Global environment就是其Outer Reference。</p>
+
+<p>由此可知，今天在函式a()找不到myVar，會去Global Execution Context尋找，進而得到 1 的值。</p>
+
+<h3 id="scope-chain">Scope chain</h3>
+
+<p>今天三個Execution contexts被創立時，這些code具體被寫在哪裡並不重要，重要的在於我們什麼時候去呼叫這些函式。</p>
+
+<p>當我們呼叫函式時，Javascript會替這些execution context建立一套outer reference，它會幫我們注意Code具體上位於哪個位置，並幫我們建立適當的outer reference。</p>
+
+<p>透過outer reference一層一層往外部execution context尋找變數的的一連串搜尋行為，便是scope chain。</p>
+
+<h2 id="lexical-environment-sample">Lexical Environment sample</h2>
+
+<h3 id="sample-review">Sample Review</h3>
+
+<p>想一想函式a( )坐落於哪個位置?
+<img style="width:100%;height:auto;padding:10px" src="../images/scope8.png" />
+相信你一定知道，函式a( )位於global environment，實際上可以想像成它是連結在global object的，函式a( )具體是與myVar在同一個層級的。</p>
+
+<p>函式a( )並不是被包涵於某個函式，而就是在Javascript檔案裡，所以當Javascript建立execution context時，同時建立了此函數，lexical environment的outer enviornment reference。</p>
+
+<p>所以今天a裡面找不到myVar就去外面一層找，這是上一次提到的沒錯吧? 今天若我們更改函式a的lexical environment呢?</p>
+
+<h3 id="lexical-environment-change">Lexical Environment change</h3>
+
+<p>今天我們把程式碼改成以下。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope9.png" /></p>
+
+<p>今天我們改變了函式a的Leixcal environment，將其具體位置放於函式b裡面，這發生了什麼變化?</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope10.png" /></p>
+
+<p>我們看到了，在Global層級中，我們找不到函式a，原因在於global execution context會去尋找函式a，但函式a並不存在於它的variable environment，因為函式a是坐落在函式b裡面。</p>
+
+<p>今天創建global execution context時只讀取到函式b的宣告，並不會去讀取裡面的內容，而是直接到函式b的結尾然後繼續讀取，所以事實上是沒有讀到函式a的，自然而然global execution context
+就認不得函式a了。</p>
+
+<p>再來我們看一下當b()呼叫時結果是什麼?</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope11.png" /></p>
+
+<p>結果是2，花生省魔術?來一起來一探究竟，同樣的我們快轉三步驟。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope12.png" /></p>
+
+<p>然而，這次我們的函式a，具體上是位於函式b裡面的，所以Javascript會將函式a的outer reference連結到函式b，而函式b的outer reference依然是global，如下圖。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope13.png" /></p>
+
+<p>所以當這次，函式a找不到myVar時，隨著scope chain向外尋找，會找到函式b的myVar，也就是2，看明白了吧。</p>
+
+<p>那如果今天在函式b也找不到myVar呢?</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/scope13.png" /></p>
+
+<p>你一定答對了，沒錯，就是跟著Scope chain在向外一層，直到最外層為止，在範例中，在往外一層到global找到myVar，也就是1。</p>
+
+<h3 id="總結">總結</h3>
+
+<p>Scope的影響是非常顯而易見的，當你今天不明白這其中的脈絡，很容易就會產生Bug或者Error，就因為看不明白其中變數、函式的關係，而導致Access裡各種抓不到或者是變數值不是自己所預料的結果，透過這兩天的介紹，希望大家都能更明白Scope的概念。</p>
+
+<hr />
+
+<h3 id="參考來源">參考來源</h3>
+
+<ol>
+<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview" rel="nofollow noreferrer" target="_blank">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&amp;%20closures/README.md#you-dont-know-js-scope--closures" rel="nofollow noreferrer" target="_blank">You don&rsquo;t know JS</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ＷenXuan Lee </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://WenXuanLee.github.io/posts/ironman30/day16-scope/>https://WenXuanLee.github.io/posts/ironman30/day16-scope/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://WenXuanLee.github.io/tags/javascript/">
+                    #Javascript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://WenXuanLee.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://WenXuanLee.github.io/posts/ironman30/day15_hoisting/" class="prev" rel="prev" title="Hoisting"><i class="iconfont icon-left"></i>&nbsp;Hoisting</a>
+         
+        
+        <a href="https://WenXuanLee.github.io/posts/ironman30/day18_asynchronous/" class="next" rel="next" title="Asynchronous">Asynchronous&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2019</span>
+        
+
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network Application on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/network-application/</link>
+    <description>Recent content in Network Application on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 28 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/network-application/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Network Application Architectures</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/networkapplicationarchitectures/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/networkapplicationarchitectures/</guid>
+      <description>Network Application Architectures network architecture，一個開發者設計一個application時，如何被架構在各個end system，而現今常見的net work application主要應用的兩個主流設計為client-server architecture以及peer-to-peer architecture (P2P)
+client-server architecture 最終端永遠會存在於一台或以上的host，所謂的server，負責處理從其他end system傳來的service request，也就是所謂的client，最明顯的特徵是，clients之間並不能直接溝通傳遞訊息，必須得經由最上游的host來運作，另一個特點是server存在固定的IP Address，地址永遠是固定的而且server持續維持運作的狀態下，client便可以透過這樣的服務傳遞封包。
+通常如常見的大型社群網站，會擁有data center，安放大量的hosts來做為一個強大的server，處理大量的用戶request，而因此也必須額外付出從data center到各個host的連線以及頻寬成本。
+peer-to-peer architecture (P2P) P2P並沒有絕對依賴指定的host，不同於前者，clients在一組相互連結的hosts中可以直接與彼此溝通，稱為peers，peers並不屬於service provider而是各個users hosts，也就是不用轉折點的server去執行。
+很明顯一項特點就是self-scalability，雖然每一個peers在request時都會產生workload，但同時也提升了service capacity，也就是說，每當一個peer加入時，整個P2P架構的系統，就會多增加一個peer提供的資源、頻寬以及計算能力，但同時越多使用者的話，傳輸的效率也會越慢，此外，由於不需通過指定server的運作，也省去了從host -&amp;gt; server的頻寬以及服務功能。
+方便的同時也須注意三個隱憂
+ ISP Friendly - 大部分的地區ISPs已經切割好指定的頻寬使用，為了準備應付更多的downstream than upstream traffic，而P2P的設計則會把佔頻寬的upstream traffic從server搬移至ISPs運作，造成ISPs更大的負擔，因此在設計上得納入考量。
+ Security - 顯而易見的彼此users都是open的，所以也很容易遭受到惡意攻擊。
+ Incentives - 以P2P的設計來說，得吸引使用者去提供自己的頻寬、儲存空間以及資源。   Process Communicating process可以想像成，一隻program在end system上執行，Processes在兩台不同的end systems上主要透過messages的交換來溝通。
+Client and Server Process Network application 都會有一組processes組成，透過network傳送messages給彼此，通常會將兩個processes一個定義為clicent另一個為server，以常見的google為例，我們的browser就是一個client process發送request message給server process接收並給予回應，在P2P的設計上來說，peer可以同時為client與server，有一個定義是指觸發訊息交換的process為client，而等待被聯絡的process則為server
+The Interface Between the Process and the Computer Network 所有message從process出發到接收一定會經過network，而透過將process message傳遞到network的介面就是socket，也被稱為API。可以記為socket為application layer &amp;amp; transpoart layer的interface，通常開發者會在application-layer side of the socket 擁有比較多的控制權，反之在transport-layer side便沒有太大的操作空間。</description>
+    </item>
+    
+  </channel>
+</rss>

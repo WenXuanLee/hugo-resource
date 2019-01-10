@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network Layer on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/network-layer/</link>
+    <description>Recent content in Network Layer on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 13 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/network-layer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Network Layer</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/networklayerbrief/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/networklayerbrief/</guid>
+      <description>Brief-intro about Five Layers 層級的概念是，個別層級中有自己的服務，個別執行特定的動作已達成目標，而傳遞下去的層級中，是依賴於上一層的服務，舉例來說的話，買票之後才能上火車，第一層的服務為窗口買票，第二層為上車的動作，若第一層沒買票的話，則第二層便無法實現。
+從上到下的五層順序分別為 Application Layer、Transport Layer、Network Layer、Link、Physical
+Application Layer 應用層是最接近web app的，此層的協定包含常見 Http - 提供向瀏覽器發出request &amp;amp; transfer SMTP - 提供transferemail訊息 FTP - 提供檔案的傳輸協定 DNS - 提供轉換網址到network address
+應用層協定分布於各個end system上，各個end system透過傳輸層提供的protocol去交換packet。
+Transport Layer 主要將應用層傳遞下來的封包，透過TCP/UDP協定傳送，在此處也會在packet上加上header information，包含了允許封包在receiver那邊可以往上丟回application layer，以及errr-detection bits讓receiver知道message是否在route理被動過手腳
+TCP - 提供messages的傳送以及flow control，也提供將packet切成segment，以及packet塞車的處理機制 UDP - 提供了當無網路狀態時web app的service
+Network Layer 負責整個封包傳遞流程的datagrams，主要為IP protocol，定義了datagrams的區域以及end system &amp;amp; router如何在這些fields做行為，特別注意到IP protocol只有唯一一個，所有Internet component一定都得遵守，同時此層也包含許多routing protocols。
+Link Layer 將packet從node中運輸依賴的是link layer的服務，負責傳送network層的datagram到下一個node節點。此服務依賴於link-layer protocol，常見的link-layer protocol為以下Ethernet Wifi DOCSIS等等，同一組datagram可能會在不同的Route被不同的協定服務，通常在link-layer的packet又稱為frames
+physical Layer 就幾乎是實體線路的範圍了，在此不做贅述
+Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如下圖所示，在link-layer switch以及router裡面，packet作用的service在後面三層，而在end system才有到頭兩層，在層數往下的過程中，都會加入header information作為保護的手段，如圖中的Ht、Hn，因此我們可以依圖所例，得知每個層級都會有兩個type of fields，一者為前一層帶下來的packet，一者為每層級的header information。</description>
+    </item>
+    
+  </channel>
+</rss>

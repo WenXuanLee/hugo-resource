@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="ＷenXuan Lee">
+  <meta name="description" content="asdasd">
+  
+  
+  <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day05_objecttypes/" />
+  <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day07_value-reference/" />
+  <link rel="canonical" href="https://WenXuanLee.github.io/posts/ironman30/day06_operators/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Basic Operators | Ben the front-end dust
+       
+  </title>
+  <meta name="title" content="Basic Operators | Ben the front-end dust">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://WenXuanLee.github.io"
+    },
+    "articleSection" : "Posts",
+    "name" : "Basic Operators",
+    "headline" : "Basic Operators",
+    "description" : "Operators 介紹完了Javascript types，我們知道Javascript的組成大概是這樣，Variable -&gt; Value -&gt;Types，一個變數可以給予一個Value，這個Value同時決定此變數的Type。
+更精確的說法我們可以稱為，執行動作的句子是一個Statement，statement裡面又包含了Expression，而Expression正是由variable或者Value，或者是一段由Variable和Value透過Operators結合起來的一段式子。
+聽起來有點抽象，我們直接舉出例子來看。
+ 2 是一個 value expression。 b 是一個 variable expression。 b * 2 是一個數學式expression，透過operator * 結合。 a = b * 2 則是一個assign expression。 整段結合起來便是一個statement。  那前面我們知道了 value、variable、types，今天就來看看Operators吧 !
+Operator在幹嘛? 一般來說，Operator是一個特殊的函式，與一般函式的寫法不同，通常，operators讀取兩個參數後回傳一個新的結果。
+例如常見的 = * + - 諸如此類，所以他實際上的用途就是在variable 與 value上面做一些行為，好比 * 就是將value做一個乘法的動作， = 就是負責assign這個動作。
+特別注意到Assignment Operators的執行是從右到左稱為 Right-associativeity 以下見範例。
+這段結果 a &amp; b 的 value都會是5，那實際上的動作是這樣的
+ b 被assign成 5 a 透過b的value被assign成 5  所以是從右邊先開始的，這就是Right-associative。
+Operator的優先順序 有了上面的觀念，你會觀察到，那不一樣的Operator從哪邊開始先處理呢，實際上是這樣的，就像梁山108條好漢長幼有序，如此多的Operator也是要照輩分來的。以下就是常見到的Operator順序。",
+    "inLanguage" : "zh-tw",
+    "author" : "ＷenXuan Lee",
+    "creator" : "ＷenXuan Lee",
+    "publisher": "ＷenXuan Lee",
+    "accountablePerson" : "ＷenXuan Lee",
+    "copyrightHolder" : "ＷenXuan Lee",
+    "copyrightYear" : "2017",
+    "datePublished": "2017-12-26 00:00:00 &#43;0000 UTC",
+    "dateModified" : "2017-12-26 00:00:00 &#43;0000 UTC",
+    "url" : "https://WenXuanLee.github.io/posts/ironman30/day06_operators/",
+    "wordCount" : "342",
+    "keywords" : [ "Javascript", "Ben the front-end dust"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Basic Operators</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                <span class="post-time">
+                on <time datetime=2017-12-26 itemprop="datePublished">December 26, 2017</time>
+                </span>
+                in
+                <i class="iconfont icon-folder"></i>
+                <span class="post-category">
+                        <a href="https://WenXuanLee.github.io/categories/javascript/"> Javascript </a>
+                        <a href="https://WenXuanLee.github.io/categories/tech-note/"> Tech Note </a>
+                        
+                </span>
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="operators">Operators</h2>
+
+<p>介紹完了Javascript types，我們知道Javascript的組成大概是這樣，Variable -&gt; Value -&gt;Types，一個變數可以給予一個Value，這個Value同時決定此變數的Type。</p>
+
+<p>更精確的說法我們可以稱為，執行動作的句子是一個Statement，statement裡面又包含了Expression，而Expression正是由variable或者Value，或者是一段由Variable和Value透過Operators結合起來的一段式子。</p>
+
+<p>聽起來有點抽象，我們直接舉出例子來看。</p>
+
+<p><img style="width:100%;height:150px;padding:10px" src="../images/operator.png" /></p>
+
+<ul>
+<li>2 是一個 value expression。</li>
+<li>b 是一個 variable expression。</li>
+<li>b * 2 是一個數學式expression，透過operator * 結合。</li>
+<li>a = b * 2 則是一個assign expression。</li>
+<li>整段結合起來便是一個statement。</li>
+</ul>
+
+<p>那前面我們知道了 value、variable、types，今天就來看看Operators吧 !</p>
+
+<h2 id="operator在幹嘛">Operator在幹嘛?</h2>
+
+<p>一般來說，Operator是一個特殊的函式，與一般函式的寫法不同，通常，operators讀取兩個參數後回傳一個新的結果。</p>
+
+<p>例如常見的 <strong>= * + -</strong> 諸如此類，所以他實際上的用途就是在variable 與 value上面做一些行為，好比 * 就是將value做一個乘法的動作， = 就是負責assign這個動作。</p>
+
+<p>特別注意到Assignment Operators的執行是從右到左稱為 <strong>Right-associativeity</strong> 以下見範例。</p>
+
+<p><img style="width:100%;height:150px;padding:10px" src="../images/operator1.png" /></p>
+
+<p>這段結果 a &amp; b 的 value都會是5，那實際上的動作是這樣的</p>
+
+<ol>
+<li>b 被assign成 5</li>
+<li>a 透過b的value被assign成 5</li>
+</ol>
+
+<p>所以是從右邊先開始的，這就是Right-associative。</p>
+
+<h2 id="operator的優先順序">Operator的優先順序</h2>
+
+<p>有了上面的觀念，你會觀察到，那不一樣的Operator從哪邊開始先處理呢，實際上是這樣的，就像梁山108條好漢長幼有序，如此多的Operator也是要照輩分來的。以下就是常見到的Operator順序。</p>
+
+<p><img style="width:100%;height:auto;padding:10px" src="../images/operator2.png" /></p>
+
+<p>更多的Operator參見參考來源。
+<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank">來源</a></p>
+
+<h2 id="unary-operators">Unary Operators</h2>
+
+<p>常見的operators們多半是符號，可能會造成大家的誤會，但實際上有些Operators是被寫成拼字的，而我們前面的篇章就有用到這樣的Operator，例如 - <strong>typeof</strong>    、 <strong>in</strong> 、<strong>delete</strong> 等等</p>
+
+<p><img style="width:100%;height:110px;padding:10px" src="../images/operator3.png" /></p>
+
+<h3 id="operators的區別">Operators的區別</h3>
+
+<p>由上面的例子我們看到 <strong>typeof</strong>   operator只針對一個value做動作，而 <strong>+-*/</strong> 則對兩個values是則對兩個values做動作。</p>
+
+<ul>
+<li>一個values做動作為 <strong>unary operator</strong></li>
+<li>兩個value的則稱為   <strong>binary operators</strong></li>
+<li>Operators不一定可以同時是以上兩種，Ex : <strong>-(minus)</strong></li>
+</ul>
+
+<p>再來根據運算子的功能分成下面幾大類</p>
+
+<ul>
+<li>賦值運算子</li>
+<li>比較運算子</li>
+<li>算數運算子</li>
+<li>位元運算子</li>
+<li>邏輯運算子</li>
+<li>字串運算子</li>
+<li>條件(三元)運算子</li>
+<li>逗點運算子</li>
+<li>一元運算子</li>
+<li>關係運算子</li>
+</ul>
+
+<p>更多細節就麻煩大家有興趣自己看看囉
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators" rel="nofollow noreferrer" target="_blank">Operators 大全</a></p>
+
+<h3 id="非常trikcy-的-與">非常Trikcy 的 ++ 與 &ndash;</h3>
+
+<p>想當初，在學習的途中遇到一題問題是這樣，a++、++a的差別在哪裡，那時候我認為反正就是 +1 沒什麼差別的，但後來發現其實是挺需要在意的小細節，在這邊稍微分享給大家。</p>
+
+<p>這兩個運算子都有Postfix與Prefix的差別</p>
+
+<h4 id="postfix">Postfix</h4>
+
+<p>operator在後面的狀況，也就是 a++，還沒執行 + 的動作 就先把原本的值丟過去。</p>
+
+<p><img style="width:100%;height:110px;padding:10px" src="../images/operator4.png" /></p>
+
+<h4 id="prefix">Prefix</h4>
+
+<p>operator在前面的狀況，也就是++a，是先執行 + 的動作再把值丟過去。</p>
+
+<p><img style="width:100%;height:110px;padding:10px" src="../images/operator5.png" /></p>
+
+<h3 id="comparison">Comparison</h3>
+
+<p>Operators的比較混在javascript裡面常常就是造成讓人崩潰的怪異現象，針對operator的比較做一個整理。</p>
+
+<pre><code>console.log(1 &lt; 2 &lt; 3); //true
+console.log(3 &lt; 2 &lt; 1); //true ????????
+</code></pre>
+
+<h3 id="比較的順序">比較的順序</h3>
+
+<p>根據比較的優先順序 &ldquo;&lt;&ldquo;，是先比較 3 &lt; 2再將結果與 1 比較也就是會變成。</p>
+
+<pre><code>console.log(false &lt; 1); // false
+</code></pre>
+
+<p>而false會透過自動轉型成number也就是0，這就是為什麼回傳true的原因，重點就在於比較的順序以及強制轉型的部分，透過上面的範例，可以知道，很多時候如果一個不注意就會造成意外的結果並難以追蹤。</p>
+
+<h3 id="coerce">Coerce</h3>
+
+<p>不一定每次的轉型都是我們期望的那樣，而是javascript engine決定的，這會意外造成嚴重的bug以及出乎意料的。</p>
+
+<pre><code>Number(defined); //NaN
+Number(null); //0
+</code></pre>
+
+<h3 id="equality">Equality</h3>
+
+<ol>
+<li><strong>==</strong> - 用來判斷兩者的值是否相同，但如果比較的兩者type不一樣，則會有恐怖a自動轉型發生。</li>
+</ol>
+
+<pre><code>'3' == 3; //true
+false == 0; //true
+null == 0; //false
+null == &lt; 1; //true
+&quot;&quot; == 0; //true
+&quot;&quot; == false; //true
+</code></pre>
+
+<p>看到上面的比較是不是有很多黑人問號的部分，null在 &lt; 時會自動轉型，但在 == 卻又沒有，這就是造成怪異的部分，有時候自動轉型的部分會是你期望的，但尷尬的是自動轉型會有意外發生就像上面的null。</p>
+
+<ol>
+<li><strong>===</strong> - 也是用來判斷兩者值是否相同，不同於上者，這是嚴格的比較，不只是只有兩者的值，包含type都會一同被當作比較的標準，同時不會觸發強制轉型的機制。</li>
+</ol>
+
+<pre><code>3 === 3; //true
+&quot;3&quot; === 3; //false
+</code></pre>
+
+<p>為了避免被轉型的機制給搞得歪七扭八，建議大家盡量以 === 的方法或比較的基準，這樣的作法不只是比較嚴謹，同時也可以避免掉尷尬的bug。</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness" rel="nofollow noreferrer" target="_blank">Equality table</a></p>
+
+<h3 id="dynamic-typing-coercion-be-useful">Dynamic typing &amp; coercion be useful</h3>
+
+<p>許多framework對於轉型的機制以及動態Type的運用，實際上是對於程式碼有所幫助的，這邊就來探討 Existence &amp; boolean</p>
+
+<pre><code>Boolean(undefined); // false
+Boolean(null); // false
+Boolean(&quot;&quot;); // false
+</code></pre>
+
+<p>以上這些代表沒有值存在的內容，在boolean的判斷，都會被認定為false，而我們可以利用這樣的特點。</p>
+
+<pre><code>var a;
+
+a = 0;// in if statement 0 coercion to be false;
+
+if(a || a === 0) {
+  console.log('test');
+}
+
+</code></pre>
+
+<p>上面的範例中若是沒有 || 的判斷，在if statement中的a會因為coercion而變成false，但如果有||的話，實際上裡面的狀況是以下。</p>
+
+<pre><code>if(false || true) { // always true
+  console.log('test');
+}
+</code></pre>
+
+<p>通常在debug的時候，透過boolean的判斷，去找出值的存在性通常可以解決因為轉型造成的問題。</p>
+
+<h3 id="defalut-valuse">Defalut Valuse</h3>
+
+<pre><code>function greet(name) {
+  console.log('hello' + name);
+}
+
+greet('Tony'); // hello Tony
+greet(); // hello undefined;
+</code></pre>
+
+<p>在execution context中，參數變數存在卻沒有指派值進去，Javascript engine會自動認定為undefined。</p>
+
+<p>其中的name就會被認為 type undefined，再透過coercion轉成字串，通常為了避免這樣被轉型的麻煩狀況，會在function給參數設定一個default value。</p>
+
+<pre><code>function greet(name) {
+  name = name || '&lt;your name here&gt;';
+  console.log('hello' + name);
+}
+
+greet(); // hello your name here
+</code></pre>
+
+<p>透過 || operator，會優先比較兩者，並將回傳true的值丟回去，藉此可以設定default values。</p>
+
+<p>範例中，name因為是undefined， || 判斷為false，而後者為true，所以回傳後面的字串給name。 這樣的方式可以給參數defalut valuse，避免掉參數被coercion的狀況。</p>
+
+<p>而ES6的寫法可以更簡潔如下。</p>
+
+<pre><code>function greet(name = ' your name here') {
+
+  console.log('hello' + name);
+}
+
+greet(); // hello your name here
+</code></pre>
+
+<h3 id="參考來源">參考來源</h3>
+
+<ol>
+<li><a href="http://eloquentjavascript.net/00_intro.html#h_GlF1Kuv0JF" rel="nofollow noreferrer" target="_blank">eloquentjavascript</a></li>
+<li><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Expressions_and_Operators" rel="nofollow noreferrer" target="_blank">MDN Javascript</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>ＷenXuan Lee </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://WenXuanLee.github.io/posts/ironman30/day06_operators/>https://WenXuanLee.github.io/posts/ironman30/day06_operators/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+            <section>
+            <i class="iconfont icon-tag"></i>Tag(s): 
+            
+            <span class="tag"><a href="https://WenXuanLee.github.io/tags/javascript/">
+                    #Javascript</a></span>
+            
+            </section>
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://WenXuanLee.github.io">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://WenXuanLee.github.io/posts/ironman30/day05_objecttypes/" class="prev" rel="prev" title="Object Types"><i class="iconfont icon-left"></i>&nbsp;Object Types</a>
+         
+        
+        <a href="https://WenXuanLee.github.io/posts/ironman30/day07_value-reference/" class="next" rel="next" title="Value-copy &amp; Reference-copy">Value-copy &amp; Reference-copy&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2018 - 2019</span>
+        
+
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

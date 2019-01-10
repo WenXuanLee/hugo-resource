@@ -38,13 +38,13 @@ preserveTaxonomyNames = true
     since = 2018
     author = "ＷenXuan Lee"                           # Author's name
     avatar = "/profile.jpg"           # Author's avatar
-    subtitle = "我会更好，因为我没有停止"         # Subtitle
+    subtitle = "感受心的自由"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 
     google_verification = ""
    
-    description = "" # site description
+    description = "asdasd" # site description
     keywords = "" # site keywords
 
     beian = ""

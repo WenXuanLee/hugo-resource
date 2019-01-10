@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TCP on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/tcp/</link>
+    <description>Recent content in TCP on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Socket Programming</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/</guid>
+      <description>Socket Programming: Creating Network Applications 複習一下當我們建立一個network application，我們基本上包含了一組programs，client program &amp;amp; server program，分別存在於兩個end system，當兩個program執行後，client process &amp;amp; server process被建立，這些processes透過socket互相溝通，因此身為一個developer主要就是負責撰寫code for clicent program &amp;amp; server program
+Network applications有兩種types，一種為implementation，主要實作於protocol standard，例如 RFC 或者其他 standard document，這樣的application通常又被稱為open，因為規則以及行為是被公開，因此此類別的程式設計需要遵守standard的標準。
+另一種type則為proprietary，此類型主要運用的protocol尚未被公開發布在RFC或者其他國際網路規範，client side &amp;amp; server side program都由同組開發者完成，而開發者完全掌控code的內容，由於此類別並非實作於公開的protocol上，其他獨立開發者也就不能開發與此application相互操作的code。
+下面會透過簡單實作的code來探討開發一個client-server application的簡易流程，在開發者階段，第一步主要得決定此application是基於 TCP || UDP，因此會就此兩種protocol類型來介紹。
+Socket Programming with UDP sending process將packet push 到 socket 前，UDP會先將destination address資訊帶給packet，packet到達sending socket時，Internet便會根據此資訊導引到receiving process socket。由於傳遞的途中或許會經過許多network application process以及多個sockets，辨別destination receiver socket是必要的，因此在socket建立過程中，port number會被指認到socket當作idtentifier。而此項訊息也會被包含在destination address裡。此外，source address的資訊有同樣會被帶入packet，特別注意到，source address的帶入動作並非由UDP application code執行，而是自動由operating system完成的。
+Socket Programming with TCP 不同於UDP，在client &amp;amp; server 開始彼此溝通前，必須先通過handshake的行為並建立TCP conntection，TCP connection的兩端分別連結著sending socket &amp;amp; receiver socket，建立的同時也會將兩端的IP address 以及 port number連結於TCP connection上，兩端的互動都將由socket把data丟到TCP connection傳遞。不同於UDP的server必須先將destination address 附在 packet上才能進入socket傳遞。</description>
+    </item>
+    
+    <item>
+      <title>Transport Services</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/</guid>
+      <description>Transport Services Available to Applications transport service 這邊主要區分了四個面向的service大類，Reliable Data transfer、throughput、timing、security。
+ Reliable data transfer - 假使protocol提供受保證的data delivery service則為受信賴的，亦即就是此service保證了一旦data從sending process傳遞到socket時就已經保證此data一定會抵達receiving process而且無任何error，若無提供此服務，則data從sending process之後有可能永遠到達不了receiving process端，這行為能被 loss-tolerant applications接受 throughput - transport提供了保證穩定傳輸速率的service，可以保證application能擁有的傳輸速度，Applications需要throughput requirements的類型又被稱為bandwidth-sensitive applications。 timing - 提供了時間的保證，可以保證資料傳遞的時間間距，此service相對real-time application是重要的。 security - 提供資料安全性的service，提供加密以及解密data的服務  Transport Services Provided by the Internet Internet(大部分為TCP/IP networks)提供了兩個協定TCP、UDP，當設計一個network application時的必做選擇之一為在此兩種協定中擇一，不同的協定提供了不同的服務，不同的應用程式也有不同的需求。
+TCP TCP model 包含了連結取向的設計服務以及提供了reliable data transfer服務，TCP在client server端都擁有transpoart-layer control information在實際進入應用層面的message時啟動，也就是所謂的handshaking procedure，在握手階段完成後TCP connection存在於sockets of the two process之間。
+TCP 以及 UDP 兩者皆沒有提供任何加密手段，但以TCP而言，廣大社群開發了一套SSL，用於加強於TCP中的安全考量，但注意到SSL並不屬於一種協定，跟TCP、UDP是不同的level，而只是TCP的強化，將加密手段實作於application layer
+TCP的設計中包含了防堵塞機制，會在網路壅塞時，去控制process的送出以避免packet loss的問題等等。
+UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加密手段，沒有防堵塞機制，也沒有任何Connection過程，甚至也不保證資料的傳遞，</description>
+    </item>
+    
+  </channel>
+</rss>

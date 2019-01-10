@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SMTP on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/smtp/</link>
+    <description>Recent content in SMTP on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 25 Dec 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/smtp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Overview FTP &amp; SMTP</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/mailandfile/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/mailandfile/</guid>
+      <description>File Transfer FTP user 主要透過 FTP user agent與FTP互動，為了辨認User，User會提供User identification and password給FTP辨認用，FTP同HTTP是以TCP protocol為基本運作，但不一樣的是，FTP使用了Two parallel TCP connections來傳遞檔案，control connection &amp;amp; data connection，前者主要用來傳遞hosts 的 control information &amp;amp; commands to put and get files，後者則為實際真的傳送檔案，特別注意到data connection是non-persisent。
+FTP server是必須維持user state的，也就是server會觀察user在要求檔案或者抓取檔案時的行為，FTP同樣會回傳Response，帶有基本訊息包含成功或者失敗訊息等等
+Electronic Mail in the Internet 三個最主要的核心為，user agents、mail servers、SMTP，一封電郵的旅途會是這樣的，假使今天A寄了一封信到B，A透過user agent，也就是g-mail、apple mail&amp;hellip;，讓使用者可以傳送回復編輯信件等等，完成後user agent會將信件送到user mail servers，接著從user mail server傳送到receiver mail server，接著B的user agent再從receiver mail server去抓取信件到B信箱裡面。
+mail server提供了信件的基礎功能，包括若A的信件無法成功傳遞到B的mail server，則此封信件會排到message queue裡面，待三十分鐘(常見的頻率)後重試，若多天重試後仍無法成功則移除此message並由mail server發送通知給sender，mail server同時也記錄了憑證確認Sender &amp;amp; receiver。
+SMTP protocol主要為email的協定，套用了reliable data transfer service of TCP保證信件的傳遞，SMTP也擁有client &amp;amp; server side，前者主要作用於sender mail server，後者則為receive mail sender，廣義的定義而言，mail server 傳送信件到其他 mail server 視為 client side，負責接收的 mail server 則為 server side</description>
+    </item>
+    
+  </channel>
+</rss>

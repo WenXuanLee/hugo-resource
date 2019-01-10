@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DNS on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/dns/</link>
+    <description>Recent content in DNS on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 07 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Internet&#39;s Directory Service</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/dns/</link>
+      <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/dns/</guid>
+      <description>DNS The Internet&amp;rsquo;s Directory Service 網路上主要辨識host的方法為hostname &amp;amp; IP address，IP主要由4 bytes以及有自己的嚴格規則形式組成，使用者習慣使用網址來記host，而router則是偏好固定規則的IP address，為了整合這兩種特性，於是有了DNS (domain name system)。
+DNS是IP address &amp;amp; hostname對映的分散式資料庫，應用層的協定允許hosts對此資料庫發送query，DNS協定主要以UDP為底使用port 53。之前提過的HTTP SMTP FTP也都有使用此協定，用於將此用者提供的hostname轉化成對應的IP。
+所以當我們輸入網址，發送request時，會先觸發DNS application，browser從URL抓取host name並傳給DNS application，接著DNS clicent 傳送包含此hostname的query給DNS server，獲得對映的IP address，再回傳給browser，一旦browser獲取到IP後便開始建立TCP通道。而注意到通常IP網址會被快取在 nearby的DNS server內
+Overview of How DNS Works DNS是如何從DNS Server 找到對應的IP ADDRESS呢，如上述我們提到的DNS server，實際上的架構是有階級制的架構，由上而下為Root server -&amp;gt; TLD(top-level domain) server -&amp;gt; authoritative DNS servers，假使今天看到amazon.com的網址，DNS會從root開始聯繫，root 回傳對應到的 IP address以及TLD server，接著再從TLD server回傳對應到的IP address及 authoritative DNS server，最後回傳準確的IP address。
+值得注意的是，DNS帶有Cacheing的Feature，也就是每當 DNS Server 收到reply message時，是可以cache message裡面的資訊在local memory裡面，當下次再有類似的host name query時，便能從cache住的資訊回傳，即便此DNS server 不是 authoritative for the hostname的，由於 IP address &amp;amp; hostname的關係並不是永久的，通常cache的資訊兩天後就會被拋棄。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Protocol on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/protocol/</link>
+    <description>Recent content in Protocol on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/protocol/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Protocol</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetpacket/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetpacket/</guid>
+      <description>Protocol 協定的存在就像是人類的語言，不同的語言交流一定會有障礙，若不是大家遵守同一套協定，說著不同的語言，那是無法溝通的，所以Protocol的存在就是讓兩台機器有一個交流的共識，如此才能辨識送過來的請求以及回送相對應的回覆，已完成我們想要達成的目的，例如從clint side 打API 從server side得到相對應的資料，中間的請求與回覆就得有一個協定存在。
+Network Protocols 網路協定的動作是由software or hardware執行，也就是我們的電腦、手機、路由器等等，所有在Internet上的包含兩個或以上遠端機器的行為都會由協定來管理監控，以一個例子來說，當我們對Web server發出請求時，也就是輸入一個URL到Browser時，我們會先從自己的電腦發送一個request至Web server，Web server接收到請求時會根據request message去給出一個回應replay message，接著我們的電腦收到OK的reply後，已GET message 丟出我們輸入的URL撈取相對應的document，接著Web server回傳我們要的Web page回到computer顯現。
+protocol定義了整個溝通流程的SOP，包含初始步驟是傳遞request以及收到reply，採取什麼動作或者針對不同事件做出不同回應等，不同的protocol在不同的情境使用以達成不同的communication tasks。
+Access Network Home access: DSL, Cable, FTTH, Dial-Up, and Satellite 目前一般家庭最常見連結網路的方式為透過DSL &amp;amp; Cable，DSL就等同於透過電信公司提供連結管道，包含了電話與網路的ISPs，也就是中華電信那台數據機，有點像是電信公司透過電話線切割兩條線路出來，一條給家用電話，另一條就是給DSL數據機提供上網，所以大家可以理解到十年前每次有電話來就會斷網路的情況就是電話線路的切割部分沒處理好。
+所以大概的架構就是家用的電話訊號以及網路訊號會傳送回電信公司也就是DSLAM去送回Internet以及Telephone network
+Network Core Store-andForward Transmission packet switch在接收到整個完整data拆散後的封包才開始傳送first bit到外部link，也就是source -&amp;gt; router -&amp;gt; destination，source data如果切成了 packetA、packetB、packetC，在A到達之後仍會先被儲存到router(packet switch)待三個封包都到達之後才送往outputlink。
+Queuing Delays and Packet Loss 通常每個packet switch 會有連結許多communication links，對於每個link，packet switch會有一個output buffer，當packet傳送中又有另外一個packet到達時，剛到達的packet則會被放入buffer中排隊，等待傳到link上，因此就會有queuing Delay的問題。
+而packet loss則是因為buffer區域的空間有限，當塞爆的時候，可能是剛到達的packet被丟棄，或者是在queue等待的某個packet被丟棄。
+Forwarding Tables and Routing Protocols packet switches 如同之前所講的，有許多連結的接收communication links &amp;amp; output links，那麼router是怎麼決定這些link的使用?</description>
+    </item>
+    
+  </channel>
+</rss>

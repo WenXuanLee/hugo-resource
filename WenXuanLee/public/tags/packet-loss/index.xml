@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Packet Loss on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/packet-loss/</link>
+    <description>Recent content in Packet Loss on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 08 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/packet-loss/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Packet Probrlm</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/packetproblm/</link>
+      <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/packetproblm/</guid>
+      <description>Delay, Loss, Throughtput Types of Dealy 假使今天sourceA丟出一個封包道destinationB，途中可能會經過routerA、routerB，當packet運送到routerA時，routerA會有一條outbound link到routerB，進到此link前會有一個queue，判斷當前是否有其他packet，是否正在此link傳輸資訊。所以今天new packet送到routerA時，routerA會根據header資訊決定將new packet安排到特定link，當link有數據正在傳輸時，new packet便會進到queue裡面去等待。
+Processing Delay 解讀packet header並解決定此packetmap到特定link的時間就是process delay，通常在routers裡面，此種delay的時間大概落於microseconds or less
+Queuing Delay 就字面上的意思，當packet 進到queue裡面，等待其他先到達的packet完成傳輸的時間成本就是Queuing Delay，通常此delay的時間實務上落於microseconds to milliseconds。
+Transmission Delay packet傳輸到link的所耗費時間，假使今天packet有L bits，link的 transmission rate R bits/sec，那麼transmission delay的時間便是 L/R，此delay的時間實務上落於microseconds to milliseconds。
+與propagation delay區別的話，transmission delay為packet中的每個bit從link到router裡面組好完成一個packet後的等待時間，假使今天有一個packet中包含十個bit，十個bit分別排隊等待進入router，而第一個bit通過router後仍然得在router裡面等待另外九個bit來後組成一個packet才能往下一個router前進，十個bit調router的時間就是transmission delay。
+Propagation Delay 從link將資料傳遞到router的時間成本，Propagation speed主要影響為實體的線路，指的是一個packet從router到router的時間，而影響此數據的實際因素為router間的distance。
+Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度，假設今天有X個packets，每個packets皆由Y bits組成，而若transmission rate為Z bits/sec，則密集度為XY/Z
+此密集度通常用來評估queueing dealy的長度，若Traffic intensity &amp;gt; 1也就是每次進來排隊的packet大於送出去的packet，那麼queue就會無限長，因此最最最基本的設計為，Design your system so that the traffic intensity is no greater than 1</description>
+    </item>
+    
+  </channel>
+</rss>

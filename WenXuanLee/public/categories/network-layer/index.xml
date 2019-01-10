@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network Layer on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/categories/network-layer/</link>
+    <description>Recent content in Network Layer on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/categories/network-layer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Socket Programming</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/</guid>
+      <description>Socket Programming: Creating Network Applications 複習一下當我們建立一個network application，我們基本上包含了一組programs，client program &amp;amp; server program，分別存在於兩個end system，當兩個program執行後，client process &amp;amp; server process被建立，這些processes透過socket互相溝通，因此身為一個developer主要就是負責撰寫code for clicent program &amp;amp; server program
+Network applications有兩種types，一種為implementation，主要實作於protocol standard，例如 RFC 或者其他 standard document，這樣的application通常又被稱為open，因為規則以及行為是被公開，因此此類別的程式設計需要遵守standard的標準。
+另一種type則為proprietary，此類型主要運用的protocol尚未被公開發布在RFC或者其他國際網路規範，client side &amp;amp; server side program都由同組開發者完成，而開發者完全掌控code的內容，由於此類別並非實作於公開的protocol上，其他獨立開發者也就不能開發與此application相互操作的code。
+下面會透過簡單實作的code來探討開發一個client-server application的簡易流程，在開發者階段，第一步主要得決定此application是基於 TCP || UDP，因此會就此兩種protocol類型來介紹。
+Socket Programming with UDP sending process將packet push 到 socket 前，UDP會先將destination address資訊帶給packet，packet到達sending socket時，Internet便會根據此資訊導引到receiving process socket。由於傳遞的途中或許會經過許多network application process以及多個sockets，辨別destination receiver socket是必要的，因此在socket建立過程中，port number會被指認到socket當作idtentifier。而此項訊息也會被包含在destination address裡。此外，source address的資訊有同樣會被帶入packet，特別注意到，source address的帶入動作並非由UDP application code執行，而是自動由operating system完成的。
+Socket Programming with TCP 不同於UDP，在client &amp;amp; server 開始彼此溝通前，必須先通過handshake的行為並建立TCP conntection，TCP connection的兩端分別連結著sending socket &amp;amp; receiver socket，建立的同時也會將兩端的IP address 以及 port number連結於TCP connection上，兩端的互動都將由socket把data丟到TCP connection傳遞。不同於UDP的server必須先將destination address 附在 packet上才能進入socket傳遞。</description>
+    </item>
+    
+    <item>
+      <title>Peer-to-Peer Applications</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/p2p/</link>
+      <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/p2p/</guid>
+      <description> Peer-to-Peer Applications 探討適合用於P2P設計的application，主要分於兩部分，第一部分為file distribution，介紹檔案如何從單一來源分配至多數的peers，這部分清楚的展示了P2P架構的 self-scalability，主要透過BitTorrent system為範例。第二部分則會探討 database distributed over a large community of peers。
+P2P File Distribution 每個peer都可以提供自己的capacity來幫助server distribute 檔案，不同於client-server的模式，在分配檔案時，server不需要copy每一份檔案給peers，反之，只要其中一個peer擁有檔案之後便可以透過此peer重新再分配檔案到其他peers。放一張比較圖
+BitTorrent Torrent在此的定義為，所有參與同一檔案distribution的peers的集合，每個於此Torrent的peer都會下載同樣容量的chunks，通常為256KBytes為一個chunk，當peer首次加入torrent並無任何chunk，隨著時間他會存入越來越多chunk，下載的同時也成為upload的來源之一，但檔案完成後可以選擇繼續留著torrent當為upload source之一繼續提供流量或者就離開torrent。
+每一個torrent會擁有基本的node called tracker，當peer加入torrent時，會把自己註冊進tracker裡面並固定一小段時間通知tracker我還在torrent裡面。當一個新的peer加入時，tracker會隨機挑出一個peers子集合以及這群子集合的IP address丟給新的peer，擁有這些資訊後，新的peer便能與這群子集合建立TCP connection，通常這樣的子集合群稱為neighboring peers，建立TCP連結後便能從這群peers裡面獲取需要的chunks。
+rarest first 決定取得chunck採用的技術之一，會從使用者當前沒有的chunks裡面去判斷，這些尚未擁有的chunck哪些是在neiboring peers重複性最低的，優先抓取此chunk。目標在於讓此rarest chunk更快的能在torrent裡面擁有與其他chunks一樣多的copies。
+在BitTorrent協定中，主要根據peers內擁有最高的傳輸速率作為respond的判斷依據，也就是說，每十秒使用者會偵測接受到的rate以及upload rate，這個符合最高速率的set稱為unchoked，而每三十秒會隨機抓取一個額外的neighboring peer傳送chunck，此額外的peer稱為optimistically unchoked，若此peer正好速率高過於unchoked的其中一個，則此會替代成為unchoked之一，相對來說，若互相都滿足彼此的highest rate，則互為unchoked之一。
+其他neighboring peer則稱為choked也就是不再top four peers(unchoked) and one probing peer(optimistically unchoked裡面，choked並不會接受從使用者接收到chunks。
+Distributed Hash Tables(DHTs) P2P系統裡，每一個peer會存取一小部分的key-value pairs，每一個peer都可以發出query到distributed database獲取對應的value，收到query後database作抓取擁有此key值value的peer並回傳給發出query之peer，任何一個peer都准許插入新的 key-value paris到database裡面，這樣的設計稱為 distributed hash table
+Reference  Computer Network  </description>
+    </item>
+    
+    <item>
+      <title>The Internet&#39;s Directory Service</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/dns/</link>
+      <pubDate>Mon, 07 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/dns/</guid>
+      <description>DNS The Internet&amp;rsquo;s Directory Service 網路上主要辨識host的方法為hostname &amp;amp; IP address，IP主要由4 bytes以及有自己的嚴格規則形式組成，使用者習慣使用網址來記host，而router則是偏好固定規則的IP address，為了整合這兩種特性，於是有了DNS (domain name system)。
+DNS是IP address &amp;amp; hostname對映的分散式資料庫，應用層的協定允許hosts對此資料庫發送query，DNS協定主要以UDP為底使用port 53。之前提過的HTTP SMTP FTP也都有使用此協定，用於將此用者提供的hostname轉化成對應的IP。
+所以當我們輸入網址，發送request時，會先觸發DNS application，browser從URL抓取host name並傳給DNS application，接著DNS clicent 傳送包含此hostname的query給DNS server，獲得對映的IP address，再回傳給browser，一旦browser獲取到IP後便開始建立TCP通道。而注意到通常IP網址會被快取在 nearby的DNS server內
+Overview of How DNS Works DNS是如何從DNS Server 找到對應的IP ADDRESS呢，如上述我們提到的DNS server，實際上的架構是有階級制的架構，由上而下為Root server -&amp;gt; TLD(top-level domain) server -&amp;gt; authoritative DNS servers，假使今天看到amazon.com的網址，DNS會從root開始聯繫，root 回傳對應到的 IP address以及TLD server，接著再從TLD server回傳對應到的IP address及 authoritative DNS server，最後回傳準確的IP address。
+值得注意的是，DNS帶有Cacheing的Feature，也就是每當 DNS Server 收到reply message時，是可以cache message裡面的資訊在local memory裡面，當下次再有類似的host name query時，便能從cache住的資訊回傳，即便此DNS server 不是 authoritative for the hostname的，由於 IP address &amp;amp; hostname的關係並不是永久的，通常cache的資訊兩天後就會被拋棄。</description>
+    </item>
+    
+    <item>
+      <title>Overview FTP &amp; SMTP</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/mailandfile/</link>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/mailandfile/</guid>
+      <description>File Transfer FTP user 主要透過 FTP user agent與FTP互動，為了辨認User，User會提供User identification and password給FTP辨認用，FTP同HTTP是以TCP protocol為基本運作，但不一樣的是，FTP使用了Two parallel TCP connections來傳遞檔案，control connection &amp;amp; data connection，前者主要用來傳遞hosts 的 control information &amp;amp; commands to put and get files，後者則為實際真的傳送檔案，特別注意到data connection是non-persisent。
+FTP server是必須維持user state的，也就是server會觀察user在要求檔案或者抓取檔案時的行為，FTP同樣會回傳Response，帶有基本訊息包含成功或者失敗訊息等等
+Electronic Mail in the Internet 三個最主要的核心為，user agents、mail servers、SMTP，一封電郵的旅途會是這樣的，假使今天A寄了一封信到B，A透過user agent，也就是g-mail、apple mail&amp;hellip;，讓使用者可以傳送回復編輯信件等等，完成後user agent會將信件送到user mail servers，接著從user mail server傳送到receiver mail server，接著B的user agent再從receiver mail server去抓取信件到B信箱裡面。
+mail server提供了信件的基礎功能，包括若A的信件無法成功傳遞到B的mail server，則此封信件會排到message queue裡面，待三十分鐘(常見的頻率)後重試，若多天重試後仍無法成功則移除此message並由mail server發送通知給sender，mail server同時也記錄了憑證確認Sender &amp;amp; receiver。
+SMTP protocol主要為email的協定，套用了reliable data transfer service of TCP保證信件的傳遞，SMTP也擁有client &amp;amp; server side，前者主要作用於sender mail server，後者則為receive mail sender，廣義的定義而言，mail server 傳送信件到其他 mail server 視為 client side，負責接收的 mail server 則為 server side</description>
+    </item>
+    
+    <item>
+      <title>Web Caching</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/webcaching/</link>
+      <pubDate>Wed, 05 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/webcaching/</guid>
+      <description>Web Caching Web Cache，aka proxy server，network用於代替Origin Web server滿足HTTP request的機制，web cache擁有自己的storage空間，並會把最近收到請求的objects存在storage，user browser可以透過config讓所有的request都先被轉到web cache裡。
+假使今天client端發送出一個request，一樣會建立一條TCP connection至web cache，接著web cache檢查是否有一份備分的object在儲存空間裡，若有的話，web cache直接代替server送回response，若無的話則送出request建立TCP connection至 origin server，取得response後在自己的storage 備份object，接著再送回clicent side。
+web cache 同時是client &amp;amp; server，web cache主要應用有兩個原因，一者為減少response time for client request尤其當client to server 的頻寬小於 client to web cache時候，二者為減少traffic，若request並無真的發至origin server 可以減輕server的負擔並減少access to internet的traffic，因此可以對此設計提升效能。
+The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，假使 origin server的檔案在web cache儲存後有所更動的話，該怎麼處理，HTTP提供一個機制讓web cache可以去確認 object是否為up to date，這機制稱為Condition GET，符合conditional GET的條件為
+ request message 用的method 為GET request message header line 夾帶 IF-modified-since  記得在response message有著一筆Last-Modified的紀錄，而當web cache再次收到request時，web cache會觸發up-to-date check 發出一筆condition GET夾帶If-modified-since，若web server判斷無modified的話，則會回傳response without requested object，並在status line帶著status code 304 not modified</description>
+    </item>
+    
+    <item>
+      <title>Overview HTTP</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/httpoverview/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/httpoverview/</guid>
+      <description>Overview of HTTP HyperText Transfer Protocol(HTTP)，application-layer protocol，被定義在RFC中，在client program &amp;amp; ser ver program中被實行，在不同的end systems中執行，在兩端透過交換HTTP messages進行交流。
+Web page(documents)由不同物件組成，這裡的物件指的是FILE，例如HTML、JPEG、JS檔案等，而這個PAGE可以透過URL找到存在位址。URL則由hostname、object&#39;s pathname組成。以http://www.someSchool.edu/someDepartment/picture.gif 舉例，/www.someSchool.edu就是 hostname，someDepartment/picture.gif則是檔案的pathname。
+HTTP定義了 web client &amp;amp; web server中間的溝通，包括client如何送出message以及server如何轉送webpage給client，此外，HTTP使用TCP作為underlying transport protocol，因此當client端送出一個HTTP request message時會透過socket傳送給tcp connection，也從trp connection經過socket接回到response message，同理於server端亦是，而一旦message到socket interface後，訊息的傳遞的掌控就不再client端的手裡而是在tcp protocol下了。
+值得注意的是HTTP是被稱為stateless protocol也就是每次的交流並不會留下痕跡，也因此，就算client端短時間發送一樣的request，對於server端來說，並不會因為剛response完前一筆request就不處理同樣的下一筆，反之仍視為另一筆request回應，儘管內容完全相同。
+Non-Persistent and Persistent Connections 開發者可以決定當送出request/response pair時，是透過separet TCP connections 或者是 同一個TCP connection實行，若為前者則稱為Non-Persistent後者則為Persistent。
+Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下， 1. HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection 2. client 透過 socket開始傳送message到server端 3. server端透過socket接收到request message，並在透過socket回傳封裝好的response message 4. HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) 5.</description>
+    </item>
+    
+    <item>
+      <title>Transport Services</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/</guid>
+      <description>Transport Services Available to Applications transport service 這邊主要區分了四個面向的service大類，Reliable Data transfer、throughput、timing、security。
+ Reliable data transfer - 假使protocol提供受保證的data delivery service則為受信賴的，亦即就是此service保證了一旦data從sending process傳遞到socket時就已經保證此data一定會抵達receiving process而且無任何error，若無提供此服務，則data從sending process之後有可能永遠到達不了receiving process端，這行為能被 loss-tolerant applications接受 throughput - transport提供了保證穩定傳輸速率的service，可以保證application能擁有的傳輸速度，Applications需要throughput requirements的類型又被稱為bandwidth-sensitive applications。 timing - 提供了時間的保證，可以保證資料傳遞的時間間距，此service相對real-time application是重要的。 security - 提供資料安全性的service，提供加密以及解密data的服務  Transport Services Provided by the Internet Internet(大部分為TCP/IP networks)提供了兩個協定TCP、UDP，當設計一個network application時的必做選擇之一為在此兩種協定中擇一，不同的協定提供了不同的服務，不同的應用程式也有不同的需求。
+TCP TCP model 包含了連結取向的設計服務以及提供了reliable data transfer服務，TCP在client server端都擁有transpoart-layer control information在實際進入應用層面的message時啟動，也就是所謂的handshaking procedure，在握手階段完成後TCP connection存在於sockets of the two process之間。
+TCP 以及 UDP 兩者皆沒有提供任何加密手段，但以TCP而言，廣大社群開發了一套SSL，用於加強於TCP中的安全考量，但注意到SSL並不屬於一種協定，跟TCP、UDP是不同的level，而只是TCP的強化，將加密手段實作於application layer
+TCP的設計中包含了防堵塞機制，會在網路壅塞時，去控制process的送出以避免packet loss的問題等等。
+UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加密手段，沒有防堵塞機制，也沒有任何Connection過程，甚至也不保證資料的傳遞，</description>
+    </item>
+    
+    <item>
+      <title>Network Application Architectures</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/networkapplicationarchitectures/</link>
+      <pubDate>Wed, 28 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/networkapplicationarchitectures/</guid>
+      <description>Network Application Architectures network architecture，一個開發者設計一個application時，如何被架構在各個end system，而現今常見的net work application主要應用的兩個主流設計為client-server architecture以及peer-to-peer architecture (P2P)
+client-server architecture 最終端永遠會存在於一台或以上的host，所謂的server，負責處理從其他end system傳來的service request，也就是所謂的client，最明顯的特徵是，clients之間並不能直接溝通傳遞訊息，必須得經由最上游的host來運作，另一個特點是server存在固定的IP Address，地址永遠是固定的而且server持續維持運作的狀態下，client便可以透過這樣的服務傳遞封包。
+通常如常見的大型社群網站，會擁有data center，安放大量的hosts來做為一個強大的server，處理大量的用戶request，而因此也必須額外付出從data center到各個host的連線以及頻寬成本。
+peer-to-peer architecture (P2P) P2P並沒有絕對依賴指定的host，不同於前者，clients在一組相互連結的hosts中可以直接與彼此溝通，稱為peers，peers並不屬於service provider而是各個users hosts，也就是不用轉折點的server去執行。
+很明顯一項特點就是self-scalability，雖然每一個peers在request時都會產生workload，但同時也提升了service capacity，也就是說，每當一個peer加入時，整個P2P架構的系統，就會多增加一個peer提供的資源、頻寬以及計算能力，但同時越多使用者的話，傳輸的效率也會越慢，此外，由於不需通過指定server的運作，也省去了從host -&amp;gt; server的頻寬以及服務功能。
+方便的同時也須注意三個隱憂
+ ISP Friendly - 大部分的地區ISPs已經切割好指定的頻寬使用，為了準備應付更多的downstream than upstream traffic，而P2P的設計則會把佔頻寬的upstream traffic從server搬移至ISPs運作，造成ISPs更大的負擔，因此在設計上得納入考量。
+ Security - 顯而易見的彼此users都是open的，所以也很容易遭受到惡意攻擊。
+ Incentives - 以P2P的設計來說，得吸引使用者去提供自己的頻寬、儲存空間以及資源。   Process Communicating process可以想像成，一隻program在end system上執行，Processes在兩台不同的end systems上主要透過messages的交換來溝通。
+Client and Server Process Network application 都會有一組processes組成，透過network傳送messages給彼此，通常會將兩個processes一個定義為clicent另一個為server，以常見的google為例，我們的browser就是一個client process發送request message給server process接收並給予回應，在P2P的設計上來說，peer可以同時為client與server，有一個定義是指觸發訊息交換的process為client，而等待被聯絡的process則為server
+The Interface Between the Process and the Computer Network 所有message從process出發到接收一定會經過network，而透過將process message傳遞到network的介面就是socket，也被稱為API。可以記為socket為application layer &amp;amp; transpoart layer的interface，通常開發者會在application-layer side of the socket 擁有比較多的控制權，反之在transport-layer side便沒有太大的操作空間。</description>
+    </item>
+    
+    <item>
+      <title>Network Attack</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/networkattack/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/networkattack/</guid>
+      <description> Networks under attack malware 惡意軟體 透過Internet的傳遞，我們的機器很可能被有意地傳送惡意軟體，例如以前常見的email釣魚信件，一旦我們的本機成為了受侵入的compromised host，就也有極大可能被hackers拿來當作botnet，繼續散步惡意軟體。
+多數的惡意軟體都是能自我增值的，也就是一旦有一台主機被侵入，惡意軟體就可以根據被侵入的主機繼續尋找可以侵入下一台主機的機會，也因此惡意軟體一旦散布出去後，是成指數成長的。常見的惡意軟體主要分為兩種type
+Virus - 必須透過使用者的互動才會受到侵入，例如釣魚信件裡的附件，開啟附件後才會被侵入。 Worm - 不必使用者互動就有可能受到侵入，例如在不安全的網站下，就有可能遭受到攻擊。
+Dos attacks (denial-of-service) Dos attack攻擊network的服務，讓合法使用者無法正常使用network service。
+Vulnerability attack - 在netowrk過程中塞入惡意message，當packet順序偶然按照惡意訊息的順序接受到，就會受到惡意攻擊。 Bandwidth flooding - 送出海量的垃圾封包，讓目標host的packet堵塞，讓其訊息無法送達server Connection flooding - 在target host建立大量開放式或半開放式的TCP connections，讓封包進入這些意的connection之後就中斷了
+DDoS - 則是應用第二種攻擊方式，由單一source傳送大量垃圾封包是容易被發現並被阻擋的，而DDoS則是透過一台source將海量封包分配到botnet下再由這群botnet送至destination，造成堵測的問題
+Sniff 在現代網路access方便的年代，例如Wifi，同時也隱藏的網路安全危機，由於只要在附近的的人都可以連取到，同一個發收器訊號，也意味著，當訊息傳遞時，附近所有的人同時也是passive receiver有權去記錄copy of packet，若包含重要的隱私訊息也同樣會被複製下來，而較常見的解法變是加密，待packet到目的地時在解密。由於這種手法是被動接受的，相對難以偵測。
+masquerade 透過自己製作一個封包並帶著false ip address，送入internet裡面傳遞，在route的接受過程中，是有可能把人工的packet認為是可信任的封包，並繼續接下來的SOP。而這也能達成偽裝成其他使用者的目的，通常這種把帶有假IP address的packet注入到Internet裡面稱之為IP spoofing，是偽裝方式中常見的的一種方式。
+要防範此種行為，便是在end-point加上驗證的階段，有了驗證的機制去確認此封包到底是不是我們所認為的封包。
+Reference  Computer Network  </description>
+    </item>
+    
+    <item>
+      <title>Network Layer</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/networklayerbrief/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/networklayerbrief/</guid>
+      <description>Brief-intro about Five Layers 層級的概念是，個別層級中有自己的服務，個別執行特定的動作已達成目標，而傳遞下去的層級中，是依賴於上一層的服務，舉例來說的話，買票之後才能上火車，第一層的服務為窗口買票，第二層為上車的動作，若第一層沒買票的話，則第二層便無法實現。
+從上到下的五層順序分別為 Application Layer、Transport Layer、Network Layer、Link、Physical
+Application Layer 應用層是最接近web app的，此層的協定包含常見 Http - 提供向瀏覽器發出request &amp;amp; transfer SMTP - 提供transferemail訊息 FTP - 提供檔案的傳輸協定 DNS - 提供轉換網址到network address
+應用層協定分布於各個end system上，各個end system透過傳輸層提供的protocol去交換packet。
+Transport Layer 主要將應用層傳遞下來的封包，透過TCP/UDP協定傳送，在此處也會在packet上加上header information，包含了允許封包在receiver那邊可以往上丟回application layer，以及errr-detection bits讓receiver知道message是否在route理被動過手腳
+TCP - 提供messages的傳送以及flow control，也提供將packet切成segment，以及packet塞車的處理機制 UDP - 提供了當無網路狀態時web app的service
+Network Layer 負責整個封包傳遞流程的datagrams，主要為IP protocol，定義了datagrams的區域以及end system &amp;amp; router如何在這些fields做行為，特別注意到IP protocol只有唯一一個，所有Internet component一定都得遵守，同時此層也包含許多routing protocols。
+Link Layer 將packet從node中運輸依賴的是link layer的服務，負責傳送network層的datagram到下一個node節點。此服務依賴於link-layer protocol，常見的link-layer protocol為以下Ethernet Wifi DOCSIS等等，同一組datagram可能會在不同的Route被不同的協定服務，通常在link-layer的packet又稱為frames
+physical Layer 就幾乎是實體線路的範圍了，在此不做贅述
+Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如下圖所示，在link-layer switch以及router裡面，packet作用的service在後面三層，而在end system才有到頭兩層，在層數往下的過程中，都會加入header information作為保護的手段，如圖中的Ht、Hn，因此我們可以依圖所例，得知每個層級都會有兩個type of fields，一者為前一層帶下來的packet，一者為每層級的header information。</description>
+    </item>
+    
+    <item>
+      <title>Packet Probrlm</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/packetproblm/</link>
+      <pubDate>Thu, 08 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/packetproblm/</guid>
+      <description>Delay, Loss, Throughtput Types of Dealy 假使今天sourceA丟出一個封包道destinationB，途中可能會經過routerA、routerB，當packet運送到routerA時，routerA會有一條outbound link到routerB，進到此link前會有一個queue，判斷當前是否有其他packet，是否正在此link傳輸資訊。所以今天new packet送到routerA時，routerA會根據header資訊決定將new packet安排到特定link，當link有數據正在傳輸時，new packet便會進到queue裡面去等待。
+Processing Delay 解讀packet header並解決定此packetmap到特定link的時間就是process delay，通常在routers裡面，此種delay的時間大概落於microseconds or less
+Queuing Delay 就字面上的意思，當packet 進到queue裡面，等待其他先到達的packet完成傳輸的時間成本就是Queuing Delay，通常此delay的時間實務上落於microseconds to milliseconds。
+Transmission Delay packet傳輸到link的所耗費時間，假使今天packet有L bits，link的 transmission rate R bits/sec，那麼transmission delay的時間便是 L/R，此delay的時間實務上落於microseconds to milliseconds。
+與propagation delay區別的話，transmission delay為packet中的每個bit從link到router裡面組好完成一個packet後的等待時間，假使今天有一個packet中包含十個bit，十個bit分別排隊等待進入router，而第一個bit通過router後仍然得在router裡面等待另外九個bit來後組成一個packet才能往下一個router前進，十個bit調router的時間就是transmission delay。
+Propagation Delay 從link將資料傳遞到router的時間成本，Propagation speed主要影響為實體的線路，指的是一個packet從router到router的時間，而影響此數據的實際因素為router間的distance。
+Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度，假設今天有X個packets，每個packets皆由Y bits組成，而若transmission rate為Z bits/sec，則密集度為XY/Z
+此密集度通常用來評估queueing dealy的長度，若Traffic intensity &amp;gt; 1也就是每次進來排隊的packet大於送出去的packet，那麼queue就會無限長，因此最最最基本的設計為，Design your system so that the traffic intensity is no greater than 1</description>
+    </item>
+    
+    <item>
+      <title>Switching</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/switching/</link>
+      <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/switching/</guid>
+      <description> Packet switching vs Circuit Switching 主要差別在於，前者並不會保留特定path，而後者會保留一個特定path給package。因此當packet switching同時遇到太多package進來時，就得進入到buffer裡面去排隊，等待安排output communication，Circuit Switching則不必等待，而是在進來之前已經先預訂好path，而因此，也必須在兩個end system裡面先建立好connection之後才能進行資料傳輸動作，而相對也有比較穩定的傳輸速率。
+範例來說，如果今天有N個使用者的話，套用circuit switching的方法可能最高只能容納10個使用者同時運作，因為會預先保留頻寬給user，當user可能還沒進行傳輸時，就會一直保留住，導致於後面進來的user，得一直卡在buffer裡面，有種占著茅坑不拉屎的感覺。
+packet switching則不會保留頻寬，只要有空位使用者便進來使用而且傳輸，今天若同時有十個人進到餐廳裡面，但有五個人還沒開始用餐的話，packet switching則會先把五個座位安排給可以馬上用餐的人，所以相對circuit switching來說，就不會有被佔住位置的問題。當然如果五個user都佔據超大數據傳輸資料的話，仍然會有buffer塞爆的問題了
+TDM &amp;amp; FDM TDM是將一個connection的duration切成frame，每個frame中在切出time slot，User開始傳遞資訊時便會被塞到time slot，也就是在一個固定的時間內切割頻寬，同時允許多個使用者傳遞資料，time slot越多，相對地速率也會趨緩。
+FDM則是依頻率來切割link區段，而使用者同時在同一個切割區域裡面做傳輸，不同於TDM是一個一個將使用者塞到slot裡面去做動作，FDM是一起將user丟到一個pool的感覺。
+networks of networks Reference  Computer Network  </description>
+    </item>
+    
+    <item>
+      <title>Protocol</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetpacket/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetpacket/</guid>
+      <description>Protocol 協定的存在就像是人類的語言，不同的語言交流一定會有障礙，若不是大家遵守同一套協定，說著不同的語言，那是無法溝通的，所以Protocol的存在就是讓兩台機器有一個交流的共識，如此才能辨識送過來的請求以及回送相對應的回覆，已完成我們想要達成的目的，例如從clint side 打API 從server side得到相對應的資料，中間的請求與回覆就得有一個協定存在。
+Network Protocols 網路協定的動作是由software or hardware執行，也就是我們的電腦、手機、路由器等等，所有在Internet上的包含兩個或以上遠端機器的行為都會由協定來管理監控，以一個例子來說，當我們對Web server發出請求時，也就是輸入一個URL到Browser時，我們會先從自己的電腦發送一個request至Web server，Web server接收到請求時會根據request message去給出一個回應replay message，接著我們的電腦收到OK的reply後，已GET message 丟出我們輸入的URL撈取相對應的document，接著Web server回傳我們要的Web page回到computer顯現。
+protocol定義了整個溝通流程的SOP，包含初始步驟是傳遞request以及收到reply，採取什麼動作或者針對不同事件做出不同回應等，不同的protocol在不同的情境使用以達成不同的communication tasks。
+Access Network Home access: DSL, Cable, FTTH, Dial-Up, and Satellite 目前一般家庭最常見連結網路的方式為透過DSL &amp;amp; Cable，DSL就等同於透過電信公司提供連結管道，包含了電話與網路的ISPs，也就是中華電信那台數據機，有點像是電信公司透過電話線切割兩條線路出來，一條給家用電話，另一條就是給DSL數據機提供上網，所以大家可以理解到十年前每次有電話來就會斷網路的情況就是電話線路的切割部分沒處理好。
+所以大概的架構就是家用的電話訊號以及網路訊號會傳送回電信公司也就是DSLAM去送回Internet以及Telephone network
+Network Core Store-andForward Transmission packet switch在接收到整個完整data拆散後的封包才開始傳送first bit到外部link，也就是source -&amp;gt; router -&amp;gt; destination，source data如果切成了 packetA、packetB、packetC，在A到達之後仍會先被儲存到router(packet switch)待三個封包都到達之後才送往outputlink。
+Queuing Delays and Packet Loss 通常每個packet switch 會有連結許多communication links，對於每個link，packet switch會有一個output buffer，當packet傳送中又有另外一個packet到達時，剛到達的packet則會被放入buffer中排隊，等待傳到link上，因此就會有queuing Delay的問題。
+而packet loss則是因為buffer區域的空間有限，當塞爆的時候，可能是剛到達的packet被丟棄，或者是在queue等待的某個packet被丟棄。
+Forwarding Tables and Routing Protocols packet switches 如同之前所講的，有許多連結的接收communication links &amp;amp; output links，那麼router是怎麼決定這些link的使用?</description>
+    </item>
+    
+    <item>
+      <title>Internet Basic</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetbasic/</link>
+      <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetbasic/</guid>
+      <description> Internet Internet主要大概流向為 ISPs -&amp;gt; routers -&amp;gt; Moerdem -&amp;gt; routers -&amp;gt; end system, base station等等
+packet為封包，透過目標host將傳輸的資料轉成片段的封包，並在header 加上bytes，類似於加密的功能，網路上的資訊都是透由packet傳遞。
+communication links封包的接受與傳送主要透過此links連結，在packet switches裡面會從多個incoming communication links之一挑選一個接收封包，再由多個outgoing communication links傳送封包出去，兩者的運用就是主要封包的傳遞路程，最後送到欲到達的end sysystem裡面重新解密原始資料。
+而整個從第一個end system丟出封包到另一台end system的過程稱為一個route || path
+網路資訊的傳遞過程就像是貨物運送流程，packet就像是一台卡車，負責載著貨物(data)到目的地，communication links則是卡車行駛的道路或者高速公路，packet switches則像是中繼站或者十字路口，負責決定將封包分配到目的地，也就是end system並卸載，而整個配送過程就是一個route || path
+當今最主要的packet switches方式為router &amp;amp; link-layer switches
+ router 主要使用在network core裡面 link-layer switches 通常使用於access network上  TCP/IP 目前 Internet 最重要的兩個協定，IP主要是規範於封包在router &amp;amp; end system傳遞過程中的格式。
+API指的是一組規則，傳送資料的program必須得遵守此規則，Internet才能准許傳送data到指定的目的地，以寄信來做個比喻的話，假設A要寄信給B，不可能只把信寫好，丟在門口，信就會自動到達位置的吧?
+寄信的過程得必須遵守，將信放置信封袋，寫上收件人、收件地址、貼上郵票，丟到郵箱丟到郵筒後才會準確寄出，相同於API，program傳送資訊必須遵守一定的規範才能透過API傳送資料到另一台end system。
+Reference  Computer Network  </description>
+    </item>
+    
+  </channel>
+</rss>

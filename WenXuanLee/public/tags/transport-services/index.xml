@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transport Services on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/transport-services/</link>
+    <description>Recent content in Transport Services on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Fri, 30 Nov 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://WenXuanLee.github.io/tags/transport-services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Transport Services</title>
+      <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/</link>
+      <pubDate>Fri, 30 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/</guid>
+      <description>Transport Services Available to Applications transport service 這邊主要區分了四個面向的service大類，Reliable Data transfer、throughput、timing、security。
+ Reliable data transfer - 假使protocol提供受保證的data delivery service則為受信賴的，亦即就是此service保證了一旦data從sending process傳遞到socket時就已經保證此data一定會抵達receiving process而且無任何error，若無提供此服務，則data從sending process之後有可能永遠到達不了receiving process端，這行為能被 loss-tolerant applications接受 throughput - transport提供了保證穩定傳輸速率的service，可以保證application能擁有的傳輸速度，Applications需要throughput requirements的類型又被稱為bandwidth-sensitive applications。 timing - 提供了時間的保證，可以保證資料傳遞的時間間距，此service相對real-time application是重要的。 security - 提供資料安全性的service，提供加密以及解密data的服務  Transport Services Provided by the Internet Internet(大部分為TCP/IP networks)提供了兩個協定TCP、UDP，當設計一個network application時的必做選擇之一為在此兩種協定中擇一，不同的協定提供了不同的服務，不同的應用程式也有不同的需求。
+TCP TCP model 包含了連結取向的設計服務以及提供了reliable data transfer服務，TCP在client server端都擁有transpoart-layer control information在實際進入應用層面的message時啟動，也就是所謂的handshaking procedure，在握手階段完成後TCP connection存在於sockets of the two process之間。
+TCP 以及 UDP 兩者皆沒有提供任何加密手段，但以TCP而言，廣大社群開發了一套SSL，用於加強於TCP中的安全考量，但注意到SSL並不屬於一種協定，跟TCP、UDP是不同的level，而只是TCP的強化，將加密手段實作於application layer
+TCP的設計中包含了防堵塞機制，會在網路壅塞時，去控制process的送出以避免packet loss的問題等等。
+UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加密手段，沒有防堵塞機制，也沒有任何Connection過程，甚至也不保證資料的傳遞，</description>
+    </item>
+    
+  </channel>
+</rss>
