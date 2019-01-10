@@ -656,15 +656,5 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
 而目前ECMAScript主要常見的有以下三種 1.</description>
     </item>
     
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://WenXuanLee.github.io/posts/css/hugo-template-primer/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://WenXuanLee.github.io/posts/css/hugo-template-primer/</guid>
-      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</description>
-    </item>
-    
   </channel>
 </rss>
