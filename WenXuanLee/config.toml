@@ -36,7 +36,7 @@ preserveTaxonomyNames = true
 
 [params]
     since = 2018
-    author = "ＷenXuan Lee"                           # Author's name
+    author = "ＷenXuan Lee"           # Author's name
     avatar = "/profile.jpg"           # Author's avatar
     subtitle = "感受心的自由"         # Subtitle
     cdn_url = ""           # Base CDN URL
