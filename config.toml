@@ -30,22 +30,27 @@ preserveTaxonomyNames = true
     weight = 2
 
   [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+
+  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 3
+    weight = 4
 
 [params]
     since = 2018
     author = "ＷenXuan Lee"           # Author's name
     avatar = "/profile.jpg"           # Author's avatar
-    subtitle = "感受心的自由"         # Subtitle
+    subtitle = "front-end Developer"         # Subtitle
     cdn_url = ""           # Base CDN URL
     home_mode = "" # post or other
 
     google_verification = ""
    
-    description = "asdasd" # site description
-    keywords = "" # site keywords
+    description = "front-end developer tech blog" # site description
+    keywords = "frontEnd, Javascript, Web, techniques" # site keywords
 
     beian = ""
     baiduAnalytics = ""
