@@ -3,15 +3,23 @@
   "name": "Ben - front-end dust with 30 fat rate",
   "icons": [
     {
-      "src": "/icons/fish.svg",
-      "sizes": "96x96"
+      "src": "/favicomatic/favicon-32x32.png",
+      "sizes": "32x32"
     },
     {
-      "src": "/profile.jpg",
-      "sizes": "256x256"
+      "src": "/favicomatic/favicon-96x96.png",
+      "sizes": "96x86"
+    },
+    {
+      "src": "/favicomatic/favicon-128.png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/favicomatic/favicon-196.png",
+      "sizes": "196x196"
     }
   ],
-  "start_url": "/posts",
+  "start_url": "/index.html",
   "background_color": "#408080",
   "display": "standalone",
   "theme_color": "#408080",
