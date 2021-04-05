@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/webcaching/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Overview HTTP | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Overview HTTP | Ben the front-end dust">
     
   
@@ -36,17 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Overview HTTP",
     "headline" : "Overview HTTP",
-    "description" : "Overview of HTTP HyperText Transfer Protocol(HTTP)，application-layer protocol，被定義在RFC中，在client program &amp; ser ver program中被實行，在不同的end systems中執行，在兩端透過交換HTTP messages進行交流。
-Web page(documents)由不同物件組成，這裡的物件指的是FILE，例如HTML、JPEG、JS檔案等，而這個PAGE可以透過URL找到存在位址。URL則由hostname、object's pathname組成。以http://www.someSchool.edu/someDepartment/picture.gif 舉例，/www.someSchool.edu就是 hostname，someDepartment/picture.gif則是檔案的pathname。
-HTTP定義了 web client &amp; web server中間的溝通，包括client如何送出message以及server如何轉送webpage給client，此外，HTTP使用TCP作為underlying transport protocol，因此當client端送出一個HTTP request message時會透過socket傳送給tcp connection，也從trp connection經過socket接回到response message，同理於server端亦是，而一旦message到socket interface後，訊息的傳遞的掌控就不再client端的手裡而是在tcp protocol下了。
-值得注意的是HTTP是被稱為stateless protocol也就是每次的交流並不會留下痕跡，也因此，就算client端短時間發送一樣的request，對於server端來說，並不會因為剛response完前一筆request就不處理同樣的下一筆，反之仍視為另一筆request回應，儘管內容完全相同。
-Non-Persistent and Persistent Connections 開發者可以決定當送出request/response pair時，是透過separet TCP connections 或者是 同一個TCP connection實行，若為前者則稱為Non-Persistent後者則為Persistent。
-Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下， 1. HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection 2. client 透過 socket開始傳送message到server端 3. server端透過socket接收到request message，並在透過socket回傳封裝好的response message 4. HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) 5.",
+    "description" : "Overview of HTTP HyperText Transfer Protocol(HTTP)，application-layer protocol，被定義在RFC中，在client program \u0026amp; ser ver program中被實行，在不同的end systems中執行，在兩端透過交換HTTP messages進行交流。\nWeb page(documents)由不同物件組成，這裡的物件指的是FILE，例如HTML、JPEG、JS檔案等，而這個PAGE可以透過URL找到存在位址。URL則由hostname、object\u0027s pathname組成。以http:\/\/www.someSchool.edu\/someDepartment\/picture.gif 舉例，\/www.someSchool.edu就是 hostname，someDepartment\/picture.gif則是檔案的pathname。\nHTTP定義了 web client \u0026amp; web server中間的溝通，包括client如何送出message以及server如何轉送webpage給client，此外，HTTP使用TCP作為underlying transport protocol，因此當client端送出一個HTTP request message時會透過socket傳送給tcp connection，也從trp connection經過socket接回到response message，同理於server端亦是，而一旦message到socket interface後，訊息的傳遞的掌控就不再client端的手裡而是在tcp protocol下了。\n值得注意的是HTTP是被稱為stateless protocol也就是每次的交流並不會留下痕跡，也因此，就算client端短時間發送一樣的request，對於server端來說，並不會因為剛response完前一筆request就不處理同樣的下一筆，反之仍視為另一筆request回應，儘管內容完全相同。\nNon-Persistent and Persistent Connections 開發者可以決定當送出request\/response pair時，是透過separet TCP connections 或者是 同一個TCP connection實行，若為前者則稱為Non-Persistent後者則為Persistent。\nNon-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下，\n HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection client 透過 socket開始傳送message到server端 server端透過socket接收到request message，並在透過socket回傳封裝好的response message HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) client端接受到response，TCP connection關閉，開始檢驗回傳的HTML檔案並找到圖片的references 取得十張照片，重複1 ~ 4的步驟十次  在這個過程中，取得web page的階段，建立了11條TCP connection，每條connection負責處理一對request\/response",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -54,10 +54,10 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-12-04 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-12-04 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/httpoverview/",
-    "wordCount" : "224",
+    "datePublished": "2018-12-04 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-12-04 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter2-application-layer\/httpoverview\/",
+    "wordCount" : "218",
     "keywords" : [ "Application Layer","HTTP", "Ben the front-end dust"]
 }
 </script>
@@ -72,7 +72,7 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -80,6 +80,8 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -89,7 +91,7 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -101,6 +103,8 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -114,7 +118,7 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Overview HTTP</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-12-04 itemprop="datePublished">December 4, 2018</time>
                 </span>
@@ -145,48 +149,32 @@ Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重re
           
           
 
-          
-
-<h2 id="overview-of-http">Overview of HTTP</h2>
-
+          <h2 id="overview-of-http">Overview of HTTP</h2>
 <p><code>HyperText Transfer Protocol(HTTP)</code>，application-layer protocol，被定義在<code>RFC</code>中，在<code>client program &amp; ser ver program</code>中被實行，在不同的end systems中執行，在兩端透過交換<code>HTTP messages</code>進行交流。</p>
-
-<p><code>Web page(documents)</code>由不同物件組成，這裡的物件指的是<code>FILE</code>，例如HTML、JPEG、JS檔案等，而這個PAGE可以透過<code>URL</code>找到存在位址。<code>URL</code>則由<code>hostname、object's pathname</code>組成。以<a href="http://www.someSchool.edu/someDepartment/picture.gif" rel="nofollow noreferrer" target="_blank">http://www.someSchool.edu/someDepartment/picture.gif</a> 舉例，<code>/www.someSchool.edu</code>就是
+<p><code>Web page(documents)</code>由不同物件組成，這裡的物件指的是<code>FILE</code>，例如HTML、JPEG、JS檔案等，而這個PAGE可以透過<code>URL</code>找到存在位址。<code>URL</code>則由<code>hostname、object's pathname</code>組成。以http://www.someSchool.edu/someDepartment/picture.gif 舉例，<code>/www.someSchool.edu</code>就是
 hostname，<code>someDepartment/picture.gif</code>則是檔案的<code>pathname</code>。</p>
-
 <p>HTTP定義了 web client &amp; web server中間的溝通，包括client如何送出message以及server如何轉送webpage給client，此外，<code>HTTP</code>使用<code>TCP</code>作為underlying transport protocol，因此當client端送出一個HTTP request message時會透過socket傳送給tcp connection，也從trp connection經過socket接回到response message，同理於server端亦是，而一旦<code>message</code>到<code>socket interface</code>後，訊息的傳遞的掌控就不再client端的手裡而是在<code>tcp protocol</code>下了。</p>
-
 <p>值得注意的是<code>HTTP</code>是被稱為<code>stateless protocol</code>也就是每次的交流並不會留下痕跡，也因此，就算client端短時間發送一樣的request，對於server端來說，並不會因為剛response完前一筆request就不處理同樣的下一筆，反之仍視為另一筆request回應，儘管內容完全相同。</p>
-
 <h2 id="non-persistent-and-persistent-connections">Non-Persistent and Persistent Connections</h2>
-
 <p>開發者可以決定當送出request/response pair時，是透過<code>separet TCP connections</code> 或者是 <code>同一個TCP connection</code>實行，若為前者則稱為<code>Non-Persistent</code>後者則為<code>Persistent</code>。</p>
-
 <h3 id="non-persistent">Non-Persistent</h3>
-
-<p>假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下，
-1. HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection
-2. client 透過 socket開始傳送message到server端
-3. server端透過socket接收到request message，並在透過socket回傳封裝好的response message
-4. HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止)
-5. client端接受到response，TCP connection關閉，開始檢驗回傳的HTML檔案並找到圖片的references
-6. 取得十張照片，重複1 ~ 4的步驟十次</p>
-
+<p>假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下，</p>
+<ol>
+<li>HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection</li>
+<li>client 透過 socket開始傳送message到server端</li>
+<li>server端透過socket接收到request message，並在透過socket回傳封裝好的response message</li>
+<li>HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止)</li>
+<li>client端接受到response，TCP connection關閉，開始檢驗回傳的HTML檔案並找到圖片的references</li>
+<li>取得十張照片，重複1 ~ 4的步驟十次</li>
+</ol>
 <p>在這個過程中，取得web page的階段，建立了11條TCP connection，每條connection負責處理一對request/response</p>
-
 <p>而實際上使用者可以控制瀏覽器的parallel tcp connections數，也就是決定TCP connection的建立是one by one或者可以一次建立多條，減少Response時間</p>
-
 <h3 id="persistent">Persistent</h3>
-
 <p>同上數步驟，區別在於所有Request/response 都由同一條connection處理，在一組response回傳後仍舊保持connection為開啟狀態，而同時若server端有其他web page也同樣可以透過此條connection回送給同樣的client端。requests是可以連續被發出的而不必等待pending request，若connection在特定時間區段無使用後就會關閉。</p>
-
 <h2 id="http-message-format">http message format</h2>
-
 <h3 id="http-request-message">http request message</h3>
-
 <p>想看request header message 可以透過devtool來觀看，以編輯文章頁面為例
 第一行稱為<code>request line</code>，包含了三個區塊，<code>method field、URL field、http version field</code>，其餘部分則稱為<code>header lines</code>，紀錄了一些資訊包含host，connection是否持續保持打開等等</p>
-
 <p>GET /articles/10210183/draft HTTP/1.1
 Host: ithelp.ithome.com.tw
 Connection: keep-alive
@@ -196,12 +184,9 @@ User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, 
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<em>/</em>;q=0.8
 Accept-Encoding: gzip, deflate, br
 Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7</p>
-
 <h3 id="http-response-message">http response message</h3>
-
 <p>想看response message 可以透過devtool來觀看，以編輯文章頁面為例
 第一行稱為<code>status line</code>，包含了三個區塊，<code>protocol version status code corresponding status message</code>，其餘部分則稱為<code>header lines</code>，紀錄了一些資訊包含host，connection是否持續保持打開等等、再來為<code>entity body</code></p>
-
 <p>HTTP/1.1 200 OK
 Access-Control-Allow-Headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
 Access-Control-Allow-Methods: GET, POST, OPTIONS
@@ -215,28 +200,20 @@ X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
 Content-Length: 13621
 Connection: keep-alive</p>
-
 <h2 id="cookies">Cookies</h2>
-
 <p>Cookies允許網站用於追蹤使用者紀錄，主要構成有四部分</p>
-
 <ol>
 <li>cookie header line in request message</li>
 <li>cookie header line in response message</li>
 <li>cookie file 存放於各個使用者的browser</li>
 <li>back-end database in the Web site</li>
 </ol>
-
 <p>當今天使用者第一次進到某網站，發出request到server端之後，response回來會有一個項目為ser-Cookie: 1678(for example)，之後當使用者再次進入此網站時發出request時便會夾帶此cookie，server端便能透過此cookie值追蹤與此使用者相關的紀錄，包含瀏覽過哪些商品或者是點擊過哪些資訊等等，</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20181204/201076704r4tWrwTXc.png" alt="https://ithelp.ithome.com.tw/upload/images/20181204/201076704r4tWrwTXc.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20181204/201076704r4tWrwTXc.png</figcaption></figure></p>
-
-<hr />
-
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181204/201076704r4tWrwTXc.png" alt="https://ithelp.ithome.com.tw/upload/images/20181204/201076704r4tWrwTXc.png"></p>
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -303,9 +280,11 @@ Connection: keep-alive</p>
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -324,7 +303,6 @@ Connection: keep-alive</p>
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

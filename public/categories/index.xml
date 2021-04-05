@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Ben the front-end dust</title>
@@ -6,16 +6,13 @@
     <description>Recent content in Categories on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    
-	<atom:link href="https://WenXuanLee.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 20 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Javascript</title>
-      <link>https://WenXuanLee.github.io/categories/javascript/</link>
-      <pubDate>Tue, 09 Jan 2018 00:00:00 +0000</pubDate>
+      <title>mediumPosts</title>
+      <link>https://WenXuanLee.github.io/categories/mediumposts/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://WenXuanLee.github.io/categories/javascript/</guid>
+      <guid>https://WenXuanLee.github.io/categories/mediumposts/</guid>
       <description></description>
     </item>
     
@@ -34,6 +31,15 @@
       <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/categories/tech-note/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Javascript</title>
+      <link>https://WenXuanLee.github.io/categories/javascript/</link>
+      <pubDate>Tue, 09 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/categories/javascript/</guid>
       <description></description>
     </item>
     

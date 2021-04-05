@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   
   
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Abouts | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Abouts | Ben the front-end dust">
     
   
@@ -44,7 +49,7 @@
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -52,6 +57,8 @@
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item active" href="/about/" title="">About</a>
                 
@@ -61,7 +68,7 @@
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -74,6 +81,8 @@
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
                 
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
                 <a class="menu-item active" href="/about/" title="">About</a>
                 
         </div>
@@ -82,200 +91,20 @@
     	 <main class="main">
           <div class="container">
       		
-<div class="about-section">
-    <div class="aside-wrapper">
-        <div class="aside-content">
-            <div class="avatar-section info-card">
-                <div class="avatar-img"></div>
-                <div class="profile-details text-meidum">
-                    <h4 class="text-light">WenXuan-Ben</h4>
-                    <h4 class="text-deep text-super">Lee. Taiwan</h4>
-                    <h4 class="text-deep-primary"> Front-end developer</h4>
-                </div>
-            </div>
-            <div class="profile-section info-card">
-                <div class="info-icon text-large text-light"><i class="far fa-address-card"></i></div>
-                <div class="info-title text-large text-middle"><span>PROFILE</span></div>
-                <div class="info-content">
-                    <p>Front-end developer, activist, and fresh graduate. Music, design, travel, & technology are core to my personal and professional ambitions.</p>
-                    <p>Four features define me professionally: <br>
-                        – Exceptional interpersonal skills <br>
-                        – Ability to thrive in ambiguity and navigate complexity <br>
-                        – Obsession with growth-focused business process and product design <br>
-                        – A "whatever it takes" mentality that compels me to drive my teams forward</p>
-                </div>
-            </div>
-            <div class="contact-section info-card">
-                <div class="info-icon text-large text-light"><i class="far fa-envelope"></i></div>
-                <div class="info-title text-large text-middle"><span>CONTACT</span></div>
-                <div class="info-content">
-                    <p>speechless0922@gmail.com<br><span class="text-small text-light">Email</span></p>
-                    <p>yawenxuan<br><span class="text-small text-light">Skype</span></p>
-                    <p>wenxuanlee1225<br><span class="text-small text-light">WeChat</span></p>
-                    <p><a href="https://www.facebook.com/rudu.yo" target="_blank" rel="noopener">WenXuanLee</a><br><span class="text-small text-light">Facebook</span></p>
-                </div>               
-            </div>
-            <div class="skill-section info-card">
-                <div class="info-icon text-large text-light"><i class="fas fa-cubes"></i></div>
-                <div class="info-title text-large text-middle"><span>SKILLS</span></div>
-                <div class="info-content">
-                    <div class="progress-wrap">
-                        <div class="progress-item">
-                            <p class="progress-title text-center">Vue</p>
-                            <div class="progress-circle over50 p85">
-                                <span class="progress-text">85%</span>
-                                <div class="left-half-clipper">
-                                    <div class="first50-bar"></div>
-                                    <div class="value-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-item">
-                            <p class="progress-title text-center">JS</p>
-                            <div class="progress-circle over50 p85">
-                                <span class="progress-text">85%</span>
-                                <div class="left-half-clipper">
-                                    <div class="first50-bar"></div>
-                                    <div class="value-bar"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="progress-item">
-                                <p class="progress-title text-center">HTML/CSS</p>
-                                <div class="progress-circle over50 p80">
-                                    <span class="progress-text">80%</span>
-                                    <div class="left-half-clipper">
-                                        <div class="first50-bar"></div>
-                                        <div class="value-bar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <p class="progress-title text-center">Less</p>
-                                <div class="progress-circle over50 p80">
-                                    <span class="progress-text">80%</span>
-                                    <div class="left-half-clipper">
-                                        <div class="first50-bar"></div>
-                                        <div class="value-bar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <p class="progress-title text-center">Node.js</p>
-                                <div class="progress-circle over50 p75">
-                                    <span class="progress-text">75%</span>
-                                    <div class="left-half-clipper">
-                                        <div class="first50-bar"></div>
-                                        <div class="value-bar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress-item">
-                                <p class="progress-title text-center">Git</p>
-                                <div class="progress-circle over50 p80">
-                                    <span class="progress-text">80%</span>
-                                    <div class="left-half-clipper">
-                                        <div class="first50-bar"></div>
-                                        <div class="value-bar"></div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div>
-  
-    <div class="main-content">
-      <div class="main-content-wrapper">
-            <div class="employment-section info-card">
-                <div class="info-icon text-large text-light"><i class="far fa-building"></i></div>
-                <div class="info-title text-large text-middle"><span>Employment</span></div>
-                <div class="info-content">
-                    <div class="info-item">
-                        <div class="info-header text-meidum text-deep-primary">
-                            <span>Ruten - PChome eBay Co., Ltd.</span>
-                            <span> Spring <time>2018</time> – Spring <time>2019</time></span>
-                        </div>
+<div class="post-warp archive">
+    <h2 class="post-title" style="text-align:right;padding-bottom:2em">-&nbsp;&nbsp;·&nbsp;Abouts&nbsp;-</h2>
     
-                        <p class="text-normal text-secondary">Front-end Developer</p>
-                        <p>Ruten (<a class="text-deep-primary" href="https://www.ruten.com.tw/" target="_blank" rel="noopener">https://www.ruten.com.tw</a>)
-                            A C2C E-commerce website 
-                        </p>
-                            – Drastically improved and revamped the real-time messaging feature by restructuring the code structure and utilizing reusable components in Vue.js. The revamped version resulted in 30% increased traffics<br>
-                            – Optimized performance by replacing scroll event function with requestAnimationFrame and Intersection Observer<br>
-                            – Rewrote many legacy pages with modern javascript frameworks and design mindset, which reduced the overall size of our code base.<br>
-                            – Improved the checkout process with Vue.js and Vuex, also used in-house analysis provided data to enhance the checkout experience<br>
-                            – Expert experience in developing with CSS preprocessor LESS; helped breaking down old CSS code base into several reusable components, and reduced redundant code with smart mixins.<br>
-                            – Leveraged knowledge in large-scale Web development, Git, SVN, MVC architecture, OOCSS, LESS, Javascript, Vue, Vuex, Gulp,  Webpack, Scrum, and debugged using Chrome Developer Tools</p>
-                    </div>
-                </div>              
-            </div>
-            <div class="project-section info-card">
-                <div class="info-icon text-large text-light"><i class="fas fa-sitemap"></i></div>
-                <div class="info-title text-large text-middle"><span>Project</span></div>
-                <div class="info-content">    
-                    <div class="info-item">
-                        <div class="info-header text-meidum text-deep-primary">
-                            <span>WenXuanLee Personal Blog</span>
-                            <span> Spring <time>2018</time></span>
-                        </div>
+    <article class="archive-item">
+        <a href="https://WenXuanLee.github.io/about/about/" class="archive-item-link hvr-underline-from-center">About</a>
+        <span class="archive-item-date">
+            April 17, 2017
+        </span>
+    </article>
+     
     
-                        <p class="text-normal text-secondary">A personal tech blog with Hugo</p>
-                        <p>
-                            – Create a static page hosted on git page<br>
-                            – Support markdown file and build production by Hugo<br>
-                            – Leveraged knowledge: Html, Javascript, SCSS, Hugo, Git</p>
-                    </div>               
-                    <div class="info-item">
-                        <div class="info-header text-meidum text-deep-primary">
-                            <span>Working Holiday</span>
-                            <span> Fall <time>2017</time></span>
-                        </div>
-    
-                        <p class="text-normal text-secondary">A plateform for experiencing in Working Holiday</p>
-                        <p>
-                            – Create a platform for users to search a opportunity for working holiday in Taiwan.<br>
-                            – Design the Page layout & Data structure<br> 
-                            – Leveraged knowledge: Javascript, CSS, Python, Django, Cloud 9, MVC, Facebook API</p>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-header text-meidum text-deep-primary">
-                            <span>WoWoo</span>
-                            <span> Fall <time>2017</time></span>
-                        </div>
-    
-                        <p class="text-normal text-secondary">A plateform to collect emotion data for common question</p>
-                        <p>
-                            – Create a platform for users to post and leave comment<br>
-                            – Implement the ask page UI and login by using Facebook API<br>
-                            – Deisgn and implement the model for data storage</br>
-                            – Leveraged knowledge: Python, Django, Cloud 9, Facebook API</p>
-                    </div>
-                </div>             
-            </div>
-            <div class="education-section info-card">
-                <div class="info-icon text-large text-light"><i class="fas fa-graduation-cap"></i></div>
-                <div class="info-title text-large text-middle"><span>Education</span></div>
-                <div class="info-content">
-                    <div class="info-item">
-                        <div class="info-header text-meidum text-deep-primary">
-                            <span>University of Taipei</span>
-                            <span> Fall <time>2013</time> – June <time>2017</time></span>
-                        </div>
-    
-                        <p class="text-normal text-secondary">Computer Science, B.C.S(in-major GPA: 3.4)</p>
-                        <p>
-                            – Programming Coursework: Operating System, Algorithms, Data Structure, Network, Computer architecture, Web Programming<br>
-                            – Software: Javascript, Python, PHP, C, Java, Unix, Git, Assembly language</p>
-                    </div> 
-                </div>             
-            </div>
-      </div>
-    </div>
-    
-</div>  
+
+</div>
 
           </div>
 		   </main>
@@ -283,9 +112,11 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -304,7 +135,6 @@
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
     
     <script src="/js/vendor_main.min.js" async=""></script>

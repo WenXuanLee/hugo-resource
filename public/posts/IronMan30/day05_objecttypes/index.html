@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day04_tricky/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day06_operators/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Object Types | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Object Types | Ben the front-end dust">
     
   
@@ -36,30 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Object Types",
     "headline" : "Object Types",
-    "description" : " ##Object Types
-在介紹Types，我們提到主要分成兩種，一為基本的Primitive Types，另一則為Object Types，透過存取方式的不同做區別，那今天就來介紹一下Object Types，而在後面也會針對copied by value &amp; copied by reference 作探討。
-###Objects
-基本上，Javascript除了Primitive Types以外都算是Object，那麼什麼是Object呢，你可以想像成蓋房子一樣，Primitive Types就像是一塊磚子，但能單靠一塊一塊磚子疊出來的房子不可能大到哪裡去，是吧 ?這時候我們是不是就需要鋼筋阿水泥阿混擬土阿，將各種元素包在一起的的結構去建造出更大結構的房子，Object就是這樣的一個存在，Object可以讓我們將多個Value包再一起，也可以Object包Object，藉此能做出一個更複雜的結構完成更複雜的事情。
-看起來有點模糊，我們直接來個情境，假如有一個人叫小明，身高172cm，體重80公斤，每天早上都會吃蛋餅，那單靠Primitive Types你需要怎麼做呢?想到我就累了，我知道你不會想自己嘗試的，所以我已經準備好了。
-你一定覺得這樣太沒效率了，連低能如我都知道這樣太誇張地真的，這時候來看看Object的厲害。
-透過Object的方式我們只要一個變數宣告便可以儲存多項訊息，接下來我們就針對Object內的細節做更多介紹。
-###Object的宣告
-Object的宣告方式很簡單，只要將想要放在一起的訊息用 大擴號{} 包起來，便是一個Object，每一個Property對應的value用 冒號: 丟過去，不同的屬性值則用 逗號 , 隔開，可以看上方圖片做對應。
-###Property
-在物件中，每一個value對應會有一個Property，例如剛剛範例中的 name、height、weight、routine 就是這個物件的Property。 而注意到routine這個property是存了一個function的，我們通常會稱為這樣的Property為object的method。
-###Property 的存取
-那怎麼透過物件去得到這些Property所對應的值呢，我們就會用 句號. 來得到，除此之外也可以透過 [] ，而後者主要是用於當Property有特殊符號如空白或者變數名稱不符合規則時使用。
-dot的方式 中括號的方式 ###Property的新增與刪除
-Object內的新增與移除非常之簡單方便，新增的部分只要透過 = 直接直球進去就得分，而刪除只要透過delete就可以解決。 ###查看Object的狀況
-常常我們Object內塞了一大堆東西，想要check的時候看得頭昏腦脹，在此分享一個好用的方式，可以讓check的時候更方便，這時候我們歡迎偉大的 console.table(object) ，讓我們一次一目瞭然。
-###查看Property是否存在
-通常Property不存在的狀況下會是 Undefined ，但你知道程式百百種，當一個property被刻意設成undefined的狀況下，這樣就不能判斷property的存在與否，這時我們就得依靠 in、hasOwnProerty() 來判斷，根據我們的慣例，兩個做一樣的事情，一定會有細節上不一樣，他們也不例外。
- in 主要是連obj內的prototype 都會搜索過一次，至於什麼是prototype後面會在介紹，你可以先想成只要是obj都會擁有的東西，就像是只要是人都有腦，腦就是一個prototype。 hasOwnProperty() 則只會搜索當前這個obj。   參考來源  eloquentjavascript  ",
+    "description" : "##Object Types\n在介紹Types，我們提到主要分成兩種，一為基本的Primitive Types，另一則為Object Types，透過存取方式的不同做區別，那今天就來介紹一下Object Types，而在後面也會針對copied by value \u0026amp; copied by reference 作探討。\n###Objects\n基本上，Javascript除了Primitive Types以外都算是Object，那麼什麼是Object呢，你可以想像成蓋房子一樣，Primitive Types就像是一塊磚子，但能單靠一塊一塊磚子疊出來的房子不可能大到哪裡去，是吧 ?這時候我們是不是就需要鋼筋阿水泥阿混擬土阿，將各種元素包在一起的的結構去建造出更大結構的房子，Object就是這樣的一個存在，Object可以讓我們將多個Value包再一起，也可以Object包Object，藉此能做出一個更複雜的結構完成更複雜的事情。\n看起來有點模糊，我們直接來個情境，假如有一個人叫小明，身高172cm，體重80公斤，每天早上都會吃蛋餅，那單靠Primitive Types你需要怎麼做呢?想到我就累了，我知道你不會想自己嘗試的，所以我已經準備好了。\n你一定覺得這樣太沒效率了，連低能如我都知道這樣太誇張地真的，這時候來看看Object的厲害。\n透過Object的方式我們只要一個變數宣告便可以儲存多項訊息，接下來我們就針對Object內的細節做更多介紹。\n###Object的宣告\nObject的宣告方式很簡單，只要將想要放在一起的訊息用\t大擴號{}\t包起來，便是一個Object，每一個Property對應的value用 冒號:\t丟過去，不同的屬性值則用 逗號 ,\t隔開，可以看上方圖片做對應。\n###Property\n在物件中，每一個value對應會有一個Property，例如剛剛範例中的 name、height、weight、routine\t就是這個物件的Property。 而注意到routine這個property是存了一個function的，我們通常會稱為這樣的Property為object的method。\n###Property 的存取\n那怎麼透過物件去得到這些Property所對應的值呢，我們就會用 句號. 來得到，除此之外也可以透過 [] ，而後者主要是用於當Property有特殊符號如空白或者變數名稱不符合規則時使用。\ndot的方式 中括號的方式 ###Property的新增與刪除\nObject內的新增與移除非常之簡單方便，新增的部分只要透過 = 直接直球進去就得分，而刪除只要透過delete就可以解決。 ###查看Object的狀況\n常常我們Object內塞了一大堆東西，想要check的時候看得頭昏腦脹，在此分享一個好用的方式，可以讓check的時候更方便，這時候我們歡迎偉大的 console.table(object) ，讓我們一次一目瞭然。\n###查看Property是否存在\n通常Property不存在的狀況下會是 Undefined\t，但你知道程式百百種，當一個property被刻意設成undefined的狀況下，這樣就不能判斷property的存在與否，這時我們就得依靠 in、hasOwnProerty() 來判斷，根據我們的慣例，兩個做一樣的事情，一定會有細節上不一樣，他們也不例外。\n in 主要是連obj內的prototype 都會搜索過一次，至於什麼是prototype後面會在介紹，你可以先想成只要是obj都會擁有的東西，就像是只要是人都有腦，腦就是一個prototype。 hasOwnProperty() 則只會搜索當前這個obj。   參考來源  eloquentjavascript  ",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -67,9 +54,9 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2017",
-    "datePublished": "2017-12-25 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2017-12-25 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day05_objecttypes/",
+    "datePublished": "2017-12-25 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2017-12-25 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day05_objecttypes\/",
     "wordCount" : "66",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
@@ -85,7 +72,7 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -93,6 +80,8 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -102,7 +91,7 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -114,6 +103,8 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -127,7 +118,7 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Object Types</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2017-12-25 itemprop="datePublished">December 25, 2017</time>
                 </span>
@@ -156,72 +147,43 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
           
           
 
-          
-
-<p>##Object Types</p>
-
+          <p>##Object Types</p>
 <p>在介紹Types，我們提到主要分成兩種，一為基本的<code>Primitive Types</code>，另一則為<code>Object Types</code>，透過存取方式的不同做區別，那今天就來介紹一下Object Types，而在後面也會針對<code>copied by value</code> &amp; <code>copied by reference</code> 作探討。</p>
-
 <p>###Objects</p>
-
 <p>基本上，Javascript除了Primitive Types以外都算是Object，那麼什麼是Object呢，你可以想像成蓋房子一樣，Primitive Types就像是一塊磚子，但能單靠一塊一塊磚子疊出來的房子不可能大到哪裡去，是吧 ?這時候我們是不是就需要鋼筋阿水泥阿混擬土阿，將各種元素包在一起的的結構去建造出更大結構的房子，Object就是這樣的一個存在，Object可以讓我們將多個Value包再一起，也可以Object包Object，藉此能做出一個更複雜的結構完成更複雜的事情。</p>
-
 <p>看起來有點模糊，我們直接來個情境，假如有一個人叫小明，身高172cm，體重80公斤，每天早上都會吃蛋餅，那單靠Primitive Types你需要怎麼做呢?想到我就累了，我知道你不會想自己嘗試的，所以我已經準備好了。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/obj.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>你一定覺得這樣太沒效率了，連低能如我都知道這樣太誇張地真的，這時候來看看Object的厲害。</p>
-
-<p><img style="width:100%;height:300px;padding:10px" src="../images/obj1.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>透過Object的方式我們只要一個變數宣告便可以儲存多項訊息，接下來我們就針對Object內的細節做更多介紹。</p>
-
 <p>###Object的宣告</p>
-
-<p>Object的宣告方式很簡單，只要將想要放在一起的訊息用    <strong>大擴號{}</strong>    包起來，便是一個Object，每一個Property對應的value用 <strong>冒號:</strong>    丟過去，不同的屬性值則用 <strong>逗號 ,</strong>   隔開，可以看上方圖片做對應。</p>
-
+<p>Object的宣告方式很簡單，只要將想要放在一起的訊息用	<strong>大擴號{}</strong>	 包起來，便是一個Object，每一個Property對應的value用 <strong>冒號:</strong>	丟過去，不同的屬性值則用 <strong>逗號 ,</strong>	隔開，可以看上方圖片做對應。</p>
 <p>###Property</p>
-
-<p>在物件中，每一個value對應會有一個Property，例如剛剛範例中的 <strong>name、height、weight、routine</strong> 就是這個物件的Property。
+<p>在物件中，每一個value對應會有一個Property，例如剛剛範例中的 <strong>name、height、weight、routine</strong>	就是這個物件的Property。
 而注意到routine這個property是存了一個function的，我們通常會稱為這樣的Property為object的method。</p>
-
-<p><img style="width:100%;height:300px;padding:10px" src="../images/obj1.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>###Property 的存取</p>
-
 <p>那怎麼透過物件去得到這些Property所對應的值呢，我們就會用 <strong>句號.</strong> 來得到，除此之外也可以透過 <strong>[]</strong> ，而後者主要是用於當Property有特殊符號如空白或者變數名稱不符合規則時使用。</p>
-
 <p>dot的方式
-<img style="width:100%;height:300px;padding:10px" src="../images/obj2.png" /></p>
-
+<!-- raw HTML omitted --></p>
 <p>中括號的方式
-<img style="width:100%;height:300px;padding:10px" src="../images/obj3.png" /></p>
-
+<!-- raw HTML omitted --></p>
 <p>###Property的新增與刪除</p>
-
 <p>Object內的新增與移除非常之簡單方便，新增的部分只要透過 <strong>=</strong> 直接直球進去就得分，而刪除只要透過delete就可以解決。
-<img style="width:100%;height:300px;padding:10px" src="../images/obj4.png" /></p>
-
+<!-- raw HTML omitted --></p>
 <p>###查看Object的狀況</p>
-
 <p>常常我們Object內塞了一大堆東西，想要check的時候看得頭昏腦脹，在此分享一個好用的方式，可以讓check的時候更方便，這時候我們歡迎偉大的 <strong>console.table(object)</strong> ，讓我們一次一目瞭然。</p>
-
-<p><img style="width:100%;height:300px;padding:10px" src="../images/obj5.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>###查看Property是否存在</p>
-
-<p>通常Property不存在的狀況下會是 <strong>Undefined</strong>   ，但你知道程式百百種，當一個property被刻意設成undefined的狀況下，這樣就不能判斷property的存在與否，這時我們就得依靠 <strong>in、hasOwnProerty()</strong> 來判斷，根據我們的慣例，兩個做一樣的事情，一定會有細節上不一樣，他們也不例外。</p>
-
+<p>通常Property不存在的狀況下會是 <strong>Undefined</strong>	，但你知道程式百百種，當一個property被刻意設成undefined的狀況下，這樣就不能判斷property的存在與否，這時我們就得依靠 <strong>in、hasOwnProerty()</strong> 來判斷，根據我們的慣例，兩個做一樣的事情，一定會有細節上不一樣，他們也不例外。</p>
 <ul>
 <li><code>in</code> 主要是連obj內的prototype 都會搜索過一次，至於什麼是prototype後面會在介紹，你可以先想成只要是obj都會擁有的東西，就像是只要是人都有腦，腦就是一個prototype。</li>
 <li><code>hasOwnProperty()</code> 則只會搜索當前這個obj。
-<img style="width:100%;height:300px;padding:10px" src="../images/obj6.png" /></li>
+<!-- raw HTML omitted --></li>
 </ul>
-
 <h3 id="參考來源">參考來源</h3>
-
 <ol>
-<li><a href="http://eloquentjavascript.net/00_intro.html#h_GlF1Kuv0JF" target="_blank">eloquentjavascript</a></li>
+<li><!-- raw HTML omitted -->eloquentjavascript<!-- raw HTML omitted --></li>
 </ol>
 
     </div>
@@ -285,9 +247,11 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -306,7 +270,6 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

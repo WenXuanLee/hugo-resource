@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/httpoverview/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/mailandfile/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Web Caching | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Web Caching | Ben the front-end dust">
     
   
@@ -36,16 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Web Caching",
     "headline" : "Web Caching",
-    "description" : "Web Caching Web Cache，aka proxy server，network用於代替Origin Web server滿足HTTP request的機制，web cache擁有自己的storage空間，並會把最近收到請求的objects存在storage，user browser可以透過config讓所有的request都先被轉到web cache裡。
-假使今天client端發送出一個request，一樣會建立一條TCP connection至web cache，接著web cache檢查是否有一份備分的object在儲存空間裡，若有的話，web cache直接代替server送回response，若無的話則送出request建立TCP connection至 origin server，取得response後在自己的storage 備份object，接著再送回clicent side。
-web cache 同時是client &amp; server，web cache主要應用有兩個原因，一者為減少response time for client request尤其當client to server 的頻寬小於 client to web cache時候，二者為減少traffic，若request並無真的發至origin server 可以減輕server的負擔並減少access to internet的traffic，因此可以對此設計提升效能。
-The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，假使 origin server的檔案在web cache儲存後有所更動的話，該怎麼處理，HTTP提供一個機制讓web cache可以去確認 object是否為up to date，這機制稱為Condition GET，符合conditional GET的條件為
- request message 用的method 為GET request message header line 夾帶 IF-modified-since  記得在response message有著一筆Last-Modified的紀錄，而當web cache再次收到request時，web cache會觸發up-to-date check 發出一筆condition GET夾帶If-modified-since，若web server判斷無modified的話，則會回傳response without requested object，並在status line帶著status code 304 not modified",
+    "description" : "Web Caching Web Cache，aka proxy server，network用於代替Origin Web server滿足HTTP request的機制，web cache擁有自己的storage空間，並會把最近收到請求的objects存在storage，user browser可以透過config讓所有的request都先被轉到web cache裡。\n假使今天client端發送出一個request，一樣會建立一條TCP connection至web cache，接著web cache檢查是否有一份備分的object在儲存空間裡，若有的話，web cache直接代替server送回response，若無的話則送出request建立TCP connection至 origin server，取得response後在自己的storage 備份object，接著再送回clicent side。\nweb cache 同時是client \u0026amp; server，web cache主要應用有兩個原因，一者為減少response time for client request尤其當client to server 的頻寬小於 client to web cache時候，二者為減少traffic，若request並無真的發至origin server 可以減輕server的負擔並減少access to internet的traffic，因此可以對此設計提升效能。\nThe Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，假使 origin server的檔案在web cache儲存後有所更動的話，該怎麼處理，HTTP提供一個機制讓web cache可以去確認 object是否為up to date，這機制稱為Condition GET，符合conditional GET的條件為\n request message 用的method 為GET request message header line 夾帶 IF-modified-since  記得在response message有著一筆Last-Modified的紀錄，而當web cache再次收到request時，web cache會觸發up-to-date check 發出一筆condition GET夾帶If-modified-since，若web server判斷無modified的話，則會回傳response without requested object，並在status line帶著status code 304 not modified",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -53,9 +54,9 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-12-05 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-12-05 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/webcaching/",
+    "datePublished": "2018-12-05 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-12-05 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter2-application-layer\/webcaching\/",
     "wordCount" : "86",
     "keywords" : [ "Application Layer","Web Caching", "Ben the front-end dust"]
 }
@@ -71,7 +72,7 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -79,6 +80,8 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -88,7 +91,7 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -100,6 +103,8 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -113,7 +118,7 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Web Caching</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-12-05 itemprop="datePublished">December 5, 2018</time>
                 </span>
@@ -144,35 +149,22 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
           
           
 
-          
-
-<h2 id="web-caching">Web Caching</h2>
-
+          <h2 id="web-caching">Web Caching</h2>
 <p><code>Web Cache</code>，aka <code>proxy server</code>，<code>network</code>用於代替<code>Origin Web server</code>滿足<code>HTTP request</code>的機制，web cache擁有自己的storage空間，並會把最近收到請求的objects存在storage，user browser可以透過config讓所有的request都先被轉到web cache裡。</p>
-
 <p>假使今天client端發送出一個request，一樣會建立一條TCP connection至web cache，接著web cache檢查是否有一份備分的object在儲存空間裡，若有的話，web cache直接代替server送回response，若無的話則送出request建立TCP connection至 origin server，取得response後在自己的storage 備份object，接著再送回clicent side。</p>
-
 <p>web cache 同時是<code>client &amp; server</code>，web cache主要應用有兩個原因，一者為<code>減少response time for client request</code>尤其當client to server 的頻寬小於 client to web cache時候，二者為<code>減少traffic</code>，若request並無真的發至origin server 可以減輕server的負擔並減少access to internet的traffic，因此可以對此設計提升效能。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20190110/20107670wt8j4hoVRv.png" alt="https://ithelp.ithome.com.tw/upload/images/20190110/20107670wt8j4hoVRv.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20190110/20107670wt8j4hoVRv.png</figcaption></figure></p>
-
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20190110/20107670wt8j4hoVRv.png" alt="https://ithelp.ithome.com.tw/upload/images/20190110/20107670wt8j4hoVRv.png"></p>
 <h2 id="the-conditional-get">The Conditional GET</h2>
-
 <p>上述提到Web cache的好處，但也有一個隱憂是，假使 origin server的檔案在web cache儲存後有所更動的話，該怎麼處理，HTTP提供一個機制讓web cache可以去確認 object是否為up to date，這機制稱為<code>Condition GET</code>，符合<code>conditional GET</code>的條件為</p>
-
 <ol>
 <li>request message 用的method 為GET</li>
 <li>request message header line 夾帶 <code>IF-modified-since</code></li>
 </ol>
-
 <p>記得在<code>response message</code>有著一筆<code>Last-Modified</code>的紀錄，而當web cache再次收到request時，web cache會觸發<code>up-to-date check</code> 發出一筆<code>condition GET</code>夾帶<code>If-modified-since</code>，若web server判斷無modified的話，則會回傳<code>response without requested object</code>，並在status line帶著<code>status code 304 not modified</code></p>
-
-<hr />
-
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -239,9 +231,11 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -260,7 +254,6 @@ The Conditional GET 上述提到Web cache的好處，但也有一個隱憂是，
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

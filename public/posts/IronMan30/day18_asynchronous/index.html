@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day16-scope/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day19_closures/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Asynchronous | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Asynchronous | Ben the front-end dust">
     
   
@@ -36,26 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Asynchronous",
     "headline" : "Asynchronous",
-    "description" : "Asynchronous 眾所皆知Javascript是synchronicity的，也就是同一個時間只能執行一件事情，但我們常常會聽到Asynchronous callbacks，這又是什麼呢?今天我們就來介紹這個主題吧。
-What&rsquo;s asynchronous 聰明的你不難猜出，簡易而言，asynchronous代表的是在一段時間內，不只執行一件事情，也就是當我們開始執行一段程式碼時，另一段程式碼也同是在運作了。
-但我們知道，Javascript是synchronous的，它一次時間只執行一段code,然而我們知道Javascript有事件監聽例如點擊事件，或者是送要求然後將資料傳回的動作，當這些事件完成時會有一個callback function。
-奇妙的事情發生了，Javascript是如何處理這些asynchronous的事件呢?
-Javascript Engine 這時我們要回來探討Javascript Engine本身，它不只是一個單一的個體，它同時與其他元素互動，好比Browser，會有其他engines並執行code。
-好比有一個Rendering Engine負責印出web page畫面、會有HTTP Request處理資料要求，而Javascript Engine與這些元素會有一個鉤子連結再一起，當程式碼有更新時，可以與其他引擎做溝通。
-當程式碼執行時，這些Engines就有可能是asynchronous的，也就是這三個Engines在browser內可能是同步執行的，但只有Javascript Egine內部自己是synchronous。
-我們之前已經知道Javascript有Execution stack ，當函式呼叫時會一層一層推疊，最上層優先執行，執行完後離開Stack。而Javascript Engine還有另一個 event queue 。
-event queue event queue主要是存放事件、事件的通知，所以當今天browser有一個事件發生時，在Javascript Engine內我們需要知事件要發生了，這時就會把準備發生的事件堆到event queue裡面，讓我們可以對事件作監聽並準備做相對應的動作，而當Execution Stack清空後，Javascript才會去看event queue是否有需要處理的事件。
-Sample 舉例來說，今天我們有函式對點擊事件作回應，或者有當函式執行時，又有另一個事件發生，例如送要求要資料，實際上整個流程怎麼跑呢?
-當今天exeuction stack整個執行完畢清空時，接著Javascript會回來看Event queue，如果queue裡有事件在等待，若有的話，接著看這個事件是否有一個函式去處理事件發生的狀況，所以就範例而言，Javascript看到了點擊事件，並有一個clickHandler()函式處理。
-Javascript知道有函式處理點擊事件後，此事件就會被移出queue，而下一步因為execution stack尚未被清空，所以Evet queue不會進執行流程，直到stack被清空為止，所以Javascript實際上並不是真的asynchronous，而是Broswer asynchronously的將事件存放進event queue裡面，Javascript egine仍然是一行一行執行code。
-Sample again 接著我們用一個程式範例來看看。
-這個範例中，我們有click event並有一個handler專門負責此事件，有一個需要執行三秒的function，以及一個當整個execution完成時提示訊息。Output的結果依序是 finish function、finish execution、click event。經過上面的sample應該不難推敲出這個結果，但我們還是實際上在重頭跑一次流程。
- 建立好execution stack，並偵測到browser有點擊事件。  execution stack清空。查看event queue。  event queue有點擊事件，建立相對應的函式execution context。  點擊事件已有函式做處理，移出Event queue   以上就是整個流程，相信大家也能自己推導出來，強烈推薦大家自己重頭在想一次啊!",
+    "description" : "Asynchronous 眾所皆知Javascript是synchronicity的，也就是同一個時間只能執行一件事情，但我們常常會聽到Asynchronous callbacks，這又是什麼呢?今天我們就來介紹這個主題吧。\nWhat\u0026rsquo;s asynchronous 聰明的你不難猜出，簡易而言，asynchronous代表的是在一段時間內，不只執行一件事情，也就是當我們開始執行一段程式碼時，另一段程式碼也同是在運作了。\n但我們知道，Javascript是synchronous的，它一次時間只執行一段code,然而我們知道Javascript有事件監聽例如點擊事件，或者是送要求然後將資料傳回的動作，當這些事件完成時會有一個callback function。\n奇妙的事情發生了，Javascript是如何處理這些asynchronous的事件呢?\nJavascript Engine 這時我們要回來探討Javascript Engine本身，它不只是一個單一的個體，它同時與其他元素互動，好比Browser，會有其他engines並執行code。\n好比有一個Rendering Engine負責印出web page畫面、會有HTTP Request處理資料要求，而Javascript Engine與這些元素會有一個鉤子連結再一起，當程式碼有更新時，可以與其他引擎做溝通。\n當程式碼執行時，這些Engines就有可能是asynchronous的，也就是這三個Engines在browser內可能是同步執行的，但只有Javascript Egine內部自己是synchronous。\n我們之前已經知道Javascript有Execution stack ，當函式呼叫時會一層一層推疊，最上層優先執行，執行完後離開Stack。而Javascript Engine還有另一個 event queue 。\nevent queue event queue主要是存放事件、事件的通知，所以當今天browser有一個事件發生時，在Javascript Engine內我們需要知事件要發生了，這時就會把準備發生的事件堆到event queue裡面，讓我們可以對事件作監聽並準備做相對應的動作，而當Execution Stack清空後，Javascript才會去看event queue是否有需要處理的事件。\nSample 舉例來說，今天我們有函式對點擊事件作回應，或者有當函式執行時，又有另一個事件發生，例如送要求要資料，實際上整個流程怎麼跑呢?\n當今天exeuction stack整個執行完畢清空時，接著Javascript會回來看Event queue，如果queue裡有事件在等待，若有的話，接著看這個事件是否有一個函式去處理事件發生的狀況，所以就範例而言，Javascript看到了點擊事件，並有一個clickHandler()函式處理。\nJavascript知道有函式處理點擊事件後，此事件就會被移出queue，而下一步因為execution stack尚未被清空，所以Evet queue不會進執行流程，直到stack被清空為止，所以Javascript實際上並不是真的asynchronous，而是Broswer asynchronously的將事件存放進event queue裡面，Javascript egine仍然是一行一行執行code。\nSample again 接著我們用一個程式範例來看看。\n這個範例中，我們有click event並有一個handler專門負責此事件，有一個需要執行三秒的function，以及一個當整個execution完成時提示訊息。Output的結果依序是 finish function、finish execution、click event。經過上面的sample應該不難推敲出這個結果，但我們還是實際上在重頭跑一次流程。\n 建立好execution stack，並偵測到browser有點擊事件。  execution stack清空。查看event queue。  event queue有點擊事件，建立相對應的函式execution context。  點擊事件已有函式做處理，移出Event queue   以上就是整個流程，相信大家也能自己推導出來，強烈推薦大家自己重頭在想一次啊!",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -63,9 +54,9 @@ Sample again 接著我們用一個程式範例來看看。
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-01-03 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-01-03 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day18_asynchronous/",
+    "datePublished": "2018-01-03 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-01-03 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day18_asynchronous\/",
     "wordCount" : "87",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
@@ -81,7 +72,7 @@ Sample again 接著我們用一個程式範例來看看。
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -89,6 +80,8 @@ Sample again 接著我們用一個程式範例來看看。
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -98,7 +91,7 @@ Sample again 接著我們用一個程式範例來看看。
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -110,6 +103,8 @@ Sample again 接著我們用一個程式範例來看看。
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -123,7 +118,7 @@ Sample again 接著我們用一個程式範例來看看。
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Asynchronous</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-01-03 itemprop="datePublished">January 3, 2018</time>
                 </span>
@@ -152,83 +147,50 @@ Sample again 接著我們用一個程式範例來看看。
           
           
 
-          
-
-<h2 id="asynchronous">Asynchronous</h2>
-
+          <h2 id="asynchronous">Asynchronous</h2>
 <p>眾所皆知Javascript是synchronicity的，也就是同一個時間只能執行一件事情，但我們常常會聽到Asynchronous callbacks，這又是什麼呢?今天我們就來介紹這個主題吧。</p>
-
-<h2 id="what-s-asynchronous">What&rsquo;s asynchronous</h2>
-
+<h2 id="whats-asynchronous">What&rsquo;s asynchronous</h2>
 <p>聰明的你不難猜出，簡易而言，asynchronous代表的是在一段時間內，不只執行一件事情，也就是當我們開始執行一段程式碼時，另一段程式碼也同是在運作了。</p>
-
 <p>但我們知道，Javascript是synchronous的，它一次時間只執行一段code,然而我們知道Javascript有事件監聽例如點擊事件，或者是送要求然後將資料傳回的動作，當這些事件完成時會有一個callback function。</p>
-
 <p>奇妙的事情發生了，Javascript是如何處理這些asynchronous的事件呢?</p>
-
 <h2 id="javascript-engine">Javascript Engine</h2>
-
 <p>這時我們要回來探討Javascript Engine本身，它不只是一個單一的個體，它同時與其他元素互動，好比Browser，會有其他engines並執行code。</p>
-
 <p>好比有一個Rendering Engine負責印出web page畫面、會有HTTP Request處理資料要求，而Javascript Engine與這些元素會有一個鉤子連結再一起，當程式碼有更新時，可以與其他引擎做溝通。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/asyn.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>當程式碼執行時，這些Engines就有可能是asynchronous的，也就是這三個Engines在browser內可能是同步執行的，但只有Javascript Egine內部自己是synchronous。</p>
-
 <p>我們之前已經知道Javascript有Execution stack
 ，當函式呼叫時會一層一層推疊，最上層優先執行，執行完後離開Stack。而Javascript Engine還有另一個 <strong>event queue</strong> 。</p>
-
 <h3 id="event-queue">event queue</h3>
-
 <p>event queue主要是存放事件、事件的通知，所以當今天browser有一個事件發生時，在Javascript Engine內我們需要知事件要發生了，這時就會把準備發生的事件堆到event queue裡面，讓我們可以對事件作監聽並準備做相對應的動作，而當Execution Stack清空後，Javascript才會去看event queue是否有需要處理的事件。</p>
-
 <h3 id="sample">Sample</h3>
-
 <p>舉例來說，今天我們有函式對點擊事件作回應，或者有當函式執行時，又有另一個事件發生，例如送要求要資料，實際上整個流程怎麼跑呢?</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/asyn1.png"></p>
-
+<!-- raw HTML omitted -->
 <p>當今天exeuction stack整個執行完畢清空時，接著Javascript會回來看Event queue，如果queue裡有事件在等待，若有的話，接著看這個事件是否有一個函式去處理事件發生的狀況，所以就範例而言，Javascript看到了點擊事件，並有一個clickHandler()函式處理。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/asyn2.png"></p>
-
+<!-- raw HTML omitted -->
 <p>Javascript知道有函式處理點擊事件後，此事件就會被移出queue，而下一步因為execution stack尚未被清空，所以Evet queue不會進執行流程，直到stack被清空為止，所以Javascript實際上並不是真的asynchronous，而是Broswer asynchronously的將事件存放進event queue裡面，Javascript egine仍然是一行一行執行code。</p>
-
 <h3 id="sample-again">Sample again</h3>
-
 <p>接著我們用一個程式範例來看看。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/asyn3.png"></p>
-
+<!-- raw HTML omitted -->
 <p>這個範例中，我們有click event並有一個handler專門負責此事件，有一個需要執行三秒的function，以及一個當整個execution完成時提示訊息。Output的結果依序是 finish function、finish execution、click event。經過上面的sample應該不難推敲出這個結果，但我們還是實際上在重頭跑一次流程。</p>
-
 <ol>
 <li>建立好execution stack，並偵測到browser有點擊事件。
-<img style="width:100%;height:auto;padding:10px" src="../images/asyn4.png"></li>
+<!-- raw HTML omitted --></li>
 <li>execution stack清空。查看event queue。
-<img style="width:100%;height:auto;padding:10px" src="../images/asyn5.png"></li>
+<!-- raw HTML omitted --></li>
 <li>event queue有點擊事件，建立相對應的函式execution context。
-<img style="widh:100%;height:auto;padding:10px" src="../images/asyn6.png"></li>
+<!-- raw HTML omitted --></li>
 <li>點擊事件已有函式做處理，移出Event queue
-<img style="widh:100%;height:auto;padding:10px" src="../images/asyn7.png"></li>
+<!-- raw HTML omitted --></li>
 </ol>
-
 <p>以上就是整個流程，相信大家也能自己推導出來，強烈推薦大家自己重頭在想一次啊!</p>
-
 <h2 id="總結">總結</h2>
-
 <p>今天我們討論到asynchronous，實際上並不是指Javascript engine真的可以做到，而是指在javascript engine之外的其他元素所發生的事件，而javascript egine再透過事件loop，也就是event queue，當javascript處理好execution stack後再一個一個查看事件並處理，但仍舊是synchronous的。</p>
-
-<hr />
-
+<hr>
 <p>以上就是今天的內容了，希望大家可以看得明白，內容有誤的話仍然麻煩大家指教了QQ，掰鋪。</p>
-
 <h3 id="參考來源">參考來源</h3>
-
 <ol>
-<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview" rel="nofollow noreferrer" target="_blank">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch1.md" rel="nofollow noreferrer" target="_blank">You don&rsquo;t know JS</a></li>
+<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch1.md">You don&rsquo;t know JS</a></li>
 </ol>
 
     </div>
@@ -292,9 +254,11 @@ Sample again 接著我們用一個程式範例來看看。
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -313,7 +277,6 @@ Sample again 接著我們用一個程式範例來看看。
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Packet Switching on Ben the front-end dust</title>
@@ -6,23 +6,19 @@
     <description>Recent content in Packet Switching on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://WenXuanLee.github.io/tags/packet-switching/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 25 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/packet-switching/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Switching</title>
       <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/switching/</link>
       <pubDate>Thu, 25 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/switching/</guid>
-      <description> Packet switching vs Circuit Switching 主要差別在於，前者並不會保留特定path，而後者會保留一個特定path給package。因此當packet switching同時遇到太多package進來時，就得進入到buffer裡面去排隊，等待安排output communication，Circuit Switching則不必等待，而是在進來之前已經先預訂好path，而因此，也必須在兩個end system裡面先建立好connection之後才能進行資料傳輸動作，而相對也有比較穩定的傳輸速率。
+      <description>Packet switching vs Circuit Switching 主要差別在於，前者並不會保留特定path，而後者會保留一個特定path給package。因此當packet switching同時遇到太多package進來時，就得進入到buffer裡面去排隊，等待安排output communication，Circuit Switching則不必等待，而是在進來之前已經先預訂好path，而因此，也必須在兩個end system裡面先建立好connection之後才能進行資料傳輸動作，而相對也有比較穩定的傳輸速率。
 範例來說，如果今天有N個使用者的話，套用circuit switching的方法可能最高只能容納10個使用者同時運作，因為會預先保留頻寬給user，當user可能還沒進行傳輸時，就會一直保留住，導致於後面進來的user，得一直卡在buffer裡面，有種占著茅坑不拉屎的感覺。
 packet switching則不會保留頻寬，只要有空位使用者便進來使用而且傳輸，今天若同時有十個人進到餐廳裡面，但有五個人還沒開始用餐的話，packet switching則會先把五個座位安排給可以馬上用餐的人，所以相對circuit switching來說，就不會有被佔住位置的問題。當然如果五個user都佔據超大數據傳輸資料的話，仍然會有buffer塞爆的問題了
 TDM &amp;amp; FDM TDM是將一個connection的duration切成frame，每個frame中在切出time slot，User開始傳遞資訊時便會被塞到time slot，也就是在一個固定的時間內切割頻寬，同時允許多個使用者傳遞資料，time slot越多，相對地速率也會趨緩。
 FDM則是依頻率來切割link區段，而使用者同時在同一個切割區域裡面做傳輸，不同於TDM是一個一個將使用者塞到slot裡面去做動作，FDM是一起將user丟到一個pool的感覺。
-networks of networks Reference  Computer Network  </description>
+networks of networks  Reference  Computer Network  </description>
     </item>
     
   </channel>

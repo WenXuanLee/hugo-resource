@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Frontend on Ben the front-end dust</title>
+    <link>https://WenXuanLee.github.io/tags/frontend/</link>
+    <description>Recent content in Frontend on Ben the front-end dust</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Wed, 20 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Review Javascript — this 繫結綁定</title>
+      <link>https://WenXuanLee.github.io/posts/mediumposts/review-javascript-this-%E7%B9%AB%E7%B5%90%E7%B6%81%E5%AE%9A/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/mediumposts/review-javascript-this-%E7%B9%AB%E7%B5%90%E7%B6%81%E5%AE%9A/</guid>
+      <description>this是自動定義在每個函式 Scope 內的特殊關鍵字，但猶豫本身的命名以及使用方式容易讓人感到混淆，因此在複習 Javascript 順手整理自己關於對 this觀念的釐清以及了解背後原理行為
+this 定義 就字面上定義來講，很容易誤認為 this 就是指到目前函式 Scope 的物件，但實際上決定 this 所綁定的物件並非是函式宣告的時候所定義，而是在呼叫函式時的時機去決定 this 所指向的目標
+上例子可以明顯看出來 this 並不是宣告時作綁定，而是在呼叫的時候作綁定，因此我們得出
+this 取決於餘函式被呼叫的方式### 呼叫地點
+呼叫地點決定了 this 綁地的目標，也因此搞清楚呼叫地點的位置對於 this 的理解佔有很大的幫助，首先我們知道 Javascript Engine 裡面有所謂的 Call-stack 也就是執行至當前階段裡面被呼叫的函式堆疊
+上圖中第一個被呼叫地點為 global 第二個則為 firstStack scope 裡面，基本理解呼叫地點之後，接著我們可以整理出理解 this 的幾個規則搭配呼叫地點的檢查來做理解．
+四個規則如下
+4. 硬繫結 -&amp;gt; 上述的系結方法都有可能遇到預料外的情況如 this 被某個 framework 給覆蓋掉，在 ES5 提供了 bind 來強制綁定，先前寫 react 的大家應該也很常使用到此方法
+再來額外會影響到 this 繫結的還有透過 new所創建出來的物件，以一個 new 的行為建立物件會有以下的行為
+以上就是簡易的 this 觀念整理，可以總結得到如果想要清楚判斷 this 所指定的目標可以參考一下步驟，但前提都基於檢查好函式呼叫的位置後判斷規則
+Reference —
+You don’t know JSJavascript: understand the weird partsReview Javascript — this 繫結綁定 </description>
+    </item>
+    
+  </channel>
+</rss>

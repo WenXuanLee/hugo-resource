@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network Security on Ben the front-end dust</title>
@@ -6,18 +6,14 @@
     <description>Recent content in Network Security on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 13 Nov 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://WenXuanLee.github.io/tags/network-security/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 13 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/network-security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Network Attack</title>
       <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/networkattack/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/networkattack/</guid>
-      <description> Networks under attack malware 惡意軟體 透過Internet的傳遞，我們的機器很可能被有意地傳送惡意軟體，例如以前常見的email釣魚信件，一旦我們的本機成為了受侵入的compromised host，就也有極大可能被hackers拿來當作botnet，繼續散步惡意軟體。
+      <description>Networks under attack malware 惡意軟體 透過Internet的傳遞，我們的機器很可能被有意地傳送惡意軟體，例如以前常見的email釣魚信件，一旦我們的本機成為了受侵入的compromised host，就也有極大可能被hackers拿來當作botnet，繼續散步惡意軟體。
 多數的惡意軟體都是能自我增值的，也就是一旦有一台主機被侵入，惡意軟體就可以根據被侵入的主機繼續尋找可以侵入下一台主機的機會，也因此惡意軟體一旦散布出去後，是成指數成長的。常見的惡意軟體主要分為兩種type
 Virus - 必須透過使用者的互動才會受到侵入，例如釣魚信件裡的附件，開啟附件後才會被侵入。 Worm - 不必使用者互動就有可能受到侵入，例如在不安全的網站下，就有可能遭受到攻擊。
 Dos attacks (denial-of-service) Dos attack攻擊network的服務，讓合法使用者無法正常使用network service。
@@ -26,7 +22,7 @@ DDoS - 則是應用第二種攻擊方式，由單一source傳送大量垃圾封�
 Sniff 在現代網路access方便的年代，例如Wifi，同時也隱藏的網路安全危機，由於只要在附近的的人都可以連取到，同一個發收器訊號，也意味著，當訊息傳遞時，附近所有的人同時也是passive receiver有權去記錄copy of packet，若包含重要的隱私訊息也同樣會被複製下來，而較常見的解法變是加密，待packet到目的地時在解密。由於這種手法是被動接受的，相對難以偵測。
 masquerade 透過自己製作一個封包並帶著false ip address，送入internet裡面傳遞，在route的接受過程中，是有可能把人工的packet認為是可信任的封包，並繼續接下來的SOP。而這也能達成偽裝成其他使用者的目的，通常這種把帶有假IP address的packet注入到Internet裡面稱之為IP spoofing，是偽裝方式中常見的的一種方式。
 要防範此種行為，便是在end-point加上驗證的階段，有了驗證的機制去確認此封包到底是不是我們所認為的封包。
-Reference  Computer Network  </description>
+ Reference  Computer Network  </description>
     </item>
     
   </channel>

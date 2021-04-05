@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Ben the front-end dust</title>
@@ -6,10 +6,26 @@
     <description>Recent content in Javascript on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 09 Jan 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://WenXuanLee.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Wed, 20 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Review Javascript — this 繫結綁定</title>
+      <link>https://WenXuanLee.github.io/posts/mediumposts/review-javascript-this-%E7%B9%AB%E7%B5%90%E7%B6%81%E5%AE%9A/</link>
+      <pubDate>Wed, 20 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://WenXuanLee.github.io/posts/mediumposts/review-javascript-this-%E7%B9%AB%E7%B5%90%E7%B6%81%E5%AE%9A/</guid>
+      <description>this是自動定義在每個函式 Scope 內的特殊關鍵字，但猶豫本身的命名以及使用方式容易讓人感到混淆，因此在複習 Javascript 順手整理自己關於對 this觀念的釐清以及了解背後原理行為
+this 定義 就字面上定義來講，很容易誤認為 this 就是指到目前函式 Scope 的物件，但實際上決定 this 所綁定的物件並非是函式宣告的時候所定義，而是在呼叫函式時的時機去決定 this 所指向的目標
+上例子可以明顯看出來 this 並不是宣告時作綁定，而是在呼叫的時候作綁定，因此我們得出
+this 取決於餘函式被呼叫的方式### 呼叫地點
+呼叫地點決定了 this 綁地的目標，也因此搞清楚呼叫地點的位置對於 this 的理解佔有很大的幫助，首先我們知道 Javascript Engine 裡面有所謂的 Call-stack 也就是執行至當前階段裡面被呼叫的函式堆疊
+上圖中第一個被呼叫地點為 global 第二個則為 firstStack scope 裡面，基本理解呼叫地點之後，接著我們可以整理出理解 this 的幾個規則搭配呼叫地點的檢查來做理解．
+四個規則如下
+4. 硬繫結 -&amp;gt; 上述的系結方法都有可能遇到預料外的情況如 this 被某個 framework 給覆蓋掉，在 ES5 提供了 bind 來強制綁定，先前寫 react 的大家應該也很常使用到此方法
+再來額外會影響到 this 繫結的還有透過 new所創建出來的物件，以一個 new 的行為建立物件會有以下的行為
+以上就是簡易的 this 觀念整理，可以總結得到如果想要清楚判斷 this 所指定的目標可以參考一下步驟，但前提都基於檢查好函式呼叫的位置後判斷規則
+Reference —
+You don’t know JSJavascript: understand the weird partsReview Javascript — this 繫結綁定 </description>
+    </item>
     
     <item>
       <title>prototype</title>
@@ -19,7 +35,7 @@
       <guid>https://WenXuanLee.github.io/posts/ironman30/day25_prototype3/</guid>
       <description>Constructors &amp;amp; prototype 前面我們提到了prototype的概念，也知道了物件裡的prototype chain是怎麼回事，我們回想一下創造物件的方式有哪些，除了一般的宣告，還有一個在function介紹的方式，也就是constructor，那透過constructor創立的物件如何去設定它的prototype呢?
 今天我們就來探討一下這個問題
-One for all &amp;amp; All or one function User(name, friends) { this.name = name; this.friends = friends; this.greet = function() { console.log(&#39;Welcome&#39; + this.name); } } var userA = new User(&#39;Bob&#39;, [&#39;Ben&#39;, &#39;Andy&#39;]); console.log(userA.__proto__); // {constructor User}  當我們透過function 建立物件時，在new的時候Javascript Engine就會自動幫我們建立好prototype chain，新建的物件會有一條prototype chain連結到constructor。
+One for all &amp;amp; All or one function User(name, friends) { this.name = name; this.friends = friends; this.greet = function() { console.log(&#39;Welcome&#39; + this.name); } } var userA = new User(&#39;Bob&#39;, [&#39;Ben&#39;, &#39;Andy&#39;]); console.log(userA.__proto__); // {constructor User} 當我們透過function 建立物件時，在new的時候Javascript Engine就會自動幫我們建立好prototype chain，新建的物件會有一條prototype chain連結到constructor。
 Special Property 回想一下，我們說過每一個物件都有自己的一個property叫做prototype吧，而所有函式之中也有一個特殊的property，這也是我們把函式當作constructor使用時應該要注意並好好運用的一個special property。
 每個函式雖然都有prototype這個property，但除了function constructor，一般函式是不會用到這個property的。就只有 ! 當今天把函式用來建立新物件的時候，這個Property才會被使用到。
 function User(name, friends) { this.name = name; this.friends = friends; this.greet = function() { console.</description>
@@ -53,7 +69,7 @@ window.onload= function() { initMode(); initCards(); }; var mode = &#39;hard&#39
       <description>Everything is Object 今天來談談prototype一些注意的細節，我們知道Javascript裡面所有的變數都是一個物件不然就是Primtive，也就是說除了primitive - number, string, boolean, ect 以外，全都是物件 - function、array、basic objects. 所有的物件以及primitive都有prototype。
 但唯一有一個例外，base object，也就是object的最底層。
 Everything has a prototype 讓我們用一下範例來看一下prototype吧，我們用basic object、function、array為例子。
-var a = {}; function b() {}; var c = [];  Object a 我們看到了物件a的proto仍然是一個物件，而其中擁有許多property以及method，其中我們可以看到熟悉的toString()。
+var a = {}; function b() {}; var c = []; Object a 我們看到了物件a的proto仍然是一個物件，而其中擁有許多property以及method，其中我們可以看到熟悉的toString()。
 function b function b的proto則是一個function object，而其中包含的許多method，包含我們先前才介紹的call()、apply()、bind()，這也就是為什麼每個function都能使用這三個method的原因，就是擁有這個function prototype。
 array c array的proto我們看到了仍然是一個object，而這個object包含了常見的array method，包括了 pop()、push() &amp;hellip; ，所有的array proto都會指到這一個object，也就是為何每個array都可以用到常見的method。
 Tricky 透過三個範例知道了為什麼平常可以用一些好用的method了嗎，這就是prototype的功力阿，
@@ -72,7 +88,7 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
       <guid>https://WenXuanLee.github.io/posts/ironman30/day26_fp/</guid>
       <description>Functional Programming 我們明白Javascript的函式是first class function，也就是function可以被當成value,parameter，甚至return 一個function，這樣的設計就讓我們可以延伸到一個程式設計的概念，funtional programming，前面有提到，但挺簡略的，今天就來了解這個程式設計概念吧。
 Sample#1 先看個範例，感受一下functional programming的奧妙之處。
-var arr1 = [1,2,3]; console.log(arr1); var arr2 = []; for(var i = 0; i &amp;lt; arr1.length; i++) { arr2.push(arr1[i] * 2); } console.log(arr2);  上面這個範例是不是顯得有點冗長，在程式中，我們通常想要越偷懶越好啊，打這麼多字豈不是浪費我的生命，打字的時間不如拿來打人中之龍。 接下來我們看functional programming的寫法。
+var arr1 = [1,2,3]; console.log(arr1); var arr2 = []; for(var i = 0; i &amp;lt; arr1.length; i++) { arr2.push(arr1[i] * 2); } console.log(arr2); 上面這個範例是不是顯得有點冗長，在程式中，我們通常想要越偷懶越好啊，打這麼多字豈不是浪費我的生命，打字的時間不如拿來打人中之龍。 接下來我們看functional programming的寫法。
 function easyWay(arr, fn) { var newArr = []; for(var i = 0; i &amp;lt; arr.length; i++) { newArr.push( fn(arr[i]) //functional programming; ); } return newArr; } var arr1 = [1,2,3]; var arr2 = easyWay(arr1, function(item) { return item * 2; }); console.</description>
     </item>
     
@@ -101,7 +117,7 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
 這樣一層一層prototype組織而成的鍊子，就稱為prototype chain - 原型鍊。
 而這個原型鍊通常是藏住的不會被看到的，也就是我們不會打 obj.proto.proto.prop3，而只要obj.prop3就會得到，Javascript Engine會透過原型鍊去尋找property &amp;amp; method。
 而不一樣的Object卻有可能擁有同樣的proto。
-我們知道proto只是一個reference，所以我們share到的同樣的property，不論是 obj.prop2 or obj2.</description>
+我們知道proto只是一個reference，所以我們share到的同樣的property，不論是 obj.prop2 or obj2.prop2指到的都是同樣的記憶體位置，同樣的property。</description>
     </item>
     
     <item>
@@ -115,9 +131,11 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
 我們知道function是一個特別型態的物件，它有 name property，也就是函式名稱也可以是匿名，以及code property，讓函式可以被呼叫的，記得函式是一個object，所以也可以擁有property以及method，所以今天提到三個觀念就是Javascript提供在function物件裡面的method。
 ##三幻神 vs this
 ###bind() 先看以下範例。
-var friends ={ name: &#39;Ben&#39;, greet: function() { return this.name; } } var myFriends = function(argu1, argu2) { console.log(&#39;Hi&#39; + this.greet()); }.bind(friends) myFriends();  透過昨天this的觀念，你一定了解了這個會造成error，因為函式myFriends的this會指到window，但加上了bind()後則可以正常運作。如以下
-var friends ={ name: &#39;Ben&#39;, greet: function() { return this.name; } } var myFriends = function(argu1, argu2) { console.log(&#39;Hi&#39; + this.greet()); }.bind(friends) myFriends();  bind()的概念是這個method會return一個新的function，實際上就是將function做一個copy。
-當Javascript Engine讀取到bind()時，在execution context 創建時，會將bind後的參數指到this去，所以這邊的this指的就會是friends物件。</description>
+var friends ={ name: &#39;Ben&#39;, greet: function() { return this.name; } } var myFriends = function(argu1, argu2) { console.log(&#39;Hi&#39; + this.greet()); }.bind(friends) myFriends(); 透過昨天this的觀念，你一定了解了這個會造成error，因為函式myFriends的this會指到window，但加上了bind()後則可以正常運作。如以下
+var friends ={ name: &#39;Ben&#39;, greet: function() { return this.name; } } var myFriends = function(argu1, argu2) { console.log(&#39;Hi&#39; + this.greet()); }.bind(friends) myFriends(); bind()的概念是這個method會return一個新的function，實際上就是將function做一個copy。
+當Javascript Engine讀取到bind()時，在execution context 創建時，會將bind後的參數指到this去，所以這邊的this指的就會是friends物件。
+###call() 利用call我們也可以達到一樣的效果，但有些不一樣的細節。
+var friends ={ name: &#39;Ben&#39;, greet: function() { return this.</description>
     </item>
     
     <item>
@@ -141,7 +159,8 @@ this with object method 當今天我們object裡的method用到了this又會指�
 看到了嗎，透過this.name我們改變了object的property，這是很方便一個用處，method中我們可以透過this拿到或改變其他同物件裡的properties，相當酷吧!
 那如果今天method內又包含了一個function後會怎麼回事 燈愣 ! 你以為應該要秀出Big C 但事實卻不是這樣，那這個newName到底去哪了呢，讓我們來看看。 我的老天鵝阿，跑到了window的global object裡去了，這代表method裡面的那個function的this仍然指到了window，儘管它位於object裡面。
 這不可能發生，直到現在，我還是不願意相信我的眼睛，相信你也跟我一樣，這太誇張了真的，但沒辦法Javascript大老就是這樣運作的，那我們遇到這種狀況該怎麼辦呢?如何確保我的this是指到我想要的object而不是window。
-簡易的方法就是在確定this指到我們要的物件時，將它存取到一個變數中，之後透過這個變數去使用，如上圖的self。</description>
+簡易的方法就是在確定this指到我們要的物件時，將它存取到一個變數中，之後透過這個變數去使用，如上圖的self。
+當我們bind在一起 上面我們提到一個簡易的方法可以確保this所指向的物件，而其時Javascript也有一個方法叫bind()可以解決此類的問題，透過bind可以將this綁定在物件，而不要指到window去，後面會再介紹一次。</description>
     </item>
     
     <item>
@@ -203,7 +222,7 @@ Sample again 接著我們用一個程式範例來看看。
  Variable Environment解釋 Sample推演 Scope chain  Variable Environment 這是我們第一次見到這個名詞，其中代表的意義為，變數在哪裡存活以及變數與變數在記憶體中的關聯性，看起來有點繞舌，我們可以簡化一下。
 當今天提到Variable Environment，你就想著，變數到底在哪裡。
 Sample推演 今天我們有function a、function b、變數 myVar，在往下滾動前，大家可以試著自己推導一下這段Code的流程。
- Step1 - 建立Global Execution Context，建立好變數及函式的記憶體空間，之後開始執行Code，讀取到myVar = 1，讀取到函式b的呼叫，進入Step2。  Step2 - 當讀取到b()，創立b( ) Execution Context，讀取到myVar = 2;再來讀取到函式a()的呼叫，進Step3
+  Step1 - 建立Global Execution Context，建立好變數及函式的記憶體空間，之後開始執行Code，讀取到myVar = 1，讀取到函式b的呼叫，進入Step2。   Step2 - 當讀取到b()，創立b( ) Execution Context，讀取到myVar = 2;再來讀取到函式a()的呼叫，進Step3
    Step3 - myVar = undefined.   以上就為整個流程，而其中我們注意到，每個Execution Context的橘色框框，代表著myVar變數，也就是vaiable environment，並與我們的主題Scope有關係，也就是我們何時能看見這些變數。
 上圖我們看到每個變數都是被定義在各別的Execution Context，因為這些變數被包含在函式裡，每次函式被呼叫便有自己的Execution Context。
 所以即便myVar，被宣告了三次，事實上它們三個是不一樣的個體，是各自單一的存在，並不會接觸到其他與自己相同名稱的變數。如以下。
@@ -211,8 +230,7 @@ Sample推演 今天我們有function a、function b、變數 myVar，在往下�
 第二個Sample 接下來我們稍微將剛剛的範例修改一下如下圖，乍看之下是差不多的程式碼，真的是差不多，只有函式a的內容有變換，猜猜結果是什麼?
 答案是1，你猜對了嗎? 50%的機率錯了也不用灰心，那猜2的人一定會問為什麼，猜中1的人也未必理解，沒關係，跟著我一起走一遍。
 這次我們快轉三個步驟，可以得到下面的流程。
-在函式a()我們這次為空的，並沒有宣告自己的myVar，當今天我們要取變數做行為時，Javascript不只看了此變數的execution context 的 variable environment，而同時也會看到它的外層 execution context。
-而在範例中便是指到，global execution environment，函式b()亦同。</description>
+在函式a()我們這次為空的，並沒有宣告自己的myVar，當今天我們要取變數做行為時，Javascript不只看了此變數的execution context 的 variable environment，而同時也會看到它的外層 execution context。</description>
     </item>
     
     <item>
@@ -221,19 +239,18 @@ Sample推演 今天我們有function a、function b、變數 myVar，在往下�
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/ironman30/day15_hoisting/</guid>
-      <description> Hoisting JS內有一個機制稱為Hoisting，那什麼是Hoisting呢?看看以下的程式碼。
+      <description>Hoisting JS內有一個機制稱為Hoisting，那什麼是Hoisting呢?看看以下的程式碼。
 在其他程式語言中，通常會先定義變數好才去做使用，尚未定義的變數去使用的話通常會有Error產生。
 然而，Javascript內提供了一個機制叫做Hoisting，Javascript Engine把變數以及函式宣告的部分提移到程式的最上層，透過這個機制，就算變數使用在宣告前使用，不會有Error，所以實際上透過編譯後的程式碼比較像以下的範例。
 今天就來講解Hoisting這個機制吧 !
 Creation Phase 先前我們提到，程式執行時，會有Execution context，而其實Execution context是透過兩個階段創建出來的，第一階段稱為creation phase，第二階段為Execution Phase。
-Creation Phase，我們知道初始一定會有global exection Context，也就是 Global Object &amp;amp; this 已經建立在記憶體中。
+Creation Phase，我們知道初始一定會有global exection Context，也就是 Global Object &amp;amp; this	已經建立在記憶體中。
 而當 Syntax Parser逐步閱讀我們的code並開始編譯時，它會先記住我們宣告變數以及函式的位置，因此Parser同時在Creation Phase中建立了記憶體位置準備存放這些變數以及函式，這個階段就稱為Hoisting。
 Hoisting的解釋 所以實際上，我們並不是真的把code宣告的部分移到最上層，而是在程式真正開始逐行執行前，Javascript已經預先把所有在Code裡面的變數及函式的記憶體準備好，所以這些變數以及函式已經存在於記憶體中了，因此，在程式開始逐行執行的時候，就可以從記憶體抓取到這些變數及函式。
 而注意到變數又跟函式的Hoisting有些差別，在建立記憶體給變數時，它並不知道實際的value是什麼，直到程式執行到的時候才會知道value，取而代之的是，它預先放了一個替代方案，undefined。如剛剛的範例。
 總結 Hoisting的存在並不是要我們太過依賴於它，所以還是盡量避免在宣告前先使用的寫法，這很容易會困住自己的邏輯，而實際上我們真正探討的是為什麼Javasript能讓宣告前先使用的現象，而不是為了讓大家依賴這種寫法。
 再來是我們知道了一件事情，我們寫的Code並不是就直接被執行，而是Javascript讀取了Code，並做決定。第一階段是替我們的code創立一個execution context，決定程式碼如何執行，並在執行前，替變數及函式建立好記憶體空間。
-參考來源  eloquentjavascript
- Udemy Course - JavaScript: Understanding the Weird Parts
+參考來源   eloquentjavascript  Udemy Course - JavaScript: Understanding the Weird Parts
   </description>
     </item>
     
@@ -252,10 +269,10 @@ Hoisting的解釋 所以實際上，我們並不是真的把code宣告的部分�
  簡潔程式碼，不容易出錯。 函式可以再重複使用。 可以將大程式切割成簡單函式來組織。  Function Programming VS OOP 上面我們提到了Function Programming(FP)，其實還有另外一種概念就是Object-oriented Programming(OOP)，我們就來稍微介紹一下兩者的設計概念以及比較。
 OOP 主要用Objects來達成程式目的，每個物件中有各自的屬性及方法，而有些物件是有共有特性的，透過這些物件互相的作用，每個物件都可以處理其相對應的動作並且將處理好的內容再傳達給其他物件。
 而OOP最核心的概念就是 - 封裝、繼承、多型。
- 封裝 - 可以讓別人使用，但別人不知道實際的細節 繼承 - 保有原物建的特性並做擴充。 多型 - 物件可以針具收到的任務而有不同的操作，只須注意物件是有否共同型別。  而PTT中有一篇強大的範例完整演繹了OOP的概念 如下 &amp;gt;面試官: 什麼是OOP?
- 封裝 面試者: 我是個封裝良好的軟體工程師，您只要將任務交待給我，我就會把程式寫好，您可以不用耗費心力在細節中，可以去專心在您的核心 業務。
-繼承 我已經有在A公司當過N年軟體工程師的經驗，我以前的經驗可以繼承，您不用花時間心力成本教我訓練我，而且我會根據貴公司 的狀況調整我的工作方式。
-多型 我不僅是軟體工程師，事實上，我是個多型者。我可以是資料科學家，UI/UX設計師，DBA，FAE。總之，我就是一個職員。只要 您說，&amp;rdquo;職員去做事&amp;rdquo;，我就會根據狀況做好該做的事，不管是分析資料，設計UI，備份資料，或是對客戶解說技術。 文章來源</description>
+ 封裝 - 可以讓別人使用，但別人不知道實際的細節 繼承 - 保有原物建的特性並做擴充。 多型 - 物件可以針具收到的任務而有不同的操作，只須注意物件是有否共同型別。  而PTT中有一篇強大的範例完整演繹了OOP的概念 如下
+ 面試官: 什麼是OOP?
+  封裝 面試者: 我是個封裝良好的軟體工程師，您只要將任務交待給我，我就會把程式寫好，您可以不用耗費心力在細節中，可以去專心在您的核心 業務。
+  繼承 我已經有在A公司當過N年軟體工程師的經驗，我以前的經驗可以繼承，您不用花時間心力成本教我訓練我，而且我會根據貴公司 的狀況調整我的工作方式。</description>
     </item>
     
     <item>
@@ -269,8 +286,8 @@ OOP 主要用Objects來達成程式目的，每個物件中有各自的屬性及
 我們知道了函式的概念，也知道了函式怎麼被呼叫使用，但函式實際上運行的樣子，以及背後的流程原理是什麼我們卻不清楚，現在就讓我們進一步看一看運作的原理，了解之後才更能避免錯誤的發生。
 ###函式運作的流程
 首先我們有個範例。
-實際上程式碼的運作是這樣的 - 1. Global Execution Context被建立，同時會建立好 this、global object(window) 。 2. function sister &amp;amp; brother 因為hoisting的機制，會被建立在記憶體中，接著才開始逐行執行。 3. 逐行執行後，看到了sister()這個函式呼叫，這時候，會建立sister的 execution context，並被堆疊到 execution stack中，最上層的 execution context會是執行中的。 4. 進入sister函式，又讀取到呼叫 brother()這個函式，同上步驟，brother()的execution context被建立並堆疊到最上層開始執行。
-5. 接著brother中讀到console.log()一樣被堆疊上去開始執行。 6. console.log()執行完後，被抽離出stack，進而brother()執行完抽離，再來是sister()執行完抽離，最後回到global execution context繼續逐行往下看。
+實際上程式碼的運作是這樣的 -
+ Global Execution Context被建立，同時會建立好 this、global object(window) 。 function sister &amp;amp; brother 因為hoisting的機制，會被建立在記憶體中，接著才開始逐行執行。  逐行執行後，看到了sister()這個函式呼叫，這時候，會建立sister的 execution context，並被堆疊到 execution stack中，最上層的 execution context會是執行中的。  進入sister函式，又讀取到呼叫 brother()這個函式，同上步驟，brother()的execution context被建立並堆疊到最上層開始執行。  5. 接著brother中讀到console.log()一樣被堆疊上去開始執行。 6. console.log()執行完後，被抽離出stack，進而brother()執行完抽離，再來是sister()執行完抽離，最後回到global execution context繼續逐行往下看。
 ####以上就是整個運作的流程，而存取這些 execution context的地方就叫做call stack。
 ##Recursion
 接著介紹Recursion，所謂的Recursion指的就是函式呼叫函式本身，只要不超過stack的上限都是可以接受的，以下的範例就是一個Recursion。
@@ -297,12 +314,13 @@ function在Javascript可以說是最最最最重要而且最最最核心的觀�
  name - 是指函數的名稱，不一定要有，可以是匿名函式。 code - 函式內我們所寫的code。  感覺上我們好像是自己寫了一個function的code，但其實我們只是將code新增到一個稱為CODE的property裡面。特別的部分在於，這個Code property是可以被呼叫的，也就是，可以執行code property裡面的code。
 這是非常一個重要的觀念，我們得時刻記在心裡，function is object，其中的code只是這個object的一個property。
 所以我們也可以做到下面這個看起來可能很奇妙的行為
-function greet() { console.log(&#39;hi&#39;); } greet.language = &#39;English&#39;; console.log(greet.language); // &#39;English&#39;;  看起來或許很怪，但在Javascript這就是一個合理的事情。
+function greet() { console.log(&#39;hi&#39;); } greet.language = &#39;English&#39;; console.log(greet.language); // &#39;English&#39;; 看起來或許很怪，但在Javascript這就是一個合理的事情。
 回頭來看實際上這個function的架構。
 它是一個object，有properties，code是被存在property的，記住它，絕對不要忘。
-當用typeof 去檢查function時會回傳 &amp;lsquo;function&amp;rsquo; ，就算如此也要記住它是object。
-typeof greet; // function  ##Function的宣告方式
-在知道函式的宣告前，我們得先知道兩個觀念 - function statement &amp;amp; function expression。最簡單的區別在於是否主動回傳一個value。</description>
+當用typeof 去檢查function時會回傳 &amp;lsquo;function&amp;rsquo;	，就算如此也要記住它是object。
+typeof greet; // function ##Function的宣告方式
+在知道函式的宣告前，我們得先知道兩個觀念 - function statement &amp;amp; function expression。最簡單的區別在於是否主動回傳一個value。
+function expression 如範例，我們將函式存到變數裡，整個匿名function就是一個value。</description>
     </item>
     
     <item>
@@ -315,12 +333,12 @@ typeof greet; // function  ##Function的宣告方式
 Javascript的兩大Type，之前我們提到主要分別是value的存取方式，在先前自己學習時，是沒有特別在意這部分的，因為只要結果是正確的，管他是怎樣去指定或傳遞值，但後來發現，常常Output出來的結果跟自己預料中的有落差，進而一步造成Bug，後來才明白原來就是值的存取方式影響甚大，所以今天，我們就針對這個超級重要，他馬的真的很重要的觀念，好好理解一波，一起來挖掘這個深奧的Part。
 ###Copied by Value
 先前說過Primitive type的存取方式都是透過Value，這是什麼意思呢? 當今天有一個primitive type 存取到a變數，
-var a = 1;  我們可以說a變數擁有一個記憶體位址，指到實際上primitive value 1 存在的位置。 var b = a;  當今天我們將a在存到b的話，由於a是存放primitive type的，實體上b的結構會是這樣。
+var a = 1; 我們可以說a變數擁有一個記憶體位址，指到實際上primitive value 1 存在的位置。 var b = a; 當今天我們將a在存到b的話，由於a是存放primitive type的，實體上b的結構會是這樣。
 b存了一個新的記憶體位置，這個位置指像了一個新的primitive value 1，而這個value是從a的value複製過來的。這樣的方式就稱為By value。
 你可以想像成By Value的話就像是做一個從本體做一個複製人，範例中的copiedByValue，function 收到的變數是Primitive Type時，就會做出複製人，此時的arg就是複製人，再次Output copiedByValue的話依然會是原本的市北許效舜，就算這個複製人已經去韓國一趟變成金城武了，本體依然還是許效舜，因為複製人有自己的記憶體位置，而這個位置的value被換成金城武，這就是Copied by Value。
-var copiedByValue = &amp;quot;市北許效舜&amp;quot;; function change(arg) { arg = &amp;quot;市北金城武&amp;quot;; console.log(arg); } change(copiedByValue); // &amp;quot;市北金城武&amp;quot; console.log(copiedByValue); //&amp;quot;市北許效舜&amp;quot;  ###Copied by Reference
+var copiedByValue = &amp;quot;市北許效舜&amp;quot;; function change(arg) { arg = &amp;quot;市北金城武&amp;quot;; console.log(arg); } change(copiedByValue); // &amp;quot;市北金城武&amp;quot; console.log(copiedByValue); //&amp;quot;市北許效舜&amp;quot; ###Copied by Reference
 而如果是object types則是by reference，範例以下。
-var a = { num : 1}; var b = a;  實體架構則是如圖中所示。</description>
+var a = { num : 1}; var b = a; 實體架構則是如圖中所示。</description>
     </item>
     
     <item>
@@ -347,7 +365,7 @@ Operator的優先順序 有了上面的觀念，你會觀察到，那不一樣�
       <pubDate>Mon, 25 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/ironman30/day05_objecttypes/</guid>
-      <description> ##Object Types
+      <description>##Object Types
 在介紹Types，我們提到主要分成兩種，一為基本的Primitive Types，另一則為Object Types，透過存取方式的不同做區別，那今天就來介紹一下Object Types，而在後面也會針對copied by value &amp;amp; copied by reference 作探討。
 ###Objects
 基本上，Javascript除了Primitive Types以外都算是Object，那麼什麼是Object呢，你可以想像成蓋房子一樣，Primitive Types就像是一塊磚子，但能單靠一塊一塊磚子疊出來的房子不可能大到哪裡去，是吧 ?這時候我們是不是就需要鋼筋阿水泥阿混擬土阿，將各種元素包在一起的的結構去建造出更大結構的房子，Object就是這樣的一個存在，Object可以讓我們將多個Value包再一起，也可以Object包Object，藉此能做出一個更複雜的結構完成更複雜的事情。
@@ -355,16 +373,16 @@ Operator的優先順序 有了上面的觀念，你會觀察到，那不一樣�
 你一定覺得這樣太沒效率了，連低能如我都知道這樣太誇張地真的，這時候來看看Object的厲害。
 透過Object的方式我們只要一個變數宣告便可以儲存多項訊息，接下來我們就針對Object內的細節做更多介紹。
 ###Object的宣告
-Object的宣告方式很簡單，只要將想要放在一起的訊息用 大擴號{} 包起來，便是一個Object，每一個Property對應的value用 冒號: 丟過去，不同的屬性值則用 逗號 , 隔開，可以看上方圖片做對應。
+Object的宣告方式很簡單，只要將想要放在一起的訊息用	大擴號{}	包起來，便是一個Object，每一個Property對應的value用 冒號:	丟過去，不同的屬性值則用 逗號 ,	隔開，可以看上方圖片做對應。
 ###Property
-在物件中，每一個value對應會有一個Property，例如剛剛範例中的 name、height、weight、routine 就是這個物件的Property。 而注意到routine這個property是存了一個function的，我們通常會稱為這樣的Property為object的method。
+在物件中，每一個value對應會有一個Property，例如剛剛範例中的 name、height、weight、routine	就是這個物件的Property。 而注意到routine這個property是存了一個function的，我們通常會稱為這樣的Property為object的method。
 ###Property 的存取
 那怎麼透過物件去得到這些Property所對應的值呢，我們就會用 句號. 來得到，除此之外也可以透過 [] ，而後者主要是用於當Property有特殊符號如空白或者變數名稱不符合規則時使用。
 dot的方式 中括號的方式 ###Property的新增與刪除
 Object內的新增與移除非常之簡單方便，新增的部分只要透過 = 直接直球進去就得分，而刪除只要透過delete就可以解決。 ###查看Object的狀況
 常常我們Object內塞了一大堆東西，想要check的時候看得頭昏腦脹，在此分享一個好用的方式，可以讓check的時候更方便，這時候我們歡迎偉大的 console.table(object) ，讓我們一次一目瞭然。
 ###查看Property是否存在
-通常Property不存在的狀況下會是 Undefined ，但你知道程式百百種，當一個property被刻意設成undefined的狀況下，這樣就不能判斷property的存在與否，這時我們就得依靠 in、hasOwnProerty() 來判斷，根據我們的慣例，兩個做一樣的事情，一定會有細節上不一樣，他們也不例外。
+通常Property不存在的狀況下會是 Undefined	，但你知道程式百百種，當一個property被刻意設成undefined的狀況下，這樣就不能判斷property的存在與否，這時我們就得依靠 in、hasOwnProerty() 來判斷，根據我們的慣例，兩個做一樣的事情，一定會有細節上不一樣，他們也不例外。
  in 主要是連obj內的prototype 都會搜索過一次，至於什麼是prototype後面會在介紹，你可以先想成只要是obj都會擁有的東西，就像是只要是人都有腦，腦就是一個prototype。 hasOwnProperty() 則只會搜索當前這個obj。   參考來源  eloquentjavascript  </description>
     </item>
     
@@ -374,7 +392,7 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
       <pubDate>Sun, 24 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/ironman30/day04_tricky/</guid>
-      <description> ##Tricky Undefined &amp;amp; Null
+      <description>##Tricky Undefined &amp;amp; Null
 今天這一章我們就來看一下前面沒細談的Undefined &amp;amp; Null types ! 一般在其他程式語言Null是被當作一個空值的，而在Javascript也是，但Javascript中又有另一個Undefined的type，，當這兩個做比較的時候會有很神奇的事情發生。
 上圖中，當兩者用 == 比較時，是True，原因是兩個都代表著此變數不帶值， 而 === ，是較嚴謹的比較方式，連Type都會納入考量，所以是false。 同樣都代表著空值兩者差異到底在哪，但要說Undefined為不帶值聽起來是挺怪的我們下面會再解釋。
 而通常我們如果想要假設某變數為空值，我們會用null而不會主動塞給變數undefined。
@@ -383,7 +401,7 @@ Object內的新增與移除非常之簡單方便，新增的部分只要透過 =
 為什麼type null 不是null？這得追溯到Javscript的歷史了，但我是印象派，只喜歡個大概，所以為什麼會這樣就請看官有興趣自行上網查閱。
 至於為什麼到至今的版本中，仍然沒改善這個問題，這是由於，目前有太多程式的運作是依賴這個Bug的特性，因此倘若改的話可能會有更多Bug出現，所以就不要期待這個Bug被修好吧嘿嘿。
 ###Undefined &amp;amp; is not defined ? 字面上來看這兩個應該是相同道理的，但並不是的，這也是容易讓人疑惑的部分，首先Undefined是不會有Error的，而 is not defined是Error給出的訊息。
-在Javascript我們看到undefined，事實上並不是真的代表字面上的意思，而是代表著一個 Special Value ，它代表的是變數還沒被設定一個正常值。
+在Javascript我們看到undefined，事實上並不是真的代表字面上的意思，而是代表著一個 Special Value	，它代表的是變數還沒被設定一個正常值。
 而今天如果我們賦予了a一個值。
 上面兩個範例我們可以看到，第一個還沒給予正常值的話，大家還記得的話，在Creation phase會創立所有變數到記憶體裡面，並給予一個undefined為初始。
 而上面的範例又跟接下來的狀況不太一樣，特別注意到，如果今天我們連變數都沒宣告的話。
@@ -407,8 +425,9 @@ Variables主要是用來 存放 數值的，可以想像成它是一個保險箱
 在Javascript中，特別注意到Javascript的 Variables 是沒有 Type 的，而是由Variable中的 Value 去決定一個變數的Type，後面會針對Type作介紹。
 而宣告變數的方法如下。
 ###小叮嚀 在宣告變數中，仍然有幾項規矩得注意。
- 變數宣告的第一個字母必須是英文、底線(_)、錢字號($)。  Case Sensitive - 大小寫的宣告是不會被視為相同的變數，特別注意到宣告變數的時候僅有 var 是被認定的，如果是Var、VAR、vAR等都無法宣告變數的，而在ES6還多了let &amp;amp; const。  變數名稱不可為Reserved Words &amp;amp; Key Words 保留字參考 沒有透過 var 宣告的變數會被Javascript認定為global scope，這點非常之可怖，千萬要記住。  Types 由前面的介紹，我們對Variable有了基本的了解，而上面提到的Varaible並不帶有Type，而是由 Value 來決定，Javascript總共包含了 7 種Types，而在Javascript中針對Value的存取方式又分為，Primitivess Types(5) &amp;amp; Objects Types(2) ，分別為 copied by value &amp;amp; copied by reference 。
-Primitives Types 依序為 1. Number 2. string 3. boolean 4.</description>
+ 變數宣告的第一個字母必須是英文、底線(_)、錢字號($)。  Case Sensitive - 大小寫的宣告是不會被視為相同的變數，特別注意到宣告變數的時候僅有 var 是被認定的，如果是Var、VAR、vAR等都無法宣告變數的，而在ES6還多了let &amp;amp; const。  變數名稱不可為Reserved Words &amp;amp; Key Words 保留字參考 沒有透過 var 宣告的變數會被Javascript認定為global scope，這點非常之可怖，千萬要記住。  Types 由前面的介紹，我們對Variable有了基本的了解，而上面提到的Varaible並不帶有Type，而是由	Value 來決定，Javascript總共包含了	7 種Types，而在Javascript中針對Value的存取方式又分為，Primitivess Types(5) &amp;amp; Objects Types(2)	，分別為 copied by value &amp;amp; copied by reference	。
+Primitives Types 依序為
+ Number string boolean undefined null  Objects Types 依序為</description>
     </item>
     
     <item>
@@ -425,7 +444,7 @@ Primitives Types 依序為 1. Number 2. string 3. boolean 4.</description>
 Syntax Parser 今天我們寫了一隻Javascript的程式，裡面有密密麻麻的程式碼，身為一個人開發的人，理所當然地你會知道Code代表的意思是什麼，但對電腦而言呢？電腦是不明白我們看得Code，而Syntax Parser就登場囉，你可以想像成，Syntax Parser就像是一個翻譯，負責將我們的Javascript Code 翻譯給電腦讀，進而執行程式。
 所以當我們今天的Javascript Code執行時，會先經過Syntax Parser一字一句讀取我們的程式，並判斷這個語法是否有效，將有效的語法翻譯成電腦可以明白的方式。
 ###Lexical Environment
-Lexical的原意為，與字詞或語法相關的。Lexical Environment在Javascript代表的是，今天我們Code寫在哪個 位置 ，是非常重要的。
+Lexical的原意為，與字詞或語法相關的。Lexical Environment在Javascript代表的是，今天我們Code寫在哪個 位置	，是非常重要的。
 上面我們看到有一個變數，在函式裡面，這變數在字詞上來說就是坐落於、存在於這個函式，這隻函式{ &amp;hellip; } 就是一個Lexical Environment。
 就如我們上面講的，我們寫的Code是會經過Syntax Parser翻譯的，而翻譯的過程它是對於這些字詞存在的位置很在意的，寫的位置是會影響存放於電腦記憶體中的位置，以及如何去與其他變數、函式、元素互動的。
 所以當我們提到Lexical Environment中，便是在討論code是被寫在哪個段落位置以及被什麼東西涵蓋住。一隻程式
@@ -434,8 +453,9 @@ Lexical的原意為，與字詞或語法相關的。Lexical Environment在Javasc
 Execution Context就像是一張包裝紙，幫助管理哪段Code正在被執行。如同我們上面提到的，一隻程式會有許多個Lexical Environment，那哪一個先執行便是透過Execution Contexts管理。
 而最基本的Execution Context就是 Global Execution Context，每隻Javascript程式一開始一定會有的傢伙，而這傢伙在一開始便替我們做兩件事，創造 Global Object &amp;amp; This。
 Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Access到的物件。 this - 之後會有篇幅說明
-###ECMAScript Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合 ECMAScript標準 的一個實作，而ECMAScript標準是不止一個版本的，隨著時代演進，尤其在近年前端的大量改革下，ECMAScript近幾年也開始頻繁性的改動。
-而目前ECMAScript主要常見的有以下三種 1.</description>
+###ECMAScript Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合	ECMAScript標準 的一個實作，而ECMAScript標準是不止一個版本的，隨著時代演進，尤其在近年前端的大量改革下，ECMAScript近幾年也開始頻繁性的改動。
+而目前ECMAScript主要常見的有以下三種
+ ES5 = ECMAScript 5 ES6 = ECMAScript 6 ES7 = ECMAScript 7  基本上除了ES5的標準目前是被主流Browser接受外，目前ES6與ES7的一些新語法及規範還尚未被Browser完全採納，但，身處一個不斷進化的世代，還是建議以未來的標準去撰寫。</description>
     </item>
     
   </channel>

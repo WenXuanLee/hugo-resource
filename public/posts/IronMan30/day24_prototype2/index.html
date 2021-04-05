@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day26_fp/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day27_colorgame/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           prototype | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="prototype | Ben the front-end dust">
     
   
@@ -36,23 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "prototype",
     "headline" : "prototype",
-    "description" : "Everything is Object 今天來談談prototype一些注意的細節，我們知道Javascript裡面所有的變數都是一個物件不然就是Primtive，也就是說除了primitive - number, string, boolean, ect 以外，全都是物件 - function、array、basic objects. 所有的物件以及primitive都有prototype。
-但唯一有一個例外，base object，也就是object的最底層。
-Everything has a prototype 讓我們用一下範例來看一下prototype吧，我們用basic object、function、array為例子。
-var a = {}; function b() {}; var c = [];  Object a 我們看到了物件a的proto仍然是一個物件，而其中擁有許多property以及method，其中我們可以看到熟悉的toString()。
-function b function b的proto則是一個function object，而其中包含的許多method，包含我們先前才介紹的call()、apply()、bind()，這也就是為什麼每個function都能使用這三個method的原因，就是擁有這個function prototype。
-array c array的proto我們看到了仍然是一個object，而這個object包含了常見的array method，包括了 pop()、push() &hellip; ，所有的array proto都會指到這一個object，也就是為何每個array都可以用到常見的method。
-Tricky 透過三個範例知道了為什麼平常可以用一些好用的method了嗎，這就是prototype的功力阿，
-那如果這些proto的proto又是什麼呢。
-這就是最底層的object了，每個object都共享的base object。
-reflection &amp; extend 接下來我們深入探討一下object的兩個觀念，有助於我們理解prototype的運作
-Reflection Reflection的定義為，object可以查看自己，列出並更改自己的properties &amp; methods。所以Javascript Object能夠觀察自己的properties &amp; methods。
-透過這樣的一個特性我們可以實行一個好用的pattern - extend。 那我們先來看一下 Reflection的範例。",
+    "description" : "Everything is Object 今天來談談prototype一些注意的細節，我們知道Javascript裡面所有的變數都是一個物件不然就是Primtive，也就是說除了primitive - number, string, boolean, ect 以外，全都是物件 - function、array、basic objects. 所有的物件以及primitive都有prototype。\n但唯一有一個例外，base object，也就是object的最底層。\nEverything has a prototype 讓我們用一下範例來看一下prototype吧，我們用basic object、function、array為例子。\nvar a = {}; function b() {}; var c = []; Object a 我們看到了物件a的proto仍然是一個物件，而其中擁有許多property以及method，其中我們可以看到熟悉的toString()。\nfunction b function b的proto則是一個function object，而其中包含的許多method，包含我們先前才介紹的call()、apply()、bind()，這也就是為什麼每個function都能使用這三個method的原因，就是擁有這個function prototype。\narray c array的proto我們看到了仍然是一個object，而這個object包含了常見的array method，包括了 pop()、push() \u0026hellip; ，所有的array proto都會指到這一個object，也就是為何每個array都可以用到常見的method。\nTricky 透過三個範例知道了為什麼平常可以用一些好用的method了嗎，這就是prototype的功力阿，\n那如果這些proto的proto又是什麼呢。\n這就是最底層的object了，每個object都共享的base object。\nreflection \u0026amp; extend 接下來我們深入探討一下object的兩個觀念，有助於我們理解prototype的運作\nReflection Reflection的定義為，object可以查看自己，列出並更改自己的properties \u0026amp; methods。所以Javascript Object能夠觀察自己的properties \u0026amp; methods。\n透過這樣的一個特性我們可以實行一個好用的pattern - extend。 那我們先來看一下 Reflection的範例。",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -60,9 +54,9 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-01-08 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-01-08 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day24_prototype2/",
+    "datePublished": "2018-01-08 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-01-08 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day24_prototype2\/",
     "wordCount" : "230",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
@@ -78,7 +72,7 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -86,6 +80,8 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -95,7 +91,7 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -107,6 +103,8 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -120,7 +118,7 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">prototype</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-01-08 itemprop="datePublished">January 8, 2018</time>
                 </span>
@@ -149,64 +147,35 @@ Reflection Reflection的定義為，object可以查看自己，列出並更改�
           
           
 
-          
-
-<h2 id="everything-is-object">Everything is Object</h2>
-
+          <h2 id="everything-is-object">Everything is Object</h2>
 <p>今天來談談prototype一些注意的細節，我們知道Javascript裡面所有的變數都是一個物件不然就是Primtive，也就是說除了primitive - number, string, boolean, ect 以外，全都是物件 - function、array、basic objects. 所有的物件以及primitive都有prototype。</p>
-
 <p>但唯一有一個例外，base object，也就是object的最底層。</p>
-
 <h2 id="everything-has-a-prototype">Everything has a prototype</h2>
-
 <p>讓我們用一下範例來看一下prototype吧，我們用basic object、function、array為例子。</p>
-
 <pre><code>var a = {};
 function b() {};
 var c = [];
-</code></pre>
-
-<h3 id="object-a">Object a</h3>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype5.png" /></p>
-
+</code></pre><h3 id="object-a">Object a</h3>
+<p><!-- raw HTML omitted --></p>
 <p>我們看到了物件a的proto仍然是一個物件，而其中擁有許多property以及method，其中我們可以看到熟悉的toString()。</p>
-
 <h3 id="function-b">function b</h3>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype7.png" /></p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype6.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted --></p>
 <p>function b的proto則是一個function object，而其中包含的許多method，包含我們先前才介紹的call()、apply()、bind()，這也就是為什麼每個function都能使用這三個method的原因，就是擁有這個function prototype。</p>
-
 <h3 id="array-c">array c</h3>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype8.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>array的proto我們看到了仍然是一個object，而這個object包含了常見的array method，包括了 pop()、push() &hellip; ，所有的array proto都會指到這一個object，也就是為何每個array都可以用到常見的method。</p>
-
 <h4 id="tricky">Tricky</h4>
-
 <p>透過三個範例知道了為什麼平常可以用一些好用的method了嗎，這就是prototype的功力阿，</p>
-
 <p>那如果這些proto的proto又是什麼呢。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype9.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>這就是最底層的object了，每個object都共享的base object。</p>
-
-<h2 id="reflection-extend">reflection &amp; extend</h2>
-
+<h2 id="reflection--extend">reflection &amp; extend</h2>
 <p>接下來我們深入探討一下object的兩個觀念，有助於我們理解prototype的運作</p>
-
 <h3 id="reflection">Reflection</h3>
-
 <p>Reflection的定義為，object可以查看自己，列出並更改自己的properties &amp; methods。所以Javascript Object能夠觀察自己的properties &amp; methods。</p>
-
 <p>透過這樣的一個特性我們可以實行一個好用的pattern - extend。
 那我們先來看一下 Reflection的範例。</p>
-
 <pre><code>var person = {
 	firstName: 'Default',
 	lastName: 'Default',
@@ -228,28 +197,18 @@ for ( var prop in john) {
 	console.log(prop + ': ' + john[prop]);
 }
 
-</code></pre>
-
-<p>得到的結果為</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype10.png" /></p>
-
+</code></pre><p>得到的結果為</p>
+<p><!-- raw HTML omitted --></p>
 <p>有沒有發現哪裡怪怪的，proto的method也被列出來了，這樣未免也太混淆了，所以我們可以透過 hasOwnProperty()method，只查看自己物件的property就好。</p>
-
 <pre><code>for ( var prop in john) {
 	if(john.hasOwnProperty(prop)) {
 		console.log(prop + ': ' + john[prop]);
 	}
 }
 
-</code></pre>
-
-<p>因此我們可以reflect john object，查看它的properties &amp; method。</p>
-
+</code></pre><p>因此我們可以reflect john object，查看它的properties &amp; method。</p>
 <h3 id="extend">Extend</h3>
-
 <p>透過上述我們知道object可以查看自己，並運用此特性做extend，也就是雖然可以share object內的property &amp; methods，但有時候object會想要新增一些功能而不要是prototype型態，這時候我們就能利用extends來達到。</p>
-
 <pre><code>var person = {
 	firstName: 'Default',
 	lastName: 'Default',
@@ -280,16 +239,11 @@ var jane = {
 
 $.extend(true, john, jane);
 console.log(john);
-</code></pre>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype11.png" /></p>
-
+</code></pre><p><!-- raw HTML omitted --></p>
 <p>上面的範例中，我們透過extend將兩個物件結合起來，不同於prototype，extends只屬於特定object，將原本的物件做擴增的動作，而這也常被應用於library，也就是我們可以透過extend的作法，寫出自己的library，我們可以結合objects，而不需要一直透過prototype chain。</p>
-
 <h3 id="參考來源">參考來源</h3>
-
 <ol>
-<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview" rel="nofollow noreferrer" target="_blank">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
+<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
 </ol>
 
     </div>
@@ -353,9 +307,11 @@ console.log(john);
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -374,7 +330,6 @@ console.log(john);
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

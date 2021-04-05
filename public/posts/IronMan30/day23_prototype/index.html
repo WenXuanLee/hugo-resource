@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day22_callapply/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day26_fp/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           prototype | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="prototype | Ben the front-end dust">
     
   
@@ -36,31 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "prototype",
     "headline" : "prototype",
-    "description" : "prototype Prototype可以說是Javascript至關重要的一環，嚴格來說Prototype不管在哪個程式語言都是很重要的觀念，但Javascript的prototype觀念又跟多數的程式語言有著特別的不同。
-今天就來討論一下最根本的觀念，Object-oriented Javascript &amp; Prototypal Inheritance。
-當提到了object-oriented，我們主要會專注在物件的創造，因為這個Part藏著許多讓人混淆的部分。
-Inheritance 首先我們先理解繼承的概念，Javascript內的繼承核心概念就是，是一個物件可以access到另一個物件的property、method。
-Classical Inheritance 如果你學過Java或者其他程式語言，相信你對class一定不陌生，透過class可以分享methods &amp; properties給class的instance。
-但聰明的你一定發現，這樣的繼承方式顯得有點冗贅，並且容易交互影響，很難去搞明白這群物件們是怎麼與彼此互動的，你得搞明白許多keywords protected、private、interface、blablabla。
-並不是說classical的方式就是不好，它肯定有它的好處才會這麼受歡迎，只是仍然有些不足的部分。
-Prototypal Inheritance Prototypal Inheritance，它相對的易於使用，並且容易修改或者擴增，以及容易理解其中的脈絡，但也不是完美無缺的，相對的結構比較鬆散，一不注意就會讓整個結構變的混亂。
-Again 當我們提到Javascript的 inheritance時，我們就只在意一個最核心的觀念，也就是，一個Object 可以 access 另一個object 的 properties &amp; methods.
-想更清楚明白剛剛提到的兩種繼承差異，請服用下面這篇文章。
-What’s the Difference Between Class &amp; Prototypal Inheritance
-Understanding the prototype 到底什麼是prototype呢，我們知道Javascript的物件都有properties，而實際上Javascript內的物件都有一個prototype property - proto ，
-proto 主要是連結到其他物件的一個reference，而它也就是我們的prototype，看下圖。
-今天我們obj.prop2若在原本的obj內找不到的話，則會往proto去尋找，也就是往prototype去找，借由proto再去看看有沒有一個property name，有的話則reutrn回來。
-就片面來看我們會以為obj含有prop2，但實際上prop2是存在於object prototype裡面。
-同時，proto這個物件可以再指到另一個proto，每個物件都有自己的prototype，可以一直延展下去，prototype的prototype可能也有其它property。
-這樣一層一層prototype組織而成的鍊子，就稱為prototype chain - 原型鍊。
-而這個原型鍊通常是藏住的不會被看到的，也就是我們不會打 obj.proto.proto.prop3，而只要obj.prop3就會得到，Javascript Engine會透過原型鍊去尋找property &amp; method。
-而不一樣的Object卻有可能擁有同樣的proto。
-我們知道proto只是一個reference，所以我們share到的同樣的property，不論是 obj.prop2 or obj2.",
+    "description" : "prototype Prototype可以說是Javascript至關重要的一環，嚴格來說Prototype不管在哪個程式語言都是很重要的觀念，但Javascript的prototype觀念又跟多數的程式語言有著特別的不同。\n今天就來討論一下最根本的觀念，Object-oriented Javascript \u0026amp; Prototypal Inheritance。\n當提到了object-oriented，我們主要會專注在物件的創造，因為這個Part藏著許多讓人混淆的部分。\nInheritance 首先我們先理解繼承的概念，Javascript內的繼承核心概念就是，是一個物件可以access到另一個物件的property、method。\nClassical Inheritance 如果你學過Java或者其他程式語言，相信你對class一定不陌生，透過class可以分享methods \u0026amp; properties給class的instance。\n但聰明的你一定發現，這樣的繼承方式顯得有點冗贅，並且容易交互影響，很難去搞明白這群物件們是怎麼與彼此互動的，你得搞明白許多keywords protected、private、interface、blablabla。\n並不是說classical的方式就是不好，它肯定有它的好處才會這麼受歡迎，只是仍然有些不足的部分。\nPrototypal Inheritance Prototypal Inheritance，它相對的易於使用，並且容易修改或者擴增，以及容易理解其中的脈絡，但也不是完美無缺的，相對的結構比較鬆散，一不注意就會讓整個結構變的混亂。\nAgain 當我們提到Javascript的 inheritance時，我們就只在意一個最核心的觀念，也就是，一個Object 可以 access 另一個object 的 properties \u0026amp; methods.\n想更清楚明白剛剛提到的兩種繼承差異，請服用下面這篇文章。\nWhat’s the Difference Between Class \u0026amp; Prototypal Inheritance\nUnderstanding the prototype 到底什麼是prototype呢，我們知道Javascript的物件都有properties，而實際上Javascript內的物件都有一個prototype property - proto ，\nproto 主要是連結到其他物件的一個reference，而它也就是我們的prototype，看下圖。\n今天我們obj.prop2若在原本的obj內找不到的話，則會往proto去尋找，也就是往prototype去找，借由proto再去看看有沒有一個property name，有的話則reutrn回來。\n就片面來看我們會以為obj含有prop2，但實際上prop2是存在於object prototype裡面。\n同時，proto這個物件可以再指到另一個proto，每個物件都有自己的prototype，可以一直延展下去，prototype的prototype可能也有其它property。\n這樣一層一層prototype組織而成的鍊子，就稱為prototype chain - 原型鍊。\n而這個原型鍊通常是藏住的不會被看到的，也就是我們不會打 obj.proto.proto.prop3，而只要obj.prop3就會得到，Javascript Engine會透過原型鍊去尋找property \u0026amp; method。\n而不一樣的Object卻有可能擁有同樣的proto。\n我們知道proto只是一個reference，所以我們share到的同樣的property，不論是 obj.prop2 or obj2.prop2指到的都是同樣的記憶體位置，同樣的property。",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -68,9 +54,9 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-01-07 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-01-07 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day23_prototype/",
+    "datePublished": "2018-01-07 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-01-07 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day23_prototype\/",
     "wordCount" : "96",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
@@ -86,7 +72,7 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -94,6 +80,8 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -103,7 +91,7 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -115,6 +103,8 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -128,7 +118,7 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">prototype</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-01-07 itemprop="datePublished">January 7, 2018</time>
                 </span>
@@ -157,85 +147,46 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
           
           
 
-          
-
-<h2 id="prototype">prototype</h2>
-
+          <h2 id="prototype">prototype</h2>
 <p>Prototype可以說是Javascript至關重要的一環，嚴格來說Prototype不管在哪個程式語言都是很重要的觀念，但Javascript的prototype觀念又跟多數的程式語言有著特別的不同。</p>
-
 <p>今天就來討論一下最根本的觀念，Object-oriented Javascript &amp; Prototypal Inheritance。</p>
-
 <p>當提到了object-oriented，我們主要會專注在物件的創造，因為這個Part藏著許多讓人混淆的部分。</p>
-
 <h2 id="inheritance">Inheritance</h2>
-
 <p>首先我們先理解繼承的概念，Javascript內的繼承核心概念就是，是一個物件可以access到另一個物件的property、method。</p>
-
 <h3 id="classical-inheritance">Classical Inheritance</h3>
-
 <p>如果你學過Java或者其他程式語言，相信你對class一定不陌生，透過class可以分享methods &amp; properties給class的instance。</p>
-
 <p>但聰明的你一定發現，這樣的繼承方式顯得有點冗贅，並且容易交互影響，很難去搞明白這群物件們是怎麼與彼此互動的，你得搞明白許多keywords protected、private、interface、blablabla。</p>
-
 <p>並不是說classical的方式就是不好，它肯定有它的好處才會這麼受歡迎，只是仍然有些不足的部分。</p>
-
 <h3 id="prototypal-inheritance">Prototypal Inheritance</h3>
-
 <p>Prototypal Inheritance，它相對的易於使用，並且容易修改或者擴增，以及容易理解其中的脈絡，但也不是完美無缺的，相對的結構比較鬆散，一不注意就會讓整個結構變的混亂。</p>
-
 <h3 id="again">Again</h3>
-
 <p>當我們提到Javascript的 inheritance時，我們就只在意一個最核心的觀念，也就是，一個Object 可以 access 另一個object 的 properties &amp; methods.</p>
-
 <p>想更清楚明白剛剛提到的兩種繼承差異，請服用下面這篇文章。</p>
-
-<p><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9" rel="nofollow noreferrer" target="_blank">What’s the Difference Between Class &amp; Prototypal Inheritance</a></p>
-
+<p><a href="https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9">What’s the Difference Between Class &amp; Prototypal Inheritance</a></p>
 <h2 id="understanding-the-prototype">Understanding the prototype</h2>
-
 <p>到底什麼是prototype呢，我們知道Javascript的物件都有properties，而實際上Javascript內的物件都有一個prototype property - <strong>proto</strong> ，</p>
-
 <p><strong>proto</strong> 主要是連結到其他物件的一個reference，而它也就是我們的prototype，看下圖。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>今天我們obj.prop2若在原本的obj內找不到的話，則會往proto去尋找，也就是往prototype去找，借由proto再去看看有沒有一個property name，有的話則reutrn回來。</p>
-
 <p>就片面來看我們會以為obj含有prop2，但實際上prop2是存在於object prototype裡面。</p>
-
 <p>同時，proto這個物件可以再指到另一個proto，每個物件都有自己的prototype，可以一直延展下去，prototype的prototype可能也有其它property。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype1.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>這樣一層一層prototype組織而成的鍊子，就稱為prototype chain - 原型鍊。</p>
-
 <p>而這個原型鍊通常是藏住的不會被看到的，也就是我們不會打 obj.proto.proto.prop3，而只要obj.prop3就會得到，Javascript Engine會透過原型鍊去尋找property &amp; method。</p>
-
 <p>而不一樣的Object卻有可能擁有同樣的proto。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype2.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>我們知道proto只是一個reference，所以我們share到的同樣的property，不論是 obj.prop2 or obj2.prop2指到的都是同樣的記憶體位置，同樣的property。</p>
-
 <p>這就是原型鍊，也就是prototype的概念，就這樣，別想太多，就是一個object會有reference到proto去，這個proto可能含有其他property &amp; methods，但不用記得它再哪，Javascript Engine會自動透過prototype chain幫我們找。</p>
-
 <h3 id="還是要sample一下">還是要Sample一下</h3>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype3.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>範例中，我們主動將john的prototype設為person，因此儘管john物件中沒有greet()，仍然可以透過prototype chain 去使用prototype裡面的method，也就是共享。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/prototype4.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>而當我們取用firstName這個property時，為什麼不是得到Default呢? 這是因為，Javascript Engine會先尋找物件裡是否有此property，若沒有才會透過prototype chain去尋找。</p>
-
-<hr />
-
+<hr>
 <h3 id="參考來源">參考來源</h3>
-
 <ol>
-<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview" rel="nofollow noreferrer" target="_blank">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md" rel="nofollow noreferrer" target="_blank">You don&rsquo;t know JS</a></li>
+<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch2.md">You don&rsquo;t know JS</a></li>
 </ol>
 
     </div>
@@ -299,9 +250,11 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -320,7 +273,6 @@ proto 主要是連結到其他物件的一個reference，而它也就是我們�
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

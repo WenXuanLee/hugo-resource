@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day19_closures/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day22_callapply/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           This | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="This | Ben the front-end dust">
     
   
@@ -36,27 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "This",
     "headline" : "This",
-    "description" : "This 今天我們講講This，到底this是this什麼東西，榮登Javascript界Top3疑惑的傢伙，常常看到別人的程式碼this來this去的到底在搞什麼鬼，自己用的時候卻又不明所以，模模糊糊的，今天我們就來揭開這團迷霧吧 !
-Throw back creation phase 當要探討this時，我們得先回想一下execution context，當execution context創建時，我們知道會有
- variable environment決定variable的建立以及存活 Outer reference environment確定位置，用來查詢scope chain的脈絡。 This - 我們的大魔王，每次創建時都會有這傢伙，我們不需要宣告或創建它，就是會給我們這個傢伙 this ，而它根據我們呼叫函式的方式，指向一個不同的物件。   也就是我們今天要探討的主題 !
-Let&rsquo;s get this !! This常常會帶來很多疑惑，因為根據函式呼叫的方式，每一次this指向的東西都會隨之變化，關於這個this會有許多情景，我們就來一探究竟。
-this with window 我們已經知道，global execution context中也會內建一個this，而這個this指定到window。
-讓我們換一個方式來看看，倘若今天用一個函式a包起來，並呼叫函式a。
-函式裡的this仍然會指到window object。
-我們再換一個方式，將function expression存放到變數中。
-Again，還是指到window，不管是a或是b的execution context中，雖然各自取得自己的this，但取到的都是同一個記憶體位置的物件，也就是window，都指到了global object.
-這代表我們可以做出一些特別的行為，如以下我們透過this.newVar建立了一個新的global object。 是不是挺莫名的，如果不明白this是如何指到其他物件，你會有錯誤的觀念以為this就是連結到函式裡面，燈愣 ! 那就完蛋拉，你便會不小心造出一堆global object進而有一堆問題。
-this with object method 當今天我們object裡的method用到了this又會指到哪個物件去呢。
-在這個案例，function是物件的一個method，屬於一個物件，當Javascript engine看到這個裡面的this，會認為，阿你就是連結到這個這個物件的，因此這個this指到物件C，因此我們可以做到下面這檔事。
-看到了嗎，透過this.name我們改變了object的property，這是很方便一個用處，method中我們可以透過this拿到或改變其他同物件裡的properties，相當酷吧!
-那如果今天method內又包含了一個function後會怎麼回事 燈愣 ! 你以為應該要秀出Big C 但事實卻不是這樣，那這個newName到底去哪了呢，讓我們來看看。 我的老天鵝阿，跑到了window的global object裡去了，這代表method裡面的那個function的this仍然指到了window，儘管它位於object裡面。
-這不可能發生，直到現在，我還是不願意相信我的眼睛，相信你也跟我一樣，這太誇張了真的，但沒辦法Javascript大老就是這樣運作的，那我們遇到這種狀況該怎麼辦呢?如何確保我的this是指到我想要的object而不是window。
-簡易的方法就是在確定this指到我們要的物件時，將它存取到一個變數中，之後透過這個變數去使用，如上圖的self。",
+    "description" : "This 今天我們講講This，到底this是this什麼東西，榮登Javascript界Top3疑惑的傢伙，常常看到別人的程式碼this來this去的到底在搞什麼鬼，自己用的時候卻又不明所以，模模糊糊的，今天我們就來揭開這團迷霧吧 !\nThrow back creation phase 當要探討this時，我們得先回想一下execution context，當execution context創建時，我們知道會有\n variable environment決定variable的建立以及存活 Outer reference environment確定位置，用來查詢scope chain的脈絡。 This - 我們的大魔王，每次創建時都會有這傢伙，我們不需要宣告或創建它，就是會給我們這個傢伙 this ，而它根據我們呼叫函式的方式，指向一個不同的物件。   也就是我們今天要探討的主題 !\nLet\u0026rsquo;s get this !! This常常會帶來很多疑惑，因為根據函式呼叫的方式，每一次this指向的東西都會隨之變化，關於這個this會有許多情景，我們就來一探究竟。\nthis with window 我們已經知道，global execution context中也會內建一個this，而這個this指定到window。\n讓我們換一個方式來看看，倘若今天用一個函式a包起來，並呼叫函式a。\n函式裡的this仍然會指到window object。\n我們再換一個方式，將function expression存放到變數中。\nAgain，還是指到window，不管是a或是b的execution context中，雖然各自取得自己的this，但取到的都是同一個記憶體位置的物件，也就是window，都指到了global object.\n這代表我們可以做出一些特別的行為，如以下我們透過this.newVar建立了一個新的global object。 是不是挺莫名的，如果不明白this是如何指到其他物件，你會有錯誤的觀念以為this就是連結到函式裡面，燈愣 ! 那就完蛋拉，你便會不小心造出一堆global object進而有一堆問題。\nthis with object method 當今天我們object裡的method用到了this又會指到哪個物件去呢。\n在這個案例，function是物件的一個method，屬於一個物件，當Javascript engine看到這個裡面的this，會認為，阿你就是連結到這個這個物件的，因此這個this指到物件C，因此我們可以做到下面這檔事。\n看到了嗎，透過this.name我們改變了object的property，這是很方便一個用處，method中我們可以透過this拿到或改變其他同物件裡的properties，相當酷吧!\n那如果今天method內又包含了一個function後會怎麼回事 燈愣 ! 你以為應該要秀出Big C 但事實卻不是這樣，那這個newName到底去哪了呢，讓我們來看看。 我的老天鵝阿，跑到了window的global object裡去了，這代表method裡面的那個function的this仍然指到了window，儘管它位於object裡面。\n這不可能發生，直到現在，我還是不願意相信我的眼睛，相信你也跟我一樣，這太誇張了真的，但沒辦法Javascript大老就是這樣運作的，那我們遇到這種狀況該怎麼辦呢?如何確保我的this是指到我想要的object而不是window。\n簡易的方法就是在確定this指到我們要的物件時，將它存取到一個變數中，之後透過這個變數去使用，如上圖的self。\n當我們bind在一起 上面我們提到一個簡易的方法可以確保this所指向的物件，而其時Javascript也有一個方法叫bind()可以解決此類的問題，透過bind可以將this綁定在物件，而不要指到window去，後面會再介紹一次。",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -64,9 +54,9 @@ this with object method 當今天我們object裡的method用到了this又會指�
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-01-05 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-01-05 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day21_this/",
+    "datePublished": "2018-01-05 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-01-05 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day21_this\/",
     "wordCount" : "95",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
@@ -82,7 +72,7 @@ this with object method 當今天我們object裡的method用到了this又會指�
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -90,6 +80,8 @@ this with object method 當今天我們object裡的method用到了this又會指�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -99,7 +91,7 @@ this with object method 當今天我們object裡的method用到了this又會指�
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -111,6 +103,8 @@ this with object method 當今天我們object裡的method用到了this又會指�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -124,7 +118,7 @@ this with object method 當今天我們object裡的method用到了this又會指�
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">This</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-01-05 itemprop="datePublished">January 5, 2018</time>
                 </span>
@@ -153,103 +147,60 @@ this with object method 當今天我們object裡的method用到了this又會指�
           
           
 
-          
-
-<h2 id="this">This</h2>
-
+          <h2 id="this">This</h2>
 <p>今天我們講講This，到底this是this什麼東西，榮登Javascript界Top3疑惑的傢伙，常常看到別人的程式碼this來this去的到底在搞什麼鬼，自己用的時候卻又不明所以，模模糊糊的，今天我們就來揭開這團迷霧吧 !</p>
-
 <h2 id="throw-back-creation-phase">Throw back creation phase</h2>
-
 <p>當要探討this時，我們得先回想一下execution context，當execution context創建時，我們知道會有</p>
-
 <ol>
 <li>variable environment決定variable的建立以及存活</li>
 <li>Outer reference environment確定位置，用來查詢scope chain的脈絡。</li>
 <li>This - 我們的大魔王，每次創建時都會有這傢伙，我們不需要宣告或創建它，就是會給我們這個傢伙 <strong>this</strong> ，而它根據我們呼叫函式的方式，指向一個不同的物件。
-<img style="width:100%;height:auto;padding:10px" src="../images/this.png" /></li>
+<!-- raw HTML omitted --></li>
 </ol>
-
 <p>也就是我們今天要探討的主題 !</p>
-
-<h2 id="let-s-get-this">Let&rsquo;s get this !!</h2>
-
+<h2 id="lets-get-this-">Let&rsquo;s get this !!</h2>
 <p>This常常會帶來很多疑惑，因為根據函式呼叫的方式，每一次this指向的東西都會隨之變化，關於這個this會有許多情景，我們就來一探究竟。</p>
-
 <h3 id="this-with-window">this with window</h3>
-
 <p>我們已經知道，global execution context中也會內建一個this，而這個this指定到window。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this1.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>讓我們換一個方式來看看，倘若今天用一個函式a包起來，並呼叫函式a。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this2.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>函式裡的this仍然會指到window object。</p>
-
 <p>我們再換一個方式，將function expression存放到變數中。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this3.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>Again，還是指到window，不管是a或是b的execution context中，雖然各自取得自己的this，但取到的都是同一個記憶體位置的物件，也就是window，都指到了global object.</p>
-
 <p>這代表我們可以做出一些特別的行為，如以下我們透過this.newVar建立了一個新的global object。
-<img style="width:100%;height:auto;padding:10px" src="../images/this4.png" /></p>
-
+<!-- raw HTML omitted --></p>
 <p>是不是挺莫名的，如果不明白this是如何指到其他物件，你會有錯誤的觀念以為this就是連結到函式裡面，燈愣 ! 那就完蛋拉，你便會不小心造出一堆global object進而有一堆問題。</p>
-
 <h3 id="this-with-object-method">this with object method</h3>
-
 <p>當今天我們object裡的method用到了this又會指到哪個物件去呢。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this5.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>在這個案例，function是物件的一個method，屬於一個物件，當Javascript engine看到這個裡面的this，會認為，阿你就是連結到這個這個物件的，因此這個this指到物件C，因此我們可以做到下面這檔事。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this6.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>看到了嗎，透過this.name我們改變了object的property，這是很方便一個用處，method中我們可以透過this拿到或改變其他同物件裡的properties，相當酷吧!</p>
-
 <p>那如果今天method內又包含了一個function後會怎麼回事
-<img style="width:100%;height:auto;padding:10px" src="../images/this7.png" /></p>
-
+<!-- raw HTML omitted --></p>
 <p>燈愣 ! 你以為應該要秀出Big C 但事實卻不是這樣，那這個newName到底去哪了呢，讓我們來看看。
-<img style="width:100%;height:auto;padding:10px" src="../images/this8.png" /></p>
-
+<!-- raw HTML omitted --></p>
 <p>我的老天鵝阿，跑到了window的global object裡去了，這代表method裡面的那個function的this仍然指到了window，儘管它位於object裡面。</p>
-
 <p>這不可能發生，直到現在，我還是不願意相信我的眼睛，相信你也跟我一樣，這太誇張了真的，但沒辦法Javascript大老就是這樣運作的，那我們遇到這種狀況該怎麼辦呢?如何確保我的this是指到我想要的object而不是window。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this9.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>簡易的方法就是在確定this指到我們要的物件時，將它存取到一個變數中，之後透過這個變數去使用，如上圖的self。</p>
-
 <h3 id="當我們bind在一起">當我們bind在一起</h3>
-
 <p>上面我們提到一個簡易的方法可以確保this所指向的物件，而其時Javascript也有一個方法叫bind()可以解決此類的問題，透過bind可以將this綁定在物件，而不要指到window去，後面會再介紹一次。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this10.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <h3 id="es6-way">ES6 way</h3>
-
 <p>ES6新提供的arrow function也可以解決這類問題，而詳細的內容就請大家去翻閱，這邊就只介紹用法給大家。</p>
-
-<p><img style="width:100%;height:auto;padding:10px" src="../images/this10.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <ul>
 <li>arrow function - (argu, argu1&hellip;) =&gt; { &hellip; }</li>
 </ul>
-
-<hr />
-
+<hr>
 <p>以上就是今天的內容了，小弟常常被this搞得死去活來，希望透過今天的範例，大家可以減少一些跟我一樣死去活來的狀況，雖然我現在還是死去活來的，以上就是今天的內容嚕。</p>
-
 <h3 id="參考來源">參考來源</h3>
-
 <ol>
-<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview" rel="nofollow noreferrer" target="_blank">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/apC.md" rel="nofollow noreferrer" target="_blank">You don&rsquo;t know JS</a></li>
+<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/apC.md">You don&rsquo;t know JS</a></li>
 </ol>
 
     </div>
@@ -313,9 +264,11 @@ this with object method 當今天我們object裡的method用到了this又會指�
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -334,7 +287,6 @@ this with object method 當今天我們object裡的method用到了this又會指�
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

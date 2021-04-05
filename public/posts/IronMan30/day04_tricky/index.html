@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/ironman30/day03_primitivetypes/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day05_objecttypes/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Undefined &amp; Null | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Undefined &amp; Null | Ben the front-end dust">
     
   
@@ -36,30 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
-    "name" : "Undefined &amp; Null",
-    "headline" : "Undefined &amp; Null",
-    "description" : " ##Tricky Undefined &amp; Null
-今天這一章我們就來看一下前面沒細談的Undefined &amp; Null types ! 一般在其他程式語言Null是被當作一個空值的，而在Javascript也是，但Javascript中又有另一個Undefined的type，，當這兩個做比較的時候會有很神奇的事情發生。
-上圖中，當兩者用 == 比較時，是True，原因是兩個都代表著此變數不帶值， 而 === ，是較嚴謹的比較方式，連Type都會納入考量，所以是false。 同樣都代表著空值兩者差異到底在哪，但要說Undefined為不帶值聽起來是挺怪的我們下面會再解釋。
-而通常我們如果想要假設某變數為空值，我們會用null而不會主動塞給變數undefined。
-除了相異處，兩者也有共通點，例如兩者的Boolean default都是false。
-但聰明如你，一定會試著用typeof 一窺他們的秘密，此時你會發現一個天大的消息，相信你一定重複按了很多次，嚴重懷疑是不是自己打錯了或是語法出了問題。
-為什麼type null 不是null？這得追溯到Javscript的歷史了，但我是印象派，只喜歡個大概，所以為什麼會這樣就請看官有興趣自行上網查閱。
-至於為什麼到至今的版本中，仍然沒改善這個問題，這是由於，目前有太多程式的運作是依賴這個Bug的特性，因此倘若改的話可能會有更多Bug出現，所以就不要期待這個Bug被修好吧嘿嘿。
-###Undefined &amp; is not defined ? 字面上來看這兩個應該是相同道理的，但並不是的，這也是容易讓人疑惑的部分，首先Undefined是不會有Error的，而 is not defined是Error給出的訊息。
-在Javascript我們看到undefined，事實上並不是真的代表字面上的意思，而是代表著一個 Special Value ，它代表的是變數還沒被設定一個正常值。
-而今天如果我們賦予了a一個值。
-上面兩個範例我們可以看到，第一個還沒給予正常值的話，大家還記得的話，在Creation phase會創立所有變數到記憶體裡面，並給予一個undefined為初始。
-而上面的範例又跟接下來的狀況不太一樣，特別注意到，如果今天我們連變數都沒宣告的話。
-燈愣 ! Error出現了，那是因為在Creation phase的時候它並沒在程式碼找到 var a，因此並沒有替a建立好記憶體空間存放，也就是說a根本不再記憶體內，所以當要在程式碼執行時找到a，就會回傳error，因此我強烈覺得Javascript應該把這個error訊息改成 a is not declared，才不容易造成混淆。
-所以undefined並不是真的代表空值或不存在，而應該說是一個非常特別的值，它一樣佔有記憶體空間，實際上代表著這個 special value是被Javascript主動建立的。
-知道了這個道理之後，千千萬萬要記得，千萬別做以下這個動作。
-事實上這個動作是不會產生Error的，但我們最好讓 undefined這個特殊值永遠代表著一個意思，就是我們，寫程式的人，並沒有替此變數設定一個正常值，也就是說當我們看到undefined就可以知道，阿~這個變數沒有被我們設定到值，這對於debug是非常有幫助的。
-想想你如果做了上圖的動作，今天看到undefined，你會無法確定這個undefined到底是我們設定的還是Javascript初始塞入的，所以永遠讓undefined代表著一個意思就好 - 我們只有宣告並沒有設定這個值。
-參考來源  eloquentjavascript You don&rsquo;t know JS  ",
+    "name" : "Undefined \u0026 Null",
+    "headline" : "Undefined \u0026 Null",
+    "description" : "##Tricky Undefined \u0026amp; Null\n今天這一章我們就來看一下前面沒細談的Undefined \u0026amp; Null types ! 一般在其他程式語言Null是被當作一個空值的，而在Javascript也是，但Javascript中又有另一個Undefined的type，，當這兩個做比較的時候會有很神奇的事情發生。\n上圖中，當兩者用 == 比較時，是True，原因是兩個都代表著此變數不帶值， 而 === ，是較嚴謹的比較方式，連Type都會納入考量，所以是false。 同樣都代表著空值兩者差異到底在哪，但要說Undefined為不帶值聽起來是挺怪的我們下面會再解釋。\n而通常我們如果想要假設某變數為空值，我們會用null而不會主動塞給變數undefined。\n除了相異處，兩者也有共通點，例如兩者的Boolean default都是false。\n但聰明如你，一定會試著用typeof 一窺他們的秘密，此時你會發現一個天大的消息，相信你一定重複按了很多次，嚴重懷疑是不是自己打錯了或是語法出了問題。\n為什麼type null 不是null？這得追溯到Javscript的歷史了，但我是印象派，只喜歡個大概，所以為什麼會這樣就請看官有興趣自行上網查閱。\n至於為什麼到至今的版本中，仍然沒改善這個問題，這是由於，目前有太多程式的運作是依賴這個Bug的特性，因此倘若改的話可能會有更多Bug出現，所以就不要期待這個Bug被修好吧嘿嘿。\n###Undefined \u0026amp; is not defined ? 字面上來看這兩個應該是相同道理的，但並不是的，這也是容易讓人疑惑的部分，首先Undefined是不會有Error的，而 is not defined是Error給出的訊息。\n在Javascript我們看到undefined，事實上並不是真的代表字面上的意思，而是代表著一個 Special Value\t，它代表的是變數還沒被設定一個正常值。\n而今天如果我們賦予了a一個值。\n上面兩個範例我們可以看到，第一個還沒給予正常值的話，大家還記得的話，在Creation phase會創立所有變數到記憶體裡面，並給予一個undefined為初始。\n而上面的範例又跟接下來的狀況不太一樣，特別注意到，如果今天我們連變數都沒宣告的話。\n燈愣 ! Error出現了，那是因為在Creation phase的時候它並沒在程式碼找到 var a，因此並沒有替a建立好記憶體空間存放，也就是說a根本不再記憶體內，所以當要在程式碼執行時找到a，就會回傳error，因此我強烈覺得Javascript應該把這個error訊息改成 a is not declared，才不容易造成混淆。\n所以undefined並不是真的代表空值或不存在，而應該說是一個非常特別的值，它一樣佔有記憶體空間，實際上代表著這個 special value是被Javascript主動建立的。\n知道了這個道理之後，千千萬萬要記得，千萬別做以下這個動作。\n事實上這個動作是不會產生Error的，但我們最好讓 undefined這個特殊值永遠代表著一個意思，就是我們，寫程式的人，並沒有替此變數設定一個正常值，也就是說當我們看到undefined就可以知道，阿~這個變數沒有被我們設定到值，這對於debug是非常有幫助的。\n想想你如果做了上圖的動作，今天看到undefined，你會無法確定這個undefined到底是我們設定的還是Javascript初始塞入的，所以永遠讓undefined代表著一個意思就好 - 我們只有宣告並沒有設定這個值。\n參考來源  eloquentjavascript You don\u0026rsquo;t know JS  ",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -67,9 +54,9 @@
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2017",
-    "datePublished": "2017-12-24 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2017-12-24 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day04_tricky/",
+    "datePublished": "2017-12-24 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2017-12-24 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day04_tricky\/",
     "wordCount" : "69",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
@@ -85,7 +72,7 @@
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -93,6 +80,8 @@
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -102,7 +91,7 @@
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -114,6 +103,8 @@
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -127,7 +118,7 @@
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Undefined &amp; Null</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2017-12-24 itemprop="datePublished">December 24, 2017</time>
                 </span>
@@ -156,68 +147,39 @@
           
           
 
-          
-
-<p>##Tricky Undefined &amp; Null</p>
-
+          <p>##Tricky Undefined &amp; Null</p>
 <p>今天這一章我們就來看一下前面沒細談的Undefined &amp; Null types ! 一般在其他程式語言Null是被當作一個空值的，而在Javascript也是，但Javascript中又有另一個Undefined的type，，當這兩個做比較的時候會有很神奇的事情發生。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>上圖中，當兩者用 <strong>==</strong> 比較時，是True，原因是兩個都代表著<code>此變數不帶值</code>，
 而 <strong>===</strong> ，是較嚴謹的比較方式，連Type都會納入考量，所以是false。
 同樣都代表著空值兩者差異到底在哪，但要說Undefined為不帶值聽起來是挺怪的我們下面會再解釋。</p>
-
 <p>而通常我們如果想要假設某變數為空值，我們會用null而不會主動塞給變數undefined。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky1.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>除了相異處，兩者也有共通點，例如兩者的Boolean default都是false。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky2.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>但聰明如你，一定會試著用typeof 一窺他們的秘密，此時你會發現一個天大的消息，相信你一定重複按了很多次，嚴重懷疑是不是自己打錯了或是語法出了問題。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky3.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>為什麼type null 不是null？這得追溯到Javscript的歷史了，但我是印象派，只喜歡個大概，所以為什麼會這樣就請看官有興趣自行上網查閱。</p>
-
 <p>至於為什麼到至今的版本中，仍然沒改善這個問題，這是由於，目前有太多程式的運作是依賴這個Bug的特性，因此倘若改的話可能會有更多Bug出現，所以就不要期待這個Bug被修好吧嘿嘿。</p>
-
 <p>###Undefined &amp; is not defined ?
 字面上來看這兩個應該是相同道理的，但並不是的，這也是容易讓人疑惑的部分，首先Undefined是不會有Error的，而 is not defined是Error給出的訊息。</p>
-
-<p>在Javascript我們看到undefined，事實上並不是真的代表字面上的意思，而是代表著一個 <strong>Special Value</strong> ，它代表的是<code>變數還沒被設定一個正常值</code>。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky4.png" /></p>
-
+<p>在Javascript我們看到undefined，事實上並不是真的代表字面上的意思，而是代表著一個 <strong>Special Value</strong>	，它代表的是<code>變數還沒被設定一個正常值</code>。</p>
+<p><!-- raw HTML omitted --></p>
 <p>而今天如果我們賦予了a一個值。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky5.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>上面兩個範例我們可以看到，第一個還沒給予正常值的話，大家還記得的話，在Creation phase會創立所有變數到記憶體裡面，並給予一個undefined為初始。</p>
-
 <p>而上面的範例又跟接下來的狀況不太一樣，特別注意到，如果今天我們連變數都沒宣告的話。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky6.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>燈愣 ! Error出現了，那是因為在Creation phase的時候它並沒在程式碼找到 var a，因此並沒有替a建立好記憶體空間存放，也就是說a根本不再記憶體內，所以當要在程式碼執行時找到a，就會回傳error，因此我強烈覺得Javascript應該把這個error訊息改成 <code>a is not declared</code>，才不容易造成混淆。</p>
-
 <p>所以undefined並不是真的代表空值或不存在，而應該說是一個非常特別的值，它一樣佔有記憶體空間，實際上代表著這個 special value是被Javascript主動建立的。</p>
-
 <p>知道了這個道理之後，千千萬萬要記得，千萬別做以下這個動作。</p>
-
-<p><img style="width:100%;height:150px;padding:10px" src="../images/tricky7.png" /></p>
-
+<p><!-- raw HTML omitted --></p>
 <p>事實上這個動作是不會產生Error的，但我們最好讓 undefined這個特殊值永遠代表著一個意思，就是我們，寫程式的人，並沒有替此變數設定一個正常值，也就是說當我們看到undefined就可以知道，阿~這個變數沒有被我們設定到值，這對於debug是非常有幫助的。</p>
-
 <p>想想你如果做了上圖的動作，今天看到undefined，你會無法確定這個undefined到底是我們設定的還是Javascript初始塞入的，所以永遠讓undefined代表著一個意思就好 - 我們只有宣告並沒有設定這個值。</p>
-
 <h3 id="參考來源">參考來源</h3>
-
 <ol>
-<li><a href="http://eloquentjavascript.net/00_intro.html#h_GlF1Kuv0JF" target="_blank">eloquentjavascript</a></li>
-<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/up%20%26%20going/ch2.md" target="_blank">You don&rsquo;t know JS</a></li>
+<li><!-- raw HTML omitted -->eloquentjavascript<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->You don&rsquo;t know JS<!-- raw HTML omitted --></li>
 </ol>
 
     </div>
@@ -281,9 +243,11 @@
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -302,7 +266,6 @@
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

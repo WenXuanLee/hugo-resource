@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   
   <link rel="next" href="https://WenXuanLee.github.io/posts/ironman30/day03_primitivetypes/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Javascript Intro | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Javascript Intro | Ben the front-end dust">
     
   
@@ -36,30 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Javascript Intro",
     "headline" : "Javascript Intro",
-    "description" : "##Javascript Introduction
-身為一個前端工程師，對前端三本柱子大家一定不陌生，HTML、CSS、Javascript，在一個Page裡面，Javascript又扮演著什麼樣的角色呢?
-若用一個英文文法來說的話，HTML就是扮演著Nonus、CSS則是Adj、Javascript則是扮演著Verb的角色，也就是說，Javascript便是控制元素如何與使用者互動的部分，三者合為一體則可以完成一個標準的句子，也就是我們的Web Page。
-主要介紹為
- Synyax Parsers、Execution Contenxts、Lexical Environments Javascript的小故事  ##Javascript 你不知道的事
-Syntax Parser 今天我們寫了一隻Javascript的程式，裡面有密密麻麻的程式碼，身為一個人開發的人，理所當然地你會知道Code代表的意思是什麼，但對電腦而言呢？電腦是不明白我們看得Code，而Syntax Parser就登場囉，你可以想像成，Syntax Parser就像是一個翻譯，負責將我們的Javascript Code 翻譯給電腦讀，進而執行程式。
-所以當我們今天的Javascript Code執行時，會先經過Syntax Parser一字一句讀取我們的程式，並判斷這個語法是否有效，將有效的語法翻譯成電腦可以明白的方式。
-###Lexical Environment
-Lexical的原意為，與字詞或語法相關的。Lexical Environment在Javascript代表的是，今天我們Code寫在哪個 位置 ，是非常重要的。
-上面我們看到有一個變數，在函式裡面，這變數在字詞上來說就是坐落於、存在於這個函式，這隻函式{ &hellip; } 就是一個Lexical Environment。
-就如我們上面講的，我們寫的Code是會經過Syntax Parser翻譯的，而翻譯的過程它是對於這些字詞存在的位置很在意的，寫的位置是會影響存放於電腦記憶體中的位置，以及如何去與其他變數、函式、元素互動的。
-所以當我們提到Lexical Environment中，便是在討論code是被寫在哪個段落位置以及被什麼東西涵蓋住。一隻程式
-###Execution Context
-一隻程式函式這麼多，到底要怎麼知道目前是哪段Code正在執行阿，搞得我好亂R，這時候我們就歡迎偉大的Execution Context，拯救我們的世界。
-Execution Context就像是一張包裝紙，幫助管理哪段Code正在被執行。如同我們上面提到的，一隻程式會有許多個Lexical Environment，那哪一個先執行便是透過Execution Contexts管理。
-而最基本的Execution Context就是 Global Execution Context，每隻Javascript程式一開始一定會有的傢伙，而這傢伙在一開始便替我們做兩件事，創造 Global Object &amp; This。
-Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Access到的物件。 this - 之後會有篇幅說明
-###ECMAScript Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合 ECMAScript標準 的一個實作，而ECMAScript標準是不止一個版本的，隨著時代演進，尤其在近年前端的大量改革下，ECMAScript近幾年也開始頻繁性的改動。
-而目前ECMAScript主要常見的有以下三種 1.",
+    "description" : "##Javascript Introduction\n身為一個前端工程師，對前端三本柱子大家一定不陌生，HTML、CSS、Javascript，在一個Page裡面，Javascript又扮演著什麼樣的角色呢?\n若用一個英文文法來說的話，HTML就是扮演著Nonus、CSS則是Adj、Javascript則是扮演著Verb的角色，也就是說，Javascript便是控制元素如何與使用者互動的部分，三者合為一體則可以完成一個標準的句子，也就是我們的Web Page。\n主要介紹為\n Synyax Parsers、Execution Contenxts、Lexical Environments Javascript的小故事  ##Javascript 你不知道的事\nSyntax Parser 今天我們寫了一隻Javascript的程式，裡面有密密麻麻的程式碼，身為一個人開發的人，理所當然地你會知道Code代表的意思是什麼，但對電腦而言呢？電腦是不明白我們看得Code，而Syntax Parser就登場囉，你可以想像成，Syntax Parser就像是一個翻譯，負責將我們的Javascript Code 翻譯給電腦讀，進而執行程式。\n所以當我們今天的Javascript Code執行時，會先經過Syntax Parser一字一句讀取我們的程式，並判斷這個語法是否有效，將有效的語法翻譯成電腦可以明白的方式。\n###Lexical Environment\nLexical的原意為，與字詞或語法相關的。Lexical Environment在Javascript代表的是，今天我們Code寫在哪個 位置\t，是非常重要的。\n上面我們看到有一個變數，在函式裡面，這變數在字詞上來說就是坐落於、存在於這個函式，這隻函式{ \u0026hellip; } 就是一個Lexical Environment。\n就如我們上面講的，我們寫的Code是會經過Syntax Parser翻譯的，而翻譯的過程它是對於這些字詞存在的位置很在意的，寫的位置是會影響存放於電腦記憶體中的位置，以及如何去與其他變數、函式、元素互動的。\n所以當我們提到Lexical Environment中，便是在討論code是被寫在哪個段落位置以及被什麼東西涵蓋住。一隻程式\n###Execution Context\n一隻程式函式這麼多，到底要怎麼知道目前是哪段Code正在執行阿，搞得我好亂R，這時候我們就歡迎偉大的Execution Context，拯救我們的世界。\nExecution Context就像是一張包裝紙，幫助管理哪段Code正在被執行。如同我們上面提到的，一隻程式會有許多個Lexical Environment，那哪一個先執行便是透過Execution Contexts管理。\n而最基本的Execution Context就是 Global Execution Context，每隻Javascript程式一開始一定會有的傢伙，而這傢伙在一開始便替我們做兩件事，創造 Global Object \u0026amp; This。\nGlobal Object - 在Code裡面不管哪個元素不管在哪個段落都可以Access到的物件。 this - 之後會有篇幅說明\n###ECMAScript Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合\tECMAScript標準 的一個實作，而ECMAScript標準是不止一個版本的，隨著時代演進，尤其在近年前端的大量改革下，ECMAScript近幾年也開始頻繁性的改動。\n而目前ECMAScript主要常見的有以下三種\n ES5 = ECMAScript 5 ES6 = ECMAScript 6 ES7 = ECMAScript 7  基本上除了ES5的標準目前是被主流Browser接受外，目前ES6與ES7的一些新語法及規範還尚未被Browser完全採納，但，身處一個不斷進化的世代，還是建議以未來的標準去撰寫。",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -67,10 +54,10 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2017",
-    "datePublished": "2017-12-21 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2017-12-21 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/ironman30/day02_intro/",
-    "wordCount" : "97",
+    "datePublished": "2017-12-21 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2017-12-21 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/ironman30\/day02_intro\/",
+    "wordCount" : "94",
     "keywords" : [ "Javascript", "Ben the front-end dust"]
 }
 </script>
@@ -85,7 +72,7 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -93,6 +80,8 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -102,7 +91,7 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -114,6 +103,8 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -127,7 +118,7 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Javascript Intro</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2017-12-21 itemprop="datePublished">December 21, 2017</time>
                 </span>
@@ -156,70 +147,45 @@ Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Acc
           
           
 
-          
-
-<p>##Javascript Introduction</p>
-
+          <p>##Javascript Introduction</p>
 <p>身為一個前端工程師，對前端三本柱子大家一定不陌生，HTML、CSS、Javascript，在一個Page裡面，Javascript又扮演著什麼樣的角色呢?</p>
-
 <p>若用一個英文文法來說的話，HTML就是扮演著Nonus、CSS則是Adj、Javascript則是扮演著Verb的角色，也就是說，Javascript便是控制元素如何與使用者互動的部分，三者合為一體則可以完成一個標準的句子，也就是我們的Web Page。</p>
-
 <p>主要介紹為</p>
-
 <ul>
 <li>Synyax Parsers、Execution Contenxts、Lexical Environments</li>
 <li>Javascript的小故事</li>
 </ul>
-
 <p>##Javascript 你不知道的事</p>
-
 <h3 id="syntax-parser">Syntax Parser</h3>
-
 <p>今天我們寫了一隻Javascript的程式，裡面有密密麻麻的程式碼，身為一個人開發的人，理所當然地你會知道Code代表的意思是什麼，但對電腦而言呢？電腦是不明白我們看得Code，而Syntax Parser就登場囉，你可以想像成，<code>Syntax Parser就像是一個翻譯</code>，負責將我們的Javascript Code 翻譯給電腦讀，進而執行程式。</p>
-
 <p>所以當我們今天的Javascript Code執行時，會先經過Syntax Parser一字一句讀取我們的程式，並判斷這個語法是否有效，將有效的語法翻譯成電腦可以明白的方式。</p>
-
 <p>###Lexical Environment</p>
-
-<p>Lexical的原意為，與字詞或語法相關的。Lexical Environment在Javascript代表的是，今天我們Code寫在哪個 <strong>位置</strong>    ，是非常重要的。</p>
-
-<p><img style="width:100%;height:300px;" src="../images/intro.png" /></p>
-
+<p>Lexical的原意為，與字詞或語法相關的。Lexical Environment在Javascript代表的是，今天我們Code寫在哪個 <strong>位置</strong>	，是非常重要的。</p>
+<p><!-- raw HTML omitted --></p>
 <p>上面我們看到有一個變數，在函式裡面，這變數在字詞上來說就是坐落於、存在於這個函式，這隻函式{ &hellip; } 就是一個Lexical Environment。</p>
-
 <p>就如我們上面講的，我們寫的Code是會經過Syntax Parser翻譯的，而翻譯的過程它是對於這些字詞存在的位置很在意的，寫的位置是會影響存放於電腦記憶體中的位置，以及如何去與其他變數、函式、元素互動的。</p>
-
 <p>所以當我們提到Lexical Environment中，便是在討論code是被寫在哪個段落位置以及被什麼東西涵蓋住。一隻程式</p>
-
 <p>###Execution Context</p>
-
 <p>一隻程式函式這麼多，到底要怎麼知道目前是哪段Code正在執行阿，搞得我好亂R，這時候我們就歡迎偉大的Execution Context，拯救我們的世界。</p>
-
 <p>Execution Context就像是一張包裝紙，幫助管理哪段Code正在被執行。如同我們上面提到的，一隻程式會有許多個Lexical Environment，那哪一個先執行便是透過Execution Contexts管理。</p>
-
 <p>而最基本的Execution Context就是 <code>Global Execution Context</code>，每隻Javascript程式一開始一定會有的傢伙，而這傢伙在一開始便替我們做兩件事，<code>創造 Global Object &amp; This</code>。</p>
-
 <p>Global Object - 在Code裡面不管哪個元素不管在哪個段落都可以Access到的物件。
 this - 之後會有篇幅說明</p>
-
 <p>###ECMAScript
-Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合  <strong>ECMAScript標準</strong> 的一個實作，而ECMAScript標準是不止一個版本的，隨著時代演進，尤其在近年前端的大量改革下，ECMAScript近幾年也開始頻繁性的改動。</p>
-
-<p>而目前ECMAScript主要常見的有以下三種
-1. ES5 = ECMAScript 5
-2. ES6 = ECMAScript 6
-3. ES7 = ECMAScript 7</p>
-
-<p>基本上除了ES5的標準目前是被主流Browser接受外，目前ES6與ES7的一些新語法及規範還尚未被Browser完全採納，但，身處一個不斷進化的世代，還是建議以未來的標準去撰寫。</p>
-
-<p>目前<code>Babel</code>，便可以幫助我們把ES6 OR ES7的語法轉譯成ES5餵給Browser，所以還是建議大家一起往ES6邁進吧，畢竟以未來的標準去撰寫，當未來瀏覽器採用時，便不須再負擔修改的成本。</p>
-
-<h3 id="參考來源">參考來源</h3>
-
+Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合	<strong>ECMAScript標準</strong> 的一個實作，而ECMAScript標準是不止一個版本的，隨著時代演進，尤其在近年前端的大量改革下，ECMAScript近幾年也開始頻繁性的改動。</p>
+<p>而目前ECMAScript主要常見的有以下三種</p>
 <ol>
-<li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">Wiki</a></li>
-<li><a href="http://eloquentjavascript.net/00_intro.html#h_GlF1Kuv0JF" target="_blank">eloquentjavascript</a></li>
-<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview" rel="nofollow noreferrer" target="_blank">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
+<li>ES5 = ECMAScript 5</li>
+<li>ES6 = ECMAScript 6</li>
+<li>ES7 = ECMAScript 7</li>
+</ol>
+<p>基本上除了ES5的標準目前是被主流Browser接受外，目前ES6與ES7的一些新語法及規範還尚未被Browser完全採納，但，身處一個不斷進化的世代，還是建議以未來的標準去撰寫。</p>
+<p>目前<code>Babel</code>，便可以幫助我們把ES6 OR ES7的語法轉譯成ES5餵給Browser，所以還是建議大家一起往ES6邁進吧，畢竟以未來的標準去撰寫，當未來瀏覽器採用時，便不須再負擔修改的成本。</p>
+<h3 id="參考來源">參考來源</h3>
+<ol>
+<li><!-- raw HTML omitted -->Wiki<!-- raw HTML omitted --></li>
+<li><!-- raw HTML omitted -->eloquentjavascript<!-- raw HTML omitted --></li>
+<li><a href="https://www.udemy.com/understand-javascript/learn/v4/overview">Udemy Course - JavaScript: Understanding the Weird Parts</a></li>
 </ol>
 
     </div>
@@ -281,9 +247,11 @@ Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合  <str
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -302,7 +270,6 @@ Javascript是一個普遍的稱呼，嚴格上來說，Javascript是符合  <str
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

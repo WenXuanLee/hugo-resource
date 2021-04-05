@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HTTP on Ben the front-end dust</title>
@@ -6,11 +6,7 @@
     <description>Recent content in HTTP on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://WenXuanLee.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 04 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Overview HTTP</title>
       <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/httpoverview/</link>
@@ -22,7 +18,8 @@ Web page(documents)由不同物件組成，這裡的物件指的是FILE，例如
 HTTP定義了 web client &amp;amp; web server中間的溝通，包括client如何送出message以及server如何轉送webpage給client，此外，HTTP使用TCP作為underlying transport protocol，因此當client端送出一個HTTP request message時會透過socket傳送給tcp connection，也從trp connection經過socket接回到response message，同理於server端亦是，而一旦message到socket interface後，訊息的傳遞的掌控就不再client端的手裡而是在tcp protocol下了。
 值得注意的是HTTP是被稱為stateless protocol也就是每次的交流並不會留下痕跡，也因此，就算client端短時間發送一樣的request，對於server端來說，並不會因為剛response完前一筆request就不處理同樣的下一筆，反之仍視為另一筆request回應，儘管內容完全相同。
 Non-Persistent and Persistent Connections 開發者可以決定當送出request/response pair時，是透過separet TCP connections 或者是 同一個TCP connection實行，若為前者則稱為Non-Persistent後者則為Persistent。
-Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下， 1. HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection 2. client 透過 socket開始傳送message到server端 3. server端透過socket接收到request message，並在透過socket回傳封裝好的response message 4. HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) 5.</description>
+Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下，
+ HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection client 透過 socket開始傳送message到server端 server端透過socket接收到request message，並在透過socket回傳封裝好的response message HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) client端接受到response，TCP connection關閉，開始檢驗回傳的HTML檔案並找到圖片的references 取得十張照片，重複1 ~ 4的步驟十次  在這個過程中，取得web page的階段，建立了11條TCP connection，每條connection負責處理一對request/response</description>
     </item>
     
   </channel>

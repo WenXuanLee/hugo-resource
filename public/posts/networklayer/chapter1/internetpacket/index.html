@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter1/internetbasic/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/networklayer/chapter1/switching/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Protocol | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Protocol | Ben the front-end dust">
     
   
@@ -36,20 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Protocol",
     "headline" : "Protocol",
-    "description" : "Protocol 協定的存在就像是人類的語言，不同的語言交流一定會有障礙，若不是大家遵守同一套協定，說著不同的語言，那是無法溝通的，所以Protocol的存在就是讓兩台機器有一個交流的共識，如此才能辨識送過來的請求以及回送相對應的回覆，已完成我們想要達成的目的，例如從clint side 打API 從server side得到相對應的資料，中間的請求與回覆就得有一個協定存在。
-Network Protocols 網路協定的動作是由software or hardware執行，也就是我們的電腦、手機、路由器等等，所有在Internet上的包含兩個或以上遠端機器的行為都會由協定來管理監控，以一個例子來說，當我們對Web server發出請求時，也就是輸入一個URL到Browser時，我們會先從自己的電腦發送一個request至Web server，Web server接收到請求時會根據request message去給出一個回應replay message，接著我們的電腦收到OK的reply後，已GET message 丟出我們輸入的URL撈取相對應的document，接著Web server回傳我們要的Web page回到computer顯現。
-protocol定義了整個溝通流程的SOP，包含初始步驟是傳遞request以及收到reply，採取什麼動作或者針對不同事件做出不同回應等，不同的protocol在不同的情境使用以達成不同的communication tasks。
-Access Network Home access: DSL, Cable, FTTH, Dial-Up, and Satellite 目前一般家庭最常見連結網路的方式為透過DSL &amp; Cable，DSL就等同於透過電信公司提供連結管道，包含了電話與網路的ISPs，也就是中華電信那台數據機，有點像是電信公司透過電話線切割兩條線路出來，一條給家用電話，另一條就是給DSL數據機提供上網，所以大家可以理解到十年前每次有電話來就會斷網路的情況就是電話線路的切割部分沒處理好。
-所以大概的架構就是家用的電話訊號以及網路訊號會傳送回電信公司也就是DSLAM去送回Internet以及Telephone network
-Network Core Store-andForward Transmission packet switch在接收到整個完整data拆散後的封包才開始傳送first bit到外部link，也就是source -&gt; router -&gt; destination，source data如果切成了 packetA、packetB、packetC，在A到達之後仍會先被儲存到router(packet switch)待三個封包都到達之後才送往outputlink。
-Queuing Delays and Packet Loss 通常每個packet switch 會有連結許多communication links，對於每個link，packet switch會有一個output buffer，當packet傳送中又有另外一個packet到達時，剛到達的packet則會被放入buffer中排隊，等待傳到link上，因此就會有queuing Delay的問題。
-而packet loss則是因為buffer區域的空間有限，當塞爆的時候，可能是剛到達的packet被丟棄，或者是在queue等待的某個packet被丟棄。
-Forwarding Tables and Routing Protocols packet switches 如同之前所講的，有許多連結的接收communication links &amp; output links，那麼router是怎麼決定這些link的使用?",
+    "description" : "Protocol 協定的存在就像是人類的語言，不同的語言交流一定會有障礙，若不是大家遵守同一套協定，說著不同的語言，那是無法溝通的，所以Protocol的存在就是讓兩台機器有一個交流的共識，如此才能辨識送過來的請求以及回送相對應的回覆，已完成我們想要達成的目的，例如從clint side 打API 從server side得到相對應的資料，中間的請求與回覆就得有一個協定存在。\nNetwork Protocols 網路協定的動作是由software or hardware執行，也就是我們的電腦、手機、路由器等等，所有在Internet上的包含兩個或以上遠端機器的行為都會由協定來管理監控，以一個例子來說，當我們對Web server發出請求時，也就是輸入一個URL到Browser時，我們會先從自己的電腦發送一個request至Web server，Web server接收到請求時會根據request message去給出一個回應replay message，接著我們的電腦收到OK的reply後，已GET message 丟出我們輸入的URL撈取相對應的document，接著Web server回傳我們要的Web page回到computer顯現。\nprotocol定義了整個溝通流程的SOP，包含初始步驟是傳遞request以及收到reply，採取什麼動作或者針對不同事件做出不同回應等，不同的protocol在不同的情境使用以達成不同的communication tasks。\nAccess Network Home access: DSL, Cable, FTTH, Dial-Up, and Satellite 目前一般家庭最常見連結網路的方式為透過DSL \u0026amp; Cable，DSL就等同於透過電信公司提供連結管道，包含了電話與網路的ISPs，也就是中華電信那台數據機，有點像是電信公司透過電話線切割兩條線路出來，一條給家用電話，另一條就是給DSL數據機提供上網，所以大家可以理解到十年前每次有電話來就會斷網路的情況就是電話線路的切割部分沒處理好。\n所以大概的架構就是家用的電話訊號以及網路訊號會傳送回電信公司也就是DSLAM去送回Internet以及Telephone network\nNetwork Core Store-andForward Transmission packet switch在接收到整個完整data拆散後的封包才開始傳送first bit到外部link，也就是source -\u0026gt; router -\u0026gt; destination，source data如果切成了 packetA、packetB、packetC，在A到達之後仍會先被儲存到router(packet switch)待三個封包都到達之後才送往outputlink。\nQueuing Delays and Packet Loss 通常每個packet switch 會有連結許多communication links，對於每個link，packet switch會有一個output buffer，當packet傳送中又有另外一個packet到達時，剛到達的packet則會被放入buffer中排隊，等待傳到link上，因此就會有queuing Delay的問題。\n而packet loss則是因為buffer區域的空間有限，當塞爆的時候，可能是剛到達的packet被丟棄，或者是在queue等待的某個packet被丟棄。\nForwarding Tables and Routing Protocols packet switches 如同之前所講的，有許多連結的接收communication links \u0026amp; output links，那麼router是怎麼決定這些link的使用?",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -57,9 +54,9 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-10-02 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-10-02 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter1/internetpacket/",
+    "datePublished": "2018-10-02 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-10-02 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter1\/internetpacket\/",
     "wordCount" : "93",
     "keywords" : [ "Protocol", "Ben the front-end dust"]
 }
@@ -75,7 +72,7 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -83,6 +80,8 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -92,7 +91,7 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -104,6 +103,8 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -117,7 +118,7 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Protocol</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-10-02 itemprop="datePublished">October 2, 2018</time>
                 </span>
@@ -148,56 +149,31 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
           
           
 
-          
-
-<h2 id="protocol">Protocol</h2>
-
+          <h2 id="protocol">Protocol</h2>
 <p>協定的存在就像是人類的語言，不同的語言交流一定會有障礙，若不是大家遵守同一套協定，說著不同的語言，那是無法溝通的，所以Protocol的存在就是讓兩台機器有一個交流的共識，如此才能辨識送過來的請求以及回送相對應的回覆，已完成我們想要達成的目的，例如從clint side 打API 從server side得到相對應的資料，中間的請求與回覆就得有一個協定存在。</p>
-
 <h3 id="network-protocols">Network Protocols</h3>
-
 <p>網路協定的動作是由<code>software or hardware</code>執行，也就是我們的電腦、手機、路由器等等，所有在Internet上的包含<code>兩個或以上</code>遠端機器的行為都會由協定來管理監控，以一個例子來說，當我們對<code>Web server</code>發出請求時，也就是輸入一個<code>URL到Browser</code>時，我們會先從自己的<code>電腦發送一個request至Web server</code>，<code>Web server</code>接收到請求時會根據<code>request message</code>去給出一個回應<code>replay message</code>，接著我們的電腦收到<code>OK</code>的reply後，已<code>GET message 丟出我們輸入的URL撈取相對應的document</code>，接著<code>Web server</code>回傳我們要的Web page回到computer顯現。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20180920/20107670oVZPcXGEKU.png" alt="https://ithelp.ithome.com.tw/upload/images/20180920/20107670oVZPcXGEKU.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20180920/20107670oVZPcXGEKU.png</figcaption></figure></p>
-
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20180920/20107670oVZPcXGEKU.png" alt="https://ithelp.ithome.com.tw/upload/images/20180920/20107670oVZPcXGEKU.png"></p>
 <p><code>protocol</code>定義了整個溝通流程的SOP，包含初始步驟是傳遞request以及收到reply，採取什麼動作或者針對不同事件做出不同回應等，不同的<code>protocol</code>在不同的情境使用以達成不同的<code>communication tasks</code>。</p>
-
 <h2 id="access-network">Access Network</h2>
-
 <h3 id="home-access-dsl-cable-ftth-dial-up-and-satellite">Home access: DSL, Cable, FTTH, Dial-Up, and Satellite</h3>
-
 <p>目前一般家庭最常見連結網路的方式為透過<code>DSL &amp; Cable</code>，DSL就等同於透過電信公司提供連結管道，包含了電話與網路的ISPs，也就是中華電信那台數據機，有點像是電信公司透過電話線切割兩條線路出來，一條給家用電話，另一條就是給DSL數據機提供上網，所以大家可以理解到十年前每次有電話來就會斷網路的情況就是電話線路的切割部分沒處理好。</p>
-
 <p>所以大概的架構就是家用的電話訊號以及網路訊號會傳送回電信公司也就是<code>DSLAM</code>去送回<code>Internet</code>以及<code>Telephone network</code></p>
-
 <h2 id="network-core">Network Core</h2>
-
 <h3 id="store-andforward-transmission">Store-andForward Transmission</h3>
-
 <p><code>packet switch</code>在接收到整個完整data拆散後的封包才開始傳送<code>first bit</code>到外部link，也就是source -&gt; router -&gt; destination，source data如果切成了 packetA、packetB、packetC，在A到達之後仍會先被儲存到<code>router(packet switch)</code>待三個封包都到達之後才送往outputlink。</p>
-
 <h3 id="queuing-delays-and-packet-loss">Queuing Delays and Packet Loss</h3>
-
 <p>通常每個packet switch 會有連結許多communication links，對於每個link，packet switch會有一個<code>output buffer</code>，當packet傳送中又有另外一個packet到達時，剛到達的packet則會被放入buffer中排隊，等待傳到link上，因此就會有<code>queuing Delay</code>的問題。</p>
-
 <p>而<code>packet loss</code>則是因為<code>buffer</code>區域的空間有限，當塞爆的時候，可能是剛到達的packet被丟棄，或者是在queue等待的某個packet被丟棄。</p>
-
 <h3 id="forwarding-tables-and-routing-protocols">Forwarding Tables and Routing Protocols</h3>
-
 <p>packet switches 如同之前所講的，有許多連結的接收communication links &amp; output links，那麼router是怎麼決定這些link的使用?</p>
-
 <p>每個end system都擁有一個<code>IP address</code>，當一台source -&gt; destination 的過程中，這個destination位址也會一起被放在<code>packet header</code>裡面，在router根據位址匹配到鄰近的router裡面，更精準地來說，<code>每個router</code>都擁有一個<code>forwarding table</code>對應<code>destination address</code>的<code>outbound links</code></p>
-
 <p>感覺有點像是在問路，假設我想從台北開車到高雄，在桃園加油站(第一個router)，詢問店員該走哪條高速公路(forwarding table)，接著又到台中加油站做同樣的行為，這個詢問的動作就像是<code>router</code>對照<code>forwarding table</code>，最後到達目的地。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20181002/20107670mJZx9rwbFq.png" alt="https://ithelp.ithome.com.tw/upload/images/20181002/20107670mJZx9rwbFq.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20181002/20107670mJZx9rwbFq.png</figcaption></figure></p>
-
-<hr />
-
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181002/20107670mJZx9rwbFq.png" alt="https://ithelp.ithome.com.tw/upload/images/20181002/20107670mJZx9rwbFq.png"></p>
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -261,9 +237,11 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -282,7 +260,6 @@ Forwarding Tables and Routing Protocols packet switches 如同之前所講的，
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

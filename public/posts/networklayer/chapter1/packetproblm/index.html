@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter1/switching/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/networklayer/chapter1/networklayerbrief/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Packet Probrlm | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Packet Probrlm | Ben the front-end dust">
     
   
@@ -36,19 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Packet Probrlm",
     "headline" : "Packet Probrlm",
-    "description" : "Delay, Loss, Throughtput Types of Dealy 假使今天sourceA丟出一個封包道destinationB，途中可能會經過routerA、routerB，當packet運送到routerA時，routerA會有一條outbound link到routerB，進到此link前會有一個queue，判斷當前是否有其他packet，是否正在此link傳輸資訊。所以今天new packet送到routerA時，routerA會根據header資訊決定將new packet安排到特定link，當link有數據正在傳輸時，new packet便會進到queue裡面去等待。
-Processing Delay 解讀packet header並解決定此packetmap到特定link的時間就是process delay，通常在routers裡面，此種delay的時間大概落於microseconds or less
-Queuing Delay 就字面上的意思，當packet 進到queue裡面，等待其他先到達的packet完成傳輸的時間成本就是Queuing Delay，通常此delay的時間實務上落於microseconds to milliseconds。
-Transmission Delay packet傳輸到link的所耗費時間，假使今天packet有L bits，link的 transmission rate R bits/sec，那麼transmission delay的時間便是 L/R，此delay的時間實務上落於microseconds to milliseconds。
-與propagation delay區別的話，transmission delay為packet中的每個bit從link到router裡面組好完成一個packet後的等待時間，假使今天有一個packet中包含十個bit，十個bit分別排隊等待進入router，而第一個bit通過router後仍然得在router裡面等待另外九個bit來後組成一個packet才能往下一個router前進，十個bit調router的時間就是transmission delay。
-Propagation Delay 從link將資料傳遞到router的時間成本，Propagation speed主要影響為實體的線路，指的是一個packet從router到router的時間，而影響此數據的實際因素為router間的distance。
-Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度，假設今天有X個packets，每個packets皆由Y bits組成，而若transmission rate為Z bits/sec，則密集度為XY/Z
-此密集度通常用來評估queueing dealy的長度，若Traffic intensity &gt; 1也就是每次進來排隊的packet大於送出去的packet，那麼queue就會無限長，因此最最最基本的設計為，Design your system so that the traffic intensity is no greater than 1",
+    "description" : "Delay, Loss, Throughtput Types of Dealy 假使今天sourceA丟出一個封包道destinationB，途中可能會經過routerA、routerB，當packet運送到routerA時，routerA會有一條outbound link到routerB，進到此link前會有一個queue，判斷當前是否有其他packet，是否正在此link傳輸資訊。所以今天new packet送到routerA時，routerA會根據header資訊決定將new packet安排到特定link，當link有數據正在傳輸時，new packet便會進到queue裡面去等待。\nProcessing Delay 解讀packet header並解決定此packetmap到特定link的時間就是process delay，通常在routers裡面，此種delay的時間大概落於microseconds or less\nQueuing Delay 就字面上的意思，當packet 進到queue裡面，等待其他先到達的packet完成傳輸的時間成本就是Queuing Delay，通常此delay的時間實務上落於microseconds to milliseconds。\nTransmission Delay packet傳輸到link的所耗費時間，假使今天packet有L bits，link的 transmission rate R bits\/sec，那麼transmission delay的時間便是 L\/R，此delay的時間實務上落於microseconds to milliseconds。\n與propagation delay區別的話，transmission delay為packet中的每個bit從link到router裡面組好完成一個packet後的等待時間，假使今天有一個packet中包含十個bit，十個bit分別排隊等待進入router，而第一個bit通過router後仍然得在router裡面等待另外九個bit來後組成一個packet才能往下一個router前進，十個bit調router的時間就是transmission delay。\nPropagation Delay 從link將資料傳遞到router的時間成本，Propagation speed主要影響為實體的線路，指的是一個packet從router到router的時間，而影響此數據的實際因素為router間的distance。\nTraffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度，假設今天有X個packets，每個packets皆由Y bits組成，而若transmission rate為Z bits\/sec，則密集度為XY\/Z\n此密集度通常用來評估queueing dealy的長度，若Traffic intensity \u0026gt; 1也就是每次進來排隊的packet大於送出去的packet，那麼queue就會無限長，因此最最最基本的設計為，Design your system so that the traffic intensity is no greater than 1",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -56,9 +54,9 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-11-08 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-11-08 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter1/packetproblm/",
+    "datePublished": "2018-11-08 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-11-08 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter1\/packetproblm\/",
     "wordCount" : "95",
     "keywords" : [ "Packet Delay","Packet Loss","Packet Throughput", "Ben the front-end dust"]
 }
@@ -74,7 +72,7 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -82,6 +80,8 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -91,7 +91,7 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -103,6 +103,8 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -116,7 +118,7 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Packet Probrlm</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-11-08 itemprop="datePublished">November 8, 2018</time>
                 </span>
@@ -145,52 +147,29 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
           
           
 
-          
-
-<h1 id="delay-loss-throughtput">Delay, Loss, Throughtput</h1>
-
+          <h1 id="delay-loss-throughtput">Delay, Loss, Throughtput</h1>
 <h2 id="types-of-dealy">Types of Dealy</h2>
-
 <p>假使今天sourceA丟出一個封包道destinationB，途中可能會經過routerA、routerB，當<code>packet</code>運送到<code>routerA</code>時，routerA會有一條<code>outbound link</code>到routerB，進到此link前會有一個queue，判斷當前是否有其他<code>packet</code>，是否正在此<code>link</code>傳輸資訊。所以今天<code>new packet</code>送到routerA時，routerA會根據<code>header</code>資訊決定將<code>new packet</code>安排到特定<code>link</code>，當<code>link</code>有數據正在傳輸時，new packet便會進到queue裡面去等待。</p>
-
 <h3 id="processing-delay">Processing Delay</h3>
-
 <p>解讀<code>packet header</code>並解決定此<code>packet</code>map到特定<code>link</code>的時間就是process delay，通常在routers裡面，此種delay的時間大概落於<code>microseconds or less</code></p>
-
 <h3 id="queuing-delay">Queuing Delay</h3>
-
 <p>就字面上的意思，當<code>packet 進到queue</code>裡面，等待其他先到達的packet完成傳輸的時間成本就是Queuing Delay，通常此delay的時間實務上落於<code>microseconds to milliseconds</code>。</p>
-
 <h3 id="transmission-delay">Transmission Delay</h3>
-
 <p><code>packet</code>傳輸到<code>link</code>的所耗費時間，假使今天<code>packet</code>有L bits，<code>link</code>的 transmission rate R bits/sec，那麼transmission delay的時間便是 L/R，此delay的時間實務上落於<code>microseconds to milliseconds</code>。</p>
-
 <p>與propagation delay區別的話，<code>transmission delay</code>為packet中的每個bit從link到router裡面組好完成一個packet後的等待時間，假使今天有一個packet中包含十個bit，十個bit分別排隊等待進入router，而第一個bit通過router後仍然得在router裡面等待另外九個bit來後組成一個packet才能往下一個router前進，十個bit調router的時間就是<code>transmission delay</code>。</p>
-
 <h3 id="propagation-delay">Propagation Delay</h3>
-
 <p>從<code>link</code>將資料傳遞到<code>router</code>的時間成本，<code>Propagation speed</code>主要影響為實體的線路，指的是一個<code>packet</code>從<code>router</code>到<code>router</code>的時間，而影響此數據的實際因素為<code>router</code>間的<code>distance</code>。</p>
-
 <h2 id="traffic-intensity">Traffic intensity</h2>
-
 <p><code>Traffic intensity</code> 代表的是每秒傳送到<code>queue的密集度</code>，假設今天有<code>X</code>個packets，每個packets皆由<code>Y bits</code>組成，而若<code>transmission rate</code>為<code>Z bits/sec</code>，則密集度為<code>XY/Z</code></p>
-
 <p>此密集度通常用來評估<code>queueing dealy</code>的長度，若<code>Traffic intensity &gt; 1</code>也就是每次進來排隊的packet大於送出去的packet，那麼queue就會無限長，因此最最最基本的設計為，<code>Design your system so that the traffic intensity is no greater than 1</code></p>
-
 <p>當<code>Traffic intensity &lt;= 1</code>時，第一，若是packet到達的時間剛好等同於出去的時間，也就是 X/Z，那麼就不會有queue的產生，反之，若packets於短時間大量到達，假使N packet在 (X/Z)N的速率到達，今天若有三個，澤第一個packet不用等待，而第二個就得等待(X/Z)(2-1)，第三個就得等待(X/Z)(3-1)的時間。</p>
-
 <p>簡單來說，<code>Traffic intensity</code>越接近或大於1時，<code>queueing delay</code>就越大，反之則越小</p>
-
 <h2 id="throughput">Throughput</h2>
-
 <p>HostA傳送檔案到HostB的完整時間，也就是每秒傳輸量，主要影響為communication link的 Transmission rate，若單純只有A到B，則<code>Throughput</code>為min(Ra,Rb)，也就是router到A以及Router到B的最小值，若common rate為R，有十台機器連到server，Server to router 為Ra，Router to destination為Rd，若 R/10小於Ra、Rd，則Throughput為R，若遠大於Ra、Rd，則為min(Ra,Rd)</p>
-
-<hr />
-
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -260,9 +239,11 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -281,7 +262,6 @@ Traffic intensity Traffic intensity 代表的是每秒傳送到queue的密集度
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

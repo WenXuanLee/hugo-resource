@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/p2p/" />
-  
+  <link rel="next" href="https://WenXuanLee.github.io/posts/mediumposts/review-javascript-this-%E7%B9%AB%E7%B5%90%E7%B6%81%E5%AE%9A/" />
   <link rel="canonical" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Socket Programming | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Socket Programming | Ben the front-end dust">
     
   
@@ -36,17 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Socket Programming",
     "headline" : "Socket Programming",
-    "description" : "Socket Programming: Creating Network Applications 複習一下當我們建立一個network application，我們基本上包含了一組programs，client program &amp; server program，分別存在於兩個end system，當兩個program執行後，client process &amp; server process被建立，這些processes透過socket互相溝通，因此身為一個developer主要就是負責撰寫code for clicent program &amp; server program
-Network applications有兩種types，一種為implementation，主要實作於protocol standard，例如 RFC 或者其他 standard document，這樣的application通常又被稱為open，因為規則以及行為是被公開，因此此類別的程式設計需要遵守standard的標準。
-另一種type則為proprietary，此類型主要運用的protocol尚未被公開發布在RFC或者其他國際網路規範，client side &amp; server side program都由同組開發者完成，而開發者完全掌控code的內容，由於此類別並非實作於公開的protocol上，其他獨立開發者也就不能開發與此application相互操作的code。
-下面會透過簡單實作的code來探討開發一個client-server application的簡易流程，在開發者階段，第一步主要得決定此application是基於 TCP || UDP，因此會就此兩種protocol類型來介紹。
-Socket Programming with UDP sending process將packet push 到 socket 前，UDP會先將destination address資訊帶給packet，packet到達sending socket時，Internet便會根據此資訊導引到receiving process socket。由於傳遞的途中或許會經過許多network application process以及多個sockets，辨別destination receiver socket是必要的，因此在socket建立過程中，port number會被指認到socket當作idtentifier。而此項訊息也會被包含在destination address裡。此外，source address的資訊有同樣會被帶入packet，特別注意到，source address的帶入動作並非由UDP application code執行，而是自動由operating system完成的。
-Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此溝通前，必須先通過handshake的行為並建立TCP conntection，TCP connection的兩端分別連結著sending socket &amp; receiver socket，建立的同時也會將兩端的IP address 以及 port number連結於TCP connection上，兩端的互動都將由socket把data丟到TCP connection傳遞。不同於UDP的server必須先將destination address 附在 packet上才能進入socket傳遞。",
+    "description" : "Socket Programming: Creating Network Applications 複習一下當我們建立一個network application，我們基本上包含了一組programs，client program \u0026amp; server program，分別存在於兩個end system，當兩個program執行後，client process \u0026amp; server process被建立，這些processes透過socket互相溝通，因此身為一個developer主要就是負責撰寫code for clicent program \u0026amp; server program\nNetwork applications有兩種types，一種為implementation，主要實作於protocol standard，例如 RFC 或者其他 standard document，這樣的application通常又被稱為open，因為規則以及行為是被公開，因此此類別的程式設計需要遵守standard的標準。\n另一種type則為proprietary，此類型主要運用的protocol尚未被公開發布在RFC或者其他國際網路規範，client side \u0026amp; server side program都由同組開發者完成，而開發者完全掌控code的內容，由於此類別並非實作於公開的protocol上，其他獨立開發者也就不能開發與此application相互操作的code。\n下面會透過簡單實作的code來探討開發一個client-server application的簡易流程，在開發者階段，第一步主要得決定此application是基於 TCP || UDP，因此會就此兩種protocol類型來介紹。\nSocket Programming with UDP sending process將packet push 到 socket 前，UDP會先將destination address資訊帶給packet，packet到達sending socket時，Internet便會根據此資訊導引到receiving process socket。由於傳遞的途中或許會經過許多network application process以及多個sockets，辨別destination receiver socket是必要的，因此在socket建立過程中，port number會被指認到socket當作idtentifier。而此項訊息也會被包含在destination address裡。此外，source address的資訊有同樣會被帶入packet，特別注意到，source address的帶入動作並非由UDP application code執行，而是自動由operating system完成的。\nSocket Programming with TCP 不同於UDP，在client \u0026amp; server 開始彼此溝通前，必須先通過handshake的行為並建立TCP conntection，TCP connection的兩端分別連結著sending socket \u0026amp; receiver socket，建立的同時也會將兩端的IP address 以及 port number連結於TCP connection上，兩端的互動都將由socket把data丟到TCP connection傳遞。不同於UDP的server必須先將destination address 附在 packet上才能進入socket傳遞。",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -54,9 +54,9 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2019",
-    "datePublished": "2019-01-09 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2019-01-09 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/",
+    "datePublished": "2019-01-09 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2019-01-09 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter2-application-layer\/tcpandudp\/",
     "wordCount" : "119",
     "keywords" : [ "Application Layer","UDP","TCP","Socket", "Ben the front-end dust"]
 }
@@ -72,7 +72,7 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -80,6 +80,8 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -89,7 +91,7 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -101,6 +103,8 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -114,7 +118,7 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Socket Programming</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2019-01-09 itemprop="datePublished">January 9, 2019</time>
                 </span>
@@ -145,39 +149,24 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
           
           
 
-          
-
-<h2 id="socket-programming-creating-network-applications">Socket Programming: Creating Network Applications</h2>
-
+          <h2 id="socket-programming-creating-network-applications">Socket Programming: Creating Network Applications</h2>
 <p>複習一下當我們建立一個network application，我們基本上包含了一組programs，client program &amp; server program，分別存在於兩個end system，當兩個program執行後，client process &amp; server process被建立，這些processes透過socket互相溝通，因此身為一個developer主要就是負責撰寫code for clicent program &amp; server program</p>
-
 <p>Network applications有兩種types，一種為<code>implementation</code>，主要<code>實作於protocol standard</code>，例如 RFC 或者其他 standard document，這樣的application通常又被稱為<code>open</code>，因為規則以及行為是被公開，因此此類別的程式設計需要<code>遵守standard的標準</code>。</p>
-
 <p>另一種type則為<code>proprietary</code>，此類型主要<code>運用的protocol</code>尚未被公開發布在RFC或者其他國際網路規範，client side &amp; server side program都由同組開發者完成，而開發者完全掌控code的內容，由於此類別並非實作於公開的protocol上，其他獨立開發者也就不能開發與此application相互操作的code。</p>
-
 <p>下面會透過簡單實作的code來探討開發一個client-server application的簡易流程，在開發者階段，第一步主要得<code>決定此application是基於 TCP || UDP</code>，因此會就此兩種protocol類型來介紹。</p>
-
 <h3 id="socket-programming-with-udp">Socket Programming with UDP</h3>
-
 <p>sending process將packet push 到 socket 前，UDP會先將<code>destination address</code>資訊帶給packet，packet到達sending socket時，Internet便會根據此資訊導引到receiving process socket。由於傳遞的途中或許會經過許多network application process以及多個sockets，辨別destination receiver socket是必要的，因此在socket建立過程中，<code>port number</code>會被指認到socket當作idtentifier。而此項訊息也會被包含在destination address裡。此外，source address的資訊有同樣會被帶入packet，特別注意到，source address的帶入動作並非由UDP application code執行，而是自動由operating system完成的。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20190109/20107670LFn1xTVweA.png" alt="https://ithelp.ithome.com.tw/upload/images/20190109/20107670LFn1xTVweA.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20190109/20107670LFn1xTVweA.png</figcaption></figure></p>
-
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20190109/20107670LFn1xTVweA.png" alt="https://ithelp.ithome.com.tw/upload/images/20190109/20107670LFn1xTVweA.png"></p>
 <h3 id="socket-programming-with-tcp">Socket Programming with TCP</h3>
-
 <p>不同於UDP，在client &amp; server 開始彼此溝通前，必須先通過<code>handshake</code>的行為並建立<code>TCP conntection</code>，<code>TCP connection</code>的兩端分別連結著sending socket &amp; receiver socket，建立的同時也會將兩端的IP address 以及 port number連結於TCP connection上，兩端的互動都將由<code>socket把data丟到TCP connection</code>傳遞。不同於UDP的server必須先將destination address 附在 packet上才能進入socket傳遞。</p>
-
 <p>相同的是，兩者的server都必須是在running的狀態下，client端才能initiate動作。而在TCP中，首先 clicent initiate a TCP connection to the server，這在<code>client program建立TCP socket</code>時完成，當建立的途中會將<code>Server host</code>的<code>IP address</code>以及 socket的<code>port number</code>帶入，建立完成後開始three-way handshake並建立TCP connection with the server，建立connection主要是在<code>transport layer</code>，在應用層的client and server program是觀察不到的。
-  <figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20190109/20107670kCTXHqFZcm.png" alt="https://ithelp.ithome.com.tw/upload/images/20190109/20107670kCTXHqFZcm.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20190109/20107670kCTXHqFZcm.png</figcaption></figure>
-  TCP socket為所有建立tcp coneection之前先執行一個打招呼的動作，也就是handshake的部分，接著的connection socket才是主要用於傳遞溝通的管道，
-  <figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20190109/20107670lCOBfgQJMM.png" alt="https://ithelp.ithome.com.tw/upload/images/20190109/20107670lCOBfgQJMM.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20190109/20107670lCOBfgQJMM.png</figcaption></figure></p>
-
-<hr />
-
+<img src="https://ithelp.ithome.com.tw/upload/images/20190109/20107670kCTXHqFZcm.png" alt="https://ithelp.ithome.com.tw/upload/images/20190109/20107670kCTXHqFZcm.png">
+TCP socket為所有建立tcp coneection之前先執行一個打招呼的動作，也就是handshake的部分，接著的connection socket才是主要用於傳遞溝通的管道，
+<img src="https://ithelp.ithome.com.tw/upload/images/20190109/20107670lCOBfgQJMM.png" alt="https://ithelp.ithome.com.tw/upload/images/20190109/20107670lCOBfgQJMM.png"></p>
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -234,6 +223,8 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
         <a href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/p2p/" class="prev" rel="prev" title="Peer-to-Peer Applications"><i class="iconfont icon-left"></i>&nbsp;Peer-to-Peer Applications</a>
          
         
+        <a href="https://WenXuanLee.github.io/posts/mediumposts/review-javascript-this-%E7%B9%AB%E7%B5%90%E7%B6%81%E5%AE%9A/" class="next" rel="next" title="Review Javascript — this 繫結綁定">Review Javascript — this 繫結綁定&nbsp;<i class="iconfont icon-right"></i></a>
+        
     </div>
 
     <div class="post-comment">
@@ -248,9 +239,11 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -269,7 +262,6 @@ Socket Programming with TCP 不同於UDP，在client &amp; server 開始彼此�
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/networkapplicationarchitectures/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/httpoverview/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Transport Services | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Transport Services | Ben the front-end dust">
     
   
@@ -36,17 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Transport Services",
     "headline" : "Transport Services",
-    "description" : "Transport Services Available to Applications transport service 這邊主要區分了四個面向的service大類，Reliable Data transfer、throughput、timing、security。
- Reliable data transfer - 假使protocol提供受保證的data delivery service則為受信賴的，亦即就是此service保證了一旦data從sending process傳遞到socket時就已經保證此data一定會抵達receiving process而且無任何error，若無提供此服務，則data從sending process之後有可能永遠到達不了receiving process端，這行為能被 loss-tolerant applications接受 throughput - transport提供了保證穩定傳輸速率的service，可以保證application能擁有的傳輸速度，Applications需要throughput requirements的類型又被稱為bandwidth-sensitive applications。 timing - 提供了時間的保證，可以保證資料傳遞的時間間距，此service相對real-time application是重要的。 security - 提供資料安全性的service，提供加密以及解密data的服務  Transport Services Provided by the Internet Internet(大部分為TCP/IP networks)提供了兩個協定TCP、UDP，當設計一個network application時的必做選擇之一為在此兩種協定中擇一，不同的協定提供了不同的服務，不同的應用程式也有不同的需求。
-TCP TCP model 包含了連結取向的設計服務以及提供了reliable data transfer服務，TCP在client server端都擁有transpoart-layer control information在實際進入應用層面的message時啟動，也就是所謂的handshaking procedure，在握手階段完成後TCP connection存在於sockets of the two process之間。
-TCP 以及 UDP 兩者皆沒有提供任何加密手段，但以TCP而言，廣大社群開發了一套SSL，用於加強於TCP中的安全考量，但注意到SSL並不屬於一種協定，跟TCP、UDP是不同的level，而只是TCP的強化，將加密手段實作於application layer
-TCP的設計中包含了防堵塞機制，會在網路壅塞時，去控制process的送出以避免packet loss的問題等等。
-UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加密手段，沒有防堵塞機制，也沒有任何Connection過程，甚至也不保證資料的傳遞，",
+    "description" : "Transport Services Available to Applications transport service 這邊主要區分了四個面向的service大類，Reliable Data transfer、throughput、timing、security。\n Reliable data transfer - 假使protocol提供受保證的data delivery service則為受信賴的，亦即就是此service保證了一旦data從sending process傳遞到socket時就已經保證此data一定會抵達receiving process而且無任何error，若無提供此服務，則data從sending process之後有可能永遠到達不了receiving process端，這行為能被 loss-tolerant applications接受 throughput - transport提供了保證穩定傳輸速率的service，可以保證application能擁有的傳輸速度，Applications需要throughput requirements的類型又被稱為bandwidth-sensitive applications。 timing - 提供了時間的保證，可以保證資料傳遞的時間間距，此service相對real-time application是重要的。 security - 提供資料安全性的service，提供加密以及解密data的服務  Transport Services Provided by the Internet Internet(大部分為TCP\/IP networks)提供了兩個協定TCP、UDP，當設計一個network application時的必做選擇之一為在此兩種協定中擇一，不同的協定提供了不同的服務，不同的應用程式也有不同的需求。\nTCP TCP model 包含了連結取向的設計服務以及提供了reliable data transfer服務，TCP在client server端都擁有transpoart-layer control information在實際進入應用層面的message時啟動，也就是所謂的handshaking procedure，在握手階段完成後TCP connection存在於sockets of the two process之間。\nTCP 以及 UDP 兩者皆沒有提供任何加密手段，但以TCP而言，廣大社群開發了一套SSL，用於加強於TCP中的安全考量，但注意到SSL並不屬於一種協定，跟TCP、UDP是不同的level，而只是TCP的強化，將加密手段實作於application layer\nTCP的設計中包含了防堵塞機制，會在網路壅塞時，去控制process的送出以避免packet loss的問題等等。\nUDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加密手段，沒有防堵塞機制，也沒有任何Connection過程，甚至也不保證資料的傳遞，",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -54,9 +54,9 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-11-30 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-11-30 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/transportservice/",
+    "datePublished": "2018-11-30 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-11-30 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter2-application-layer\/transportservice\/",
     "wordCount" : "106",
     "keywords" : [ "Application Layer","Transport Services","UDP","TCP", "Ben the front-end dust"]
 }
@@ -72,7 +72,7 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -80,6 +80,8 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -89,7 +91,7 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -101,6 +103,8 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -114,7 +118,7 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Transport Services</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-11-30 itemprop="datePublished">November 30, 2018</time>
                 </span>
@@ -143,47 +147,29 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
           
           
 
-          
-
-<h2 id="transport-services-available-to-applications">Transport Services Available to Applications</h2>
-
+          <h2 id="transport-services-available-to-applications">Transport Services Available to Applications</h2>
 <p><code>transport service</code> 這邊主要區分了四個面向的<code>service</code>大類，<code>Reliable Data transfer</code>、<code>throughput</code>、<code>timing</code>、<code>security</code>。</p>
-
 <ol>
 <li><code>Reliable data transfer</code> - 假使protocol提供受保證的data delivery service則為受信賴的，亦即就是此service保證了一旦data從sending process傳遞到socket時就已經保證此data一定會抵達receiving process而且無任何error，若無提供此服務，則data從sending process之後有可能永遠到達不了receiving process端，這行為能被 <code>loss-tolerant applications</code>接受</li>
 <li><code>throughput</code> - transport提供了保證穩定傳輸速率的service，可以保證application能擁有的傳輸速度，Applications需要throughput requirements的類型又被稱為<code>bandwidth-sensitive applications</code>。</li>
 <li><code>timing</code> - 提供了時間的保證，可以保證資料傳遞的時間間距，此service相對real-time application是重要的。</li>
 <li><code>security</code> - 提供資料安全性的service，提供加密以及解密data的服務</li>
 </ol>
-
 <h2 id="transport-services-provided-by-the-internet">Transport Services Provided by the Internet</h2>
-
 <p>Internet(大部分為TCP/IP networks)提供了兩個協定<code>TCP</code>、<code>UDP</code>，當設計一個network application時的必做選擇之一為在此兩種協定中擇一，不同的協定提供了不同的服務，不同的應用程式也有不同的需求。</p>
-
 <h3 id="tcp">TCP</h3>
-
 <p>TCP model 包含了連結取向的設計服務以及提供了<code>reliable data transfer</code>服務，TCP在client server端都擁有<code>transpoart-layer control information</code>在實際進入應用層面的<code>message</code>時啟動，也就是所謂的<code>handshaking procedure</code>，在握手階段完成後<code>TCP connection</code>存在於<code>sockets of the two process</code>之間。</p>
-
 <p>TCP 以及 UDP 兩者皆沒有提供任何加密手段，但以<code>TCP</code>而言，廣大社群開發了一套<code>SSL</code>，用於加強於<code>TCP</code>中的安全考量，但注意到<code>SSL</code>並不屬於一種協定，跟TCP、UDP是不同的level，而只是<code>TCP</code>的強化，將加密手段實作於<code>application layer</code></p>
-
 <p><code>TCP</code>的設計中包含了防堵塞機制，會在網路壅塞時，去控制<code>process</code>的送出以避免packet loss的問題等等。</p>
-
 <h3 id="udp">UDP</h3>
-
 <p>相對於<code>tcp</code>，UDP相對寬鬆並只提供最小限度的服務，沒有加密手段，沒有防堵塞機制，也沒有任何Connection過程，甚至也不保證資料的傳遞，</p>
-
 <h2 id="application-layer-protocols">Application-Layer Protocols</h2>
-
 <p>應用層的協定主要規範了，<code>types of messages exchanged</code>、<code>syntax of the various message type</code>、<code>semantics of the fields</code>、<code>rules for determining how and when a process sends message and responds to messages</code></p>
-
 <p>有些應用層協定是已經在<code>RFCs</code>被明確記錄了，也因此這些協定是存在於<code>public domain</code>裡的，例如常見的<code>http</code>，也就是說今天一個web application若遵守<code>http</code>協定，他便能從任何遵守<code>http</code>的<code>web server</code>去要求檔案。而另一種常見的協定為，<code>email</code>傳遞所遵守的<code>SMTP</code>。而協定在一個web application組成的一小部分，但也是極重要的部分之一，通常web application的組成包括了，文檔格式(HTML)、Web browser、Webserver、application-layer protocols</p>
-
-<hr />
-
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -256,9 +242,11 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -277,7 +265,6 @@ UDP 相對於tcp，UDP相對寬鬆並只提供最小限度的服務，沒有加�
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

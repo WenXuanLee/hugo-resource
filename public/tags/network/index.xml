@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network on Ben the front-end dust</title>
@@ -6,18 +6,14 @@
     <description>Recent content in Network on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://WenXuanLee.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Internet Basic</title>
       <link>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetbasic/</link>
       <pubDate>Wed, 19 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/networklayer/chapter1/internetbasic/</guid>
-      <description> Internet Internet主要大概流向為 ISPs -&amp;gt; routers -&amp;gt; Moerdem -&amp;gt; routers -&amp;gt; end system, base station等等
+      <description>Internet Internet主要大概流向為 ISPs -&amp;gt; routers -&amp;gt; Moerdem -&amp;gt; routers -&amp;gt; end system, base station等等
 packet為封包，透過目標host將傳輸的資料轉成片段的封包，並在header 加上bytes，類似於加密的功能，網路上的資訊都是透由packet傳遞。
 communication links封包的接受與傳送主要透過此links連結，在packet switches裡面會從多個incoming communication links之一挑選一個接收封包，再由多個outgoing communication links傳送封包出去，兩者的運用就是主要封包的傳遞路程，最後送到欲到達的end sysystem裡面重新解密原始資料。
 而整個從第一個end system丟出封包到另一台end system的過程稱為一個route || path
@@ -26,7 +22,7 @@ communication links封包的接受與傳送主要透過此links連結，在packe
  router 主要使用在network core裡面 link-layer switches 通常使用於access network上  TCP/IP 目前 Internet 最重要的兩個協定，IP主要是規範於封包在router &amp;amp; end system傳遞過程中的格式。
 API指的是一組規則，傳送資料的program必須得遵守此規則，Internet才能准許傳送data到指定的目的地，以寄信來做個比喻的話，假設A要寄信給B，不可能只把信寫好，丟在門口，信就會自動到達位置的吧?
 寄信的過程得必須遵守，將信放置信封袋，寫上收件人、收件地址、貼上郵票，丟到郵箱丟到郵筒後才會準確寄出，相同於API，program傳送資訊必須遵守一定的規範才能透過API傳送資料到另一台end system。
-Reference  Computer Network  </description>
+ Reference  Computer Network  </description>
     </item>
     
   </channel>

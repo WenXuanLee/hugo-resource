@@ -1,0 +1,19 @@
+{
+  "short_name": "BenThe30",
+  "name": "Ben - front-end dust with 30 fat rate",
+  "icons": [
+    {
+      "src": "/icons/fish.svg",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/profile.jpg",
+      "sizes": "256x256"
+    }
+  ],
+  "start_url": "/posts",
+  "background_color": "#408080",
+  "display": "standalone",
+  "theme_color": "#408080",
+  "description": "Ben Personal website for learning notes"
+}

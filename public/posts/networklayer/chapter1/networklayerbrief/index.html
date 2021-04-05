@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
   <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta content="width=device-width,initial-scale=1.0,user-scalable=yes,minimum-scale=1.0,maximum-scale=3.0" id="viewport" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
   <meta name="author" content="ＷenXuan Lee">
-  <meta name="description" content="asdasd">
-  
+  <meta name="description" content="front-end developer tech blog">
+  <meta name="keywords" content="frontEnd, Javascript, Web, techniques">
   
   <link rel="prev" href="https://WenXuanLee.github.io/posts/networklayer/chapter1/packetproblm/" />
   <link rel="next" href="https://WenXuanLee.github.io/posts/networklayer/chapter1/networkattack/" />
@@ -14,12 +15,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="theme-color" content="#ffffff">
-  <title>I'm Ben Lee </title>
+  <title>
+       
+       
+           Network Layer | Ben the front-end dust
+       
+  </title>
   <meta name="title" content="Network Layer | Ben the front-end dust">
     
   
@@ -36,21 +41,12 @@
     "@type" : "BlogPosting",
     "mainEntityOfPage": {
          "@type": "WebPage",
-         "@id": "https://WenXuanLee.github.io"
+         "@id": "https:\/\/WenXuanLee.github.io"
     },
     "articleSection" : "Posts",
     "name" : "Network Layer",
     "headline" : "Network Layer",
-    "description" : "Brief-intro about Five Layers 層級的概念是，個別層級中有自己的服務，個別執行特定的動作已達成目標，而傳遞下去的層級中，是依賴於上一層的服務，舉例來說的話，買票之後才能上火車，第一層的服務為窗口買票，第二層為上車的動作，若第一層沒買票的話，則第二層便無法實現。
-從上到下的五層順序分別為 Application Layer、Transport Layer、Network Layer、Link、Physical
-Application Layer 應用層是最接近web app的，此層的協定包含常見 Http - 提供向瀏覽器發出request &amp; transfer SMTP - 提供transferemail訊息 FTP - 提供檔案的傳輸協定 DNS - 提供轉換網址到network address
-應用層協定分布於各個end system上，各個end system透過傳輸層提供的protocol去交換packet。
-Transport Layer 主要將應用層傳遞下來的封包，透過TCP/UDP協定傳送，在此處也會在packet上加上header information，包含了允許封包在receiver那邊可以往上丟回application layer，以及errr-detection bits讓receiver知道message是否在route理被動過手腳
-TCP - 提供messages的傳送以及flow control，也提供將packet切成segment，以及packet塞車的處理機制 UDP - 提供了當無網路狀態時web app的service
-Network Layer 負責整個封包傳遞流程的datagrams，主要為IP protocol，定義了datagrams的區域以及end system &amp; router如何在這些fields做行為，特別注意到IP protocol只有唯一一個，所有Internet component一定都得遵守，同時此層也包含許多routing protocols。
-Link Layer 將packet從node中運輸依賴的是link layer的服務，負責傳送network層的datagram到下一個node節點。此服務依賴於link-layer protocol，常見的link-layer protocol為以下Ethernet Wifi DOCSIS等等，同一組datagram可能會在不同的Route被不同的協定服務，通常在link-layer的packet又稱為frames
-physical Layer 就幾乎是實體線路的範圍了，在此不做贅述
-Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如下圖所示，在link-layer switch以及router裡面，packet作用的service在後面三層，而在end system才有到頭兩層，在層數往下的過程中，都會加入header information作為保護的手段，如圖中的Ht、Hn，因此我們可以依圖所例，得知每個層級都會有兩個type of fields，一者為前一層帶下來的packet，一者為每層級的header information。",
+    "description" : "Brief-intro about Five Layers 層級的概念是，個別層級中有自己的服務，個別執行特定的動作已達成目標，而傳遞下去的層級中，是依賴於上一層的服務，舉例來說的話，買票之後才能上火車，第一層的服務為窗口買票，第二層為上車的動作，若第一層沒買票的話，則第二層便無法實現。\n從上到下的五層順序分別為 Application Layer、Transport Layer、Network Layer、Link、Physical\nApplication Layer 應用層是最接近web app的，此層的協定包含常見 Http - 提供向瀏覽器發出request \u0026amp; transfer SMTP - 提供transferemail訊息 FTP - 提供檔案的傳輸協定 DNS - 提供轉換網址到network address\n應用層協定分布於各個end system上，各個end system透過傳輸層提供的protocol去交換packet。\nTransport Layer 主要將應用層傳遞下來的封包，透過TCP\/UDP協定傳送，在此處也會在packet上加上header information，包含了允許封包在receiver那邊可以往上丟回application layer，以及errr-detection bits讓receiver知道message是否在route理被動過手腳\nTCP - 提供messages的傳送以及flow control，也提供將packet切成segment，以及packet塞車的處理機制 UDP - 提供了當無網路狀態時web app的service\nNetwork Layer 負責整個封包傳遞流程的datagrams，主要為IP protocol，定義了datagrams的區域以及end system \u0026amp; router如何在這些fields做行為，特別注意到IP protocol只有唯一一個，所有Internet component一定都得遵守，同時此層也包含許多routing protocols。\nLink Layer 將packet從node中運輸依賴的是link layer的服務，負責傳送network層的datagram到下一個node節點。此服務依賴於link-layer protocol，常見的link-layer protocol為以下Ethernet Wifi DOCSIS等等，同一組datagram可能會在不同的Route被不同的協定服務，通常在link-layer的packet又稱為frames\nphysical Layer 就幾乎是實體線路的範圍了，在此不做贅述\nEncapsulation 封包在傳遞的過程中，所經過的layer並不相同，如下圖所示，在link-layer switch以及router裡面，packet作用的service在後面三層，而在end system才有到頭兩層，在層數往下的過程中，都會加入header information作為保護的手段，如圖中的Ht、Hn，因此我們可以依圖所例，得知每個層級都會有兩個type of fields，一者為前一層帶下來的packet，一者為每層級的header information。",
     "inLanguage" : "zh-tw",
     "author" : "ＷenXuan Lee",
     "creator" : "ＷenXuan Lee",
@@ -58,9 +54,9 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
     "accountablePerson" : "ＷenXuan Lee",
     "copyrightHolder" : "ＷenXuan Lee",
     "copyrightYear" : "2018",
-    "datePublished": "2018-11-13 00:00:00 &#43;0000 UTC",
-    "dateModified" : "2018-11-13 00:00:00 &#43;0000 UTC",
-    "url" : "https://WenXuanLee.github.io/posts/networklayer/chapter1/networklayerbrief/",
+    "datePublished": "2018-11-13 00:00:00 \u002b0000 UTC",
+    "dateModified" : "2018-11-13 00:00:00 \u002b0000 UTC",
+    "url" : "https:\/\/WenXuanLee.github.io\/posts\/networklayer\/chapter1\/networklayerbrief\/",
     "wordCount" : "84",
     "keywords" : [ "Network Layer", "Ben the front-end dust"]
 }
@@ -76,7 +72,7 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -84,6 +80,8 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -93,7 +91,7 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://WenXuanLee.github.io">Ben the front-end dust</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -105,6 +103,8 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
                 <a class="menu-item" href="/posts/" title="">Blog</a>
                 
                 <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
                 
                 <a class="menu-item" href="/about/" title="">About</a>
                 
@@ -118,7 +118,7 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">Network Layer</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with
+                Written by <a itemprop="name" href="https://WenXuanLee.github.io" rel="author">ＷenXuan Lee</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2018-11-13 itemprop="datePublished">November 13, 2018</time>
                 </span>
@@ -149,59 +149,35 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
           
           
 
-          
-
-<h2 id="brief-intro-about-five-layers">Brief-intro about Five Layers</h2>
-
+          <h2 id="brief-intro-about-five-layers">Brief-intro about Five Layers</h2>
 <p>層級的概念是，個別層級中有自己的服務，個別執行特定的動作已達成目標，而傳遞下去的層級中，是依賴於上一層的服務，舉例來說的話，買票之後才能上火車，第一層的服務為窗口買票，第二層為上車的動作，若第一層沒買票的話，則第二層便無法實現。</p>
-
 <p>從上到下的五層順序分別為 <code>Application Layer</code>、<code>Transport Layer</code>、<code>Network Layer</code>、<code>Link</code>、<code>Physical</code></p>
-
 <h3 id="application-layer">Application Layer</h3>
-
 <p>應用層是最接近web app的，此層的協定包含常見
 <code>Http</code> - 提供向瀏覽器發出request &amp; transfer
 <code>SMTP</code> - 提供transfer<code>email</code>訊息
 <code>FTP</code>  - 提供檔案的傳輸協定
 <code>DNS</code>  - 提供轉換網址到<code>network address</code></p>
-
 <p>應用層協定分布於各個end system上，各個end system透過傳輸層提供的protocol去交換packet。</p>
-
 <h3 id="transport-layer">Transport Layer</h3>
-
 <p>主要將應用層傳遞下來的封包，透過TCP/UDP協定傳送，在此處也會在packet上加上header information，包含了允許封包在receiver那邊可以往上丟回<code>application layer</code>，以及<code>errr-detection bits</code>讓receiver知道message是否在route理被動過手腳</p>
-
 <p><code>TCP</code> - 提供<code>messages</code>的傳送以及flow control，也提供將<code>packet</code>切成<code>segment</code>，以及<code>packet</code>塞車的處理機制
 <code>UDP</code> - 提供了當無網路狀態時web app的service</p>
-
 <h3 id="network-layer">Network Layer</h3>
-
 <p>負責整個封包傳遞流程的<code>datagrams</code>，主要為<code>IP protocol</code>，定義了<code>datagrams</code>的區域以及end system &amp; router如何在這些fields做行為，特別注意到<code>IP protocol</code>只有唯一一個，所有<code>Internet component</code>一定都得遵守，同時此層也包含許多<code>routing protocols</code>。</p>
-
 <h3 id="link-layer">Link Layer</h3>
-
 <p>將<code>packet</code>從node中運輸依賴的是<code>link layer</code>的服務，負責傳送network層的datagram到下一個node節點。此服務依賴於<code>link-layer protocol</code>，常見的link-layer protocol為以下<code>Ethernet Wifi DOCSIS</code>等等，同一組<code>datagram</code>可能會在不同的Route被不同的協定服務，通常在<code>link-layer</code>的<code>packet</code>又稱為<code>frames</code></p>
-
 <h3 id="physical-layer">physical Layer</h3>
-
 <p>就幾乎是實體線路的範圍了，在此不做贅述</p>
-
 <h2 id="encapsulation">Encapsulation</h2>
-
 <p>封包在傳遞的過程中，所經過的layer並不相同，如下圖所示，在link-layer switch以及router裡面，packet作用的service在後面三層，而在end system才有到頭兩層，在層數往下的過程中，都會加入header information作為保護的手段，如圖中的Ht、Hn，因此我們可以依圖所例，得知每個層級都會有兩個type of fields，一者為前一層帶下來的packet，一者為每層級的header information。</p>
-
 <p>以一個假設來說，今天A想要寄信到B，首先<code>A手寫的信</code>，也就是<code>application-layer message</code>，會先裝到<code>信封袋</code>中，並寫上<code>B的住址以及姓名</code>，整個信封袋就是<code>transport-layer segment</code>，封裝了<code>application-layer message</code>，接著到郵局之後，經郵局分類放到<code>對應的縣市分類夾</code>，也就是<code>datagram</code>他封裝了<code>trsans-layer segment</code>，接著郵差開始從<code>分類夾中拿出信件</code>，並對照<code>上面的資訊送到B的家裡</code>，也就是解封的過程開始，最後B成功收到信上的內容。</p>
-
 <p>由此可見，在每個層級都會在封裝前個層級的封包，這就是封裝的概念。</p>
-
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://ithelp.ithome.com.tw/upload/images/20181113/20107670udmOwQ5j7i.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107670udmOwQ5j7i.png" class="lazyload"><figcaption class="image-caption">https://ithelp.ithome.com.tw/upload/images/20181113/20107670udmOwQ5j7i.png</figcaption></figure></p>
-
-<hr />
-
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107670udmOwQ5j7i.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107670udmOwQ5j7i.png"></p>
+<hr>
 <h3 id="reference">Reference</h3>
-
 <ol>
-<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html" rel="nofollow noreferrer" target="_blank">Computer Network</a></li>
+<li><a href="https://www.pearson.com/us/higher-education/product/Kurose-Computer-Networking-A-Top-Down-Approach-6th-Edition/9780132856201.html">Computer Network</a></li>
 </ol>
 
     </div>
@@ -265,9 +241,11 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
     <div class="copyright">
         &copy;
         
-        <span itemprop="copyrightYear">2018 - 2019</span>
+        <span itemprop="copyrightYear">2018 - 2021</span>
         
-
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
          
             <span class="author" itemprop="copyrightHolder"><a href="https://WenXuanLee.github.io">ＷenXuan Lee</a> | </span> 
          
@@ -286,7 +264,6 @@ Encapsulation 封包在傳遞的過程中，所經過的layer並不相同，如�
 
 
 
-<script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
 
 
     

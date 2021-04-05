@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Application Layer on Ben the front-end dust</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Application Layer on Ben the front-end dust</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://WenXuanLee.github.io/tags/application-layer/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 09 Jan 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://WenXuanLee.github.io/tags/application-layer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Socket Programming</title>
       <link>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/tcpandudp/</link>
@@ -31,7 +27,7 @@ Socket Programming with TCP 不同於UDP，在client &amp;amp; server 開始彼�
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://WenXuanLee.github.io/posts/networklayer/chapter2-application-layer/p2p/</guid>
-      <description> Peer-to-Peer Applications 探討適合用於P2P設計的application，主要分於兩部分，第一部分為file distribution，介紹檔案如何從單一來源分配至多數的peers，這部分清楚的展示了P2P架構的 self-scalability，主要透過BitTorrent system為範例。第二部分則會探討 database distributed over a large community of peers。
+      <description>Peer-to-Peer Applications 探討適合用於P2P設計的application，主要分於兩部分，第一部分為file distribution，介紹檔案如何從單一來源分配至多數的peers，這部分清楚的展示了P2P架構的 self-scalability，主要透過BitTorrent system為範例。第二部分則會探討 database distributed over a large community of peers。
 P2P File Distribution 每個peer都可以提供自己的capacity來幫助server distribute 檔案，不同於client-server的模式，在分配檔案時，server不需要copy每一份檔案給peers，反之，只要其中一個peer擁有檔案之後便可以透過此peer重新再分配檔案到其他peers。放一張比較圖
 BitTorrent Torrent在此的定義為，所有參與同一檔案distribution的peers的集合，每個於此Torrent的peer都會下載同樣容量的chunks，通常為256KBytes為一個chunk，當peer首次加入torrent並無任何chunk，隨著時間他會存入越來越多chunk，下載的同時也成為upload的來源之一，但檔案完成後可以選擇繼續留著torrent當為upload source之一繼續提供流量或者就離開torrent。
 每一個torrent會擁有基本的node called tracker，當peer加入torrent時，會把自己註冊進tracker裡面並固定一小段時間通知tracker我還在torrent裡面。當一個新的peer加入時，tracker會隨機挑出一個peers子集合以及這群子集合的IP address丟給新的peer，擁有這些資訊後，新的peer便能與這群子集合建立TCP connection，通常這樣的子集合群稱為neighboring peers，建立TCP連結後便能從這群peers裡面獲取需要的chunks。
@@ -39,7 +35,7 @@ rarest first 決定取得chunck採用的技術之一，會從使用者當前沒�
 在BitTorrent協定中，主要根據peers內擁有最高的傳輸速率作為respond的判斷依據，也就是說，每十秒使用者會偵測接受到的rate以及upload rate，這個符合最高速率的set稱為unchoked，而每三十秒會隨機抓取一個額外的neighboring peer傳送chunck，此額外的peer稱為optimistically unchoked，若此peer正好速率高過於unchoked的其中一個，則此會替代成為unchoked之一，相對來說，若互相都滿足彼此的highest rate，則互為unchoked之一。
 其他neighboring peer則稱為choked也就是不再top four peers(unchoked) and one probing peer(optimistically unchoked裡面，choked並不會接受從使用者接收到chunks。
 Distributed Hash Tables(DHTs) P2P系統裡，每一個peer會存取一小部分的key-value pairs，每一個peer都可以發出query到distributed database獲取對應的value，收到query後database作抓取擁有此key值value的peer並回傳給發出query之peer，任何一個peer都准許插入新的 key-value paris到database裡面，這樣的設計稱為 distributed hash table
-Reference  Computer Network  </description>
+ Reference  Computer Network  </description>
     </item>
     
     <item>
@@ -92,7 +88,8 @@ Web page(documents)由不同物件組成，這裡的物件指的是FILE，例如
 HTTP定義了 web client &amp;amp; web server中間的溝通，包括client如何送出message以及server如何轉送webpage給client，此外，HTTP使用TCP作為underlying transport protocol，因此當client端送出一個HTTP request message時會透過socket傳送給tcp connection，也從trp connection經過socket接回到response message，同理於server端亦是，而一旦message到socket interface後，訊息的傳遞的掌控就不再client端的手裡而是在tcp protocol下了。
 值得注意的是HTTP是被稱為stateless protocol也就是每次的交流並不會留下痕跡，也因此，就算client端短時間發送一樣的request，對於server端來說，並不會因為剛response完前一筆request就不處理同樣的下一筆，反之仍視為另一筆request回應，儘管內容完全相同。
 Non-Persistent and Persistent Connections 開發者可以決定當送出request/response pair時，是透過separet TCP connections 或者是 同一個TCP connection實行，若為前者則稱為Non-Persistent後者則為Persistent。
-Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下， 1. HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection 2. client 透過 socket開始傳送message到server端 3. server端透過socket接收到request message，並在透過socket回傳封裝好的response message 4. HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) 5.</description>
+Non-Persistent 假使今天有一個html file裡面有十張圖片，整個重request到呈現頁面的步驟如下，
+ HTTP clicent processs 啟動一條TCP connection到Server端，建立TCP connection client 透過 socket開始傳送message到server端 server端透過socket接收到request message，並在透過socket回傳封裝好的response message HTTP server process 告訴TCP connection 關閉此連結(但實際上並還沒關閉，直到確認clicent端已經接收到正確response後才停止) client端接受到response，TCP connection關閉，開始檢驗回傳的HTML檔案並找到圖片的references 取得十張照片，重複1 ~ 4的步驟十次  在這個過程中，取得web page的階段，建立了11條TCP connection，每條connection負責處理一對request/response</description>
     </item>
     
     <item>
@@ -121,9 +118,9 @@ client-server architecture 最終端永遠會存在於一台或以上的host，�
 peer-to-peer architecture (P2P) P2P並沒有絕對依賴指定的host，不同於前者，clients在一組相互連結的hosts中可以直接與彼此溝通，稱為peers，peers並不屬於service provider而是各個users hosts，也就是不用轉折點的server去執行。
 很明顯一項特點就是self-scalability，雖然每一個peers在request時都會產生workload，但同時也提升了service capacity，也就是說，每當一個peer加入時，整個P2P架構的系統，就會多增加一個peer提供的資源、頻寬以及計算能力，但同時越多使用者的話，傳輸的效率也會越慢，此外，由於不需通過指定server的運作，也省去了從host -&amp;gt; server的頻寬以及服務功能。
 方便的同時也須注意三個隱憂
- ISP Friendly - 大部分的地區ISPs已經切割好指定的頻寬使用，為了準備應付更多的downstream than upstream traffic，而P2P的設計則會把佔頻寬的upstream traffic從server搬移至ISPs運作，造成ISPs更大的負擔，因此在設計上得納入考量。
- Security - 顯而易見的彼此users都是open的，所以也很容易遭受到惡意攻擊。
- Incentives - 以P2P的設計來說，得吸引使用者去提供自己的頻寬、儲存空間以及資源。   Process Communicating process可以想像成，一隻program在end system上執行，Processes在兩台不同的end systems上主要透過messages的交換來溝通。
+  ISP Friendly - 大部分的地區ISPs已經切割好指定的頻寬使用，為了準備應付更多的downstream than upstream traffic，而P2P的設計則會把佔頻寬的upstream traffic從server搬移至ISPs運作，造成ISPs更大的負擔，因此在設計上得納入考量。
+  Security - 顯而易見的彼此users都是open的，所以也很容易遭受到惡意攻擊。
+  Incentives - 以P2P的設計來說，得吸引使用者去提供自己的頻寬、儲存空間以及資源。   Process Communicating process可以想像成，一隻program在end system上執行，Processes在兩台不同的end systems上主要透過messages的交換來溝通。
 Client and Server Process Network application 都會有一組processes組成，透過network傳送messages給彼此，通常會將兩個processes一個定義為clicent另一個為server，以常見的google為例，我們的browser就是一個client process發送request message給server process接收並給予回應，在P2P的設計上來說，peer可以同時為client與server，有一個定義是指觸發訊息交換的process為client，而等待被聯絡的process則為server
 The Interface Between the Process and the Computer Network 所有message從process出發到接收一定會經過network，而透過將process message傳遞到network的介面就是socket，也被稱為API。可以記為socket為application layer &amp;amp; transpoart layer的interface，通常開發者會在application-layer side of the socket 擁有比較多的控制權，反之在transport-layer side便沒有太大的操作空間。</description>
     </item>
