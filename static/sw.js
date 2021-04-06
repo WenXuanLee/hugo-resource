@@ -7,13 +7,6 @@ const BASE_CACHE_FILES = [
   '/profile.jpg',
 ];
 
-const CACHE_VERSIONS = {
-  assets: 'assets-v' + CACHE_VERSION,
-  content: 'content-v' + CACHE_VERSION,
-  offline: 'offline-v' + CACHE_VERSION,
-  notFound: '404-v' + CACHE_VERSION,
-};
-
 const cacheName = `BenPeronsalWeb${CACHE_VERSION}`;
 
 self.addEventListener('install', event => {
@@ -57,58 +50,3 @@ self.addEventListener('fetch', function (event) {
         })
     })
 )});
-
-/**
- * cleanupLegacyCache
- * @returns {Promise}
- */
-function cleanupLegacyCache() {
-  const currentCaches = `BenPeronsalWeb${CACHE_VERSION}`;
-  return new Promise(
-    (resolve, reject) => {
-      caches.keys()
-        .then(
-          (keys) => {
-            console.log('caches key', caches);
-            console.log('caches key', keys);
-            return legacyKeys = keys.filter(
-              (key) => {
-                return currentCaches === key;
-              }
-            );
-          }
-        )
-        .then(
-          (legacy) => {
-            if (legacy.length) {
-              Promise.all(
-                legacy.map(
-                  (legacyKey) => {
-                    return caches.delete(legacyKey)
-                  }
-                )
-              )
-                .then(
-                  () => {
-                    resolve()
-                  }
-                )
-                .catch(
-                  (err) => {
-                    reject(err);
-                  }
-                );
-            } else {
-              resolve();
-            }
-          }
-        )
-        .catch(
-          () => {
-            reject();
-          }
-        );
-
-    }
-  );
-}
