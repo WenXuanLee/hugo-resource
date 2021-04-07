@@ -271,19 +271,24 @@ TCP socket為所有建立tcp coneection之前先執行一個打招呼的動作�
    }
 
   
-  let deferredPrompt;
+  let deferredInstallPromptEvent;
 
   window.addEventListener('beforeinstallprompt', (e) => {
     console.log('test before install prompt', e);
     e.preventDefault();
-    deferredPrompt = e;
+    deferredInstallPromptEvent = e;
     setTimeout(() => {
-      if (deferredPrompt.prompt) {
-        deferredPrompt.prompt()
-        return;
-      }
+      document.querySelector('.wrapper').addEventListener('click', addToHomeScreen)
     }, 15000)
   });
+
+  function addToHomeScreen(e) {
+      if (deferredInstallPromptEvent) {
+        deferredInstallPromptEvent.prompt();
+        deferredInstallPromptEvent = null;
+        document.querySelector('.wrapper').removeEventListener('click', addToHomeScreen)
+      }
+  }
 </script>
 
 
